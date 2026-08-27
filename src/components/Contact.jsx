@@ -324,7 +324,7 @@ export default function Contact({ preselectedService, preselectedPlan }) {
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     type="submit"
-                    className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm shadow-xl shadow-[#FF6B35]/30 hover:shadow-[#FF6B35]/50 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>Send Inquiry Now</span>
                     <Send className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />

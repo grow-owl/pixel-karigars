@@ -6,10 +6,26 @@ import Logo from './Logo';
 
 export default function Hero({ onOpenContact }) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [liked, setLiked] = useState(true);
   const [likeCount, setLikeCount] = useState(4476);
   const videoRef = useRef(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.play().then(() => {
+        setIsMuted(false);
+      }).catch(() => {
+        // Fallback for strict browser autoplay policies
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play();
+          setIsMuted(true);
+        }
+      });
+    }
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -44,7 +60,7 @@ export default function Hero({ onOpenContact }) {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
+    <section id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
       {/* Soft Ambient Background Orbs */}
       <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B35]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
       <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6C4CF1]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
@@ -83,7 +99,7 @@ export default function Hero({ onOpenContact }) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onOpenContact}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs sm:text-sm shadow-lg shadow-[#FF6B35]/25 hover:shadow-[#FF6B35]/40 transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
               >
                 <span>Let's Work Together</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />

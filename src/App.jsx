@@ -66,22 +66,10 @@ export default function App() {
       {/* Glowing Neon Divider 2 */}
       <SectionDivider accent="violet" />
 
-      {/* Why Choose Pixel Karigars */}
-      <WhyUs />
-
-      {/* Glowing Neon Divider 3 */}
-      <SectionDivider accent="coral" />
-
-      {/* Pricing Section */}
-      <Pricing onSelectPlan={handleSelectPlan} />
-
-      {/* Glowing Neon Divider 4 */}
-      <SectionDivider accent="violet" />
-
       {/* FAQ Section */}
       <FAQ />
 
-      {/* Glowing Neon Divider 5 */}
+      {/* Glowing Neon Divider 3 */}
       <SectionDivider accent="coral" />
 
       {/* Lead Generation Contact Form */}

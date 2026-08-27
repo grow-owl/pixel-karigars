@@ -71,11 +71,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300 font-semibold inline-block text-left">
               {[
+                { name: 'About Us', href: '#' },
                 { name: 'Services & Offerings', href: '#services' },
                 { name: 'Featured Client Reels', href: '#work' },
-                { name: 'Why Choose Pixel Karigars', href: '#why-us' },
-                { name: 'Pricing & Packages', href: '#pricing' },
                 { name: 'Frequently Asked Questions', href: '#faq' },
+                { name: 'Contact Us', href: '#contact' },
               ].map((link, i) => (
                 <li key={i}>
                   <a 
@@ -120,7 +120,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
-                className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-xs font-extrabold text-white transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-[#FF6B35]/25 group"
+                className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-xs font-extrabold text-white transition-all cursor-pointer flex items-center gap-2 shadow-md hover:shadow-lg group"
               >
                 <span>Back to Top</span>
                 <ArrowUp className="w-3.5 h-3.5 text-white group-hover:-translate-y-0.5 transition-transform" />

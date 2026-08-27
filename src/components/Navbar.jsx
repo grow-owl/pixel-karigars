@@ -18,12 +18,44 @@ export default function Navbar({ onOpenContact }) {
   }, []);
 
   const navLinks = [
+    { name: 'About Us', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Our Work', href: '#work' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Our Works', href: '#work' },
     { name: 'FAQ', href: '#faq' },
+    { name: 'Contact Us', href: '#contact' },
   ];
+
+  const handleNavClick = (e, href) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    setTimeout(() => {
+      if (href === '#' || href === '#hero' || href === '#about') {
+        const aboutEl = document.querySelector('#about');
+        if (aboutEl) {
+          const navOffset = 80;
+          const elementPosition = aboutEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        return;
+      }
+
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        const navOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  };
 
   return (
     <header
@@ -37,7 +69,7 @@ export default function Navbar({ onOpenContact }) {
         <div className="flex items-center justify-between">
 
           {/* Brand Logo */}
-          <a href="#" className="flex items-center">
+          <a href="#" onClick={(e) => handleNavClick(e, '#about')} className="flex items-center">
             <Logo animated={true} />
           </a>
 
@@ -47,6 +79,7 @@ export default function Navbar({ onOpenContact }) {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-xs font-bold text-slate-300 hover:text-[#FF6B35] px-3.5 py-1.5 rounded-full transition-all hover:bg-white/10"
               >
                 {link.name}
@@ -70,7 +103,7 @@ export default function Navbar({ onOpenContact }) {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={onOpenContact}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs shadow-lg shadow-[#FF6B35]/25 hover:shadow-[#FF6B35]/40 transition-all flex items-center gap-1.5 group cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 group cursor-pointer"
             >
               <span>Get Started</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -81,7 +114,8 @@ export default function Navbar({ onOpenContact }) {
           <div className="md:hidden flex items-center gap-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-white focus:outline-none cursor-pointer"
+              className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-white focus:outline-none cursor-pointer active:scale-95 transition-transform"
+              aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF6B35]" /> : <Menu className="w-5 h-5 text-white" />}
             </button>
@@ -97,29 +131,29 @@ export default function Navbar({ onOpenContact }) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#161524]/95 backdrop-blur-2xl border-b border-white/10 px-4 pt-4 pb-6 space-y-4 shadow-2xl"
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-[#161524]/98 backdrop-blur-2xl border-b border-white/15 px-5 pt-5 pb-7 space-y-4 shadow-2xl relative z-50"
           >
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl font-bold text-sm text-slate-200 hover:text-[#FF6B35] hover:bg-white/10 transition-colors"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="px-4 py-3 rounded-xl font-bold text-sm text-slate-200 hover:text-[#FF6B35] hover:bg-white/10 active:bg-white/15 transition-colors block cursor-pointer text-left"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+            <div className="pt-4 border-t border-white/15 flex flex-col gap-3">
               <button
-                onClick={() => {
+                onClick={(e) => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm text-center flex items-center justify-center gap-2 shadow-lg shadow-[#FF6B35]/30 cursor-pointer"
+                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm text-center flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer active:scale-98"
               >
                 <span>Book Strategy Call</span>
                 <ArrowUpRight className="w-4 h-4 text-white" />
