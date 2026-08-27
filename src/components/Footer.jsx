@@ -11,10 +11,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 relative z-10">
+    <footer className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
       
-      {/* Perfectly Aligned Card Container */}
-      <div className="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-white/12 shadow-2xl bg-mesh-grid">
+      {/* Wider Symmetrical Card Container */}
+      <div className="glass-panel rounded-3xl p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-white/12 shadow-2xl bg-mesh-grid">
         
         {/* Soft Ambient Background Glow Orbs */}
         <div className="absolute top-0 right-10 w-[450px] h-[450px] bg-[#FF6B35]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
