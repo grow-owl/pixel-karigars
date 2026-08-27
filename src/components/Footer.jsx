@@ -11,16 +11,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0F0E17] text-white pt-16 pb-12 relative overflow-hidden border-t border-white/10 bg-mesh-grid">
+    <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 relative z-10">
       
-      {/* Soft Ambient Background Glow Orbs */}
-      <div className="absolute top-0 right-10 w-[400px] h-[400px] bg-[#FF6B35]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
-      <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-[#6C4CF1]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+      {/* Perfectly Aligned Card Container */}
+      <div className="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-white/12 shadow-2xl bg-mesh-grid">
+        
+        {/* Soft Ambient Background Glow Orbs */}
+        <div className="absolute top-0 right-10 w-[450px] h-[450px] bg-[#FF6B35]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+        <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#6C4CF1]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        <div className="relative z-10 space-y-10">
 
-        {/* 3-Column Balanced Layout: Left, Center, Right */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+          {/* 3-Column Balanced Layout: Left, Center, Right */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           
           {/* LEFT: Brand Info & Logo & Instagram Badge */}
           <motion.div 
@@ -144,9 +147,9 @@ export default function Footer() {
             </a>
           </p>
         </div>
-
       </div>
-    </footer>
+    </div>
+  </footer>
   );
 }
 

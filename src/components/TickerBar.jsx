@@ -12,10 +12,10 @@ export default function TickerBar() {
   ];
 
   return (
-    <div className="bg-[#161524] text-white py-6 overflow-hidden border-y border-white/10 relative z-20 shadow-xl">
+    <div className="bg-[#161524]/85 backdrop-blur-md text-white py-5.5 overflow-hidden border-y border-white/10 relative z-20 shadow-2xl">
       {/* Sleek edge masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#161524] via-[#161524]/80 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#161524] via-[#161524]/80 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#161524] via-[#161524]/75 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#161524] via-[#161524]/75 to-transparent z-10 pointer-events-none"></div>
 
       <div className="animate-ticker flex items-center whitespace-nowrap gap-4">
         {[...items, ...items, ...items, ...items].map((item, idx) => {
