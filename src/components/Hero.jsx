@@ -12,6 +12,22 @@ export default function Hero({ onOpenContact }) {
   const videoRef = useRef(null);
 
   React.useEffect(() => {
+    const handleFirstUserGesture = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = false;
+        videoRef.current.play().then(() => {
+          setIsMuted(false);
+        }).catch(() => {});
+      }
+      window.removeEventListener('click', handleFirstUserGesture);
+      window.removeEventListener('touchstart', handleFirstUserGesture);
+      window.removeEventListener('keydown', handleFirstUserGesture);
+    };
+
+    window.addEventListener('click', handleFirstUserGesture);
+    window.addEventListener('touchstart', handleFirstUserGesture);
+    window.addEventListener('keydown', handleFirstUserGesture);
+
     if (videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.play().then(() => {
@@ -25,6 +41,12 @@ export default function Hero({ onOpenContact }) {
         }
       });
     }
+
+    return () => {
+      window.removeEventListener('click', handleFirstUserGesture);
+      window.removeEventListener('touchstart', handleFirstUserGesture);
+      window.removeEventListener('keydown', handleFirstUserGesture);
+    };
   }, []);
 
   const togglePlay = () => {
@@ -78,7 +100,7 @@ export default function Hero({ onOpenContact }) {
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#6C4CF1]/15 border border-[#6C4CF1]/30 text-white text-xs sm:text-sm font-bold backdrop-blur-md shadow-sm">
               <Zap className="w-4 h-4 text-[#FF6B35]" />
-              <span>Siliguri's #1 Creative Content Studio</span>
+              <span>Siliguri's Premier Creative Content Studio</span>
             </div>
 
             {/* Main Headline */}
@@ -121,18 +143,18 @@ export default function Hero({ onOpenContact }) {
             </div>
 
             {/* Trust Highlights */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-[#FF6B35] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold">50+ Viral Reels Shot</span>
+            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 max-w-xl mx-auto lg:mx-0">
+              <div className="flex items-center gap-2 shrink-0">
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B35] shrink-0" />
+                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">50+ Viral Reels</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-[#6C4CF1] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold">50K+ Organic Reach</span>
+              <div className="flex items-center gap-2 shrink-0">
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#6C4CF1] shrink-0" />
+                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">500K+ Organic Reach</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-[#FF6B35] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold">Siliguri Studio</span>
+              <div className="flex items-center gap-2 shrink-0">
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B35] shrink-0" />
+                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">Siliguri Studio</span>
               </div>
             </div>
           </motion.div>
@@ -147,7 +169,7 @@ export default function Hero({ onOpenContact }) {
             {/* Soft Ambient Glow Halo */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B35]/20 via-[#6C4CF1]/15 to-[#FF6B35]/20 rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
 
-            <div className="relative w-[310px] sm:w-[345px] lg:w-[360px] aspect-reel rounded-[48px] overflow-hidden bg-black shadow-2xl border-[2px] border-white/20 group hover:border-[#FF6B35]/50 transition-all duration-300">
+            <div className="relative w-[345px] sm:w-[360px] lg:w-[360px] aspect-reel rounded-[48px] overflow-hidden bg-black shadow-2xl border-[2px] border-white/20 group hover:border-[#FF6B35]/50 transition-all duration-300">
               
               {/* iPhone Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-22 h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">

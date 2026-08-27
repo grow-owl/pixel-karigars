@@ -12,7 +12,7 @@ export const BRAND_INFO = {
   instagramUrl: "https://www.instagram.com/pixelkarigars",
   stats: [
     { label: "Viral Reels Produced", value: "50+" },
-    { label: "Total Reach Generated", value: "50K+" },
+    { label: "Total Reach Generated", value: "500K+" },
     { label: "Active Business Partners", value: "25+" },
     { label: "Client Satisfaction Rate", value: "99%" },
   ]
@@ -75,7 +75,7 @@ export const SERVICES = [
     id: "strategy",
     num: "04",
     title: "Content Strategy & Hook Bank",
-    shortDesc: "Data-driven roadmap to position your brand as the #1 market leader in your niche.",
+    shortDesc: "Data-driven roadmap to position your brand as a dominant market leader in your niche.",
     items: [
       "Viral Idea & Hook Repository",
       "Competitor Market Analysis",

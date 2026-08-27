@@ -282,28 +282,6 @@ export default function Contact({ preselectedService, preselectedPlan }) {
                         </div>
                       </div>
                     </div>
-
-                    <div>
-                      <label className="block text-xs font-extrabold text-white mb-1.5">
-                        Select Package
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="plan"
-                          value={formData.plan}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3.5 rounded-2xl bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-xs font-bold text-white focus:outline-none focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 shadow-inner transition-all cursor-pointer appearance-none pr-10"
-                        >
-                          <option value="" className="bg-[#161524] text-white">-- Choose Package --</option>
-                          {PRICING_PLANS.map((p) => (
-                            <option key={p.id} value={p.name} className="bg-[#161524] text-white">{p.name} Plan ({p.price})</option>
-                          ))}
-                        </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF6B35]">
-                          ▼
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   <div>
