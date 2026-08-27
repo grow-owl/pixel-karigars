@@ -2,9 +2,23 @@
 
 @layer base {
   body {
-    background-color: #09090B;
-    color: #FFFFFF;
+    background-color: #0F0E17;
+    color: #FFFFF0;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+.font-display {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-space {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Custom Scrollbar */
@@ -13,14 +27,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090B;
+  background: #0F0E17;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #FF6B35;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8B5CF6;
+  background: #6C4CF1;
 }
 
 /* Hide Scrollbar for Horizontal Sliders */
@@ -32,35 +46,70 @@
   scrollbar-width: none;
 }
 
-/* Obsidian Glassmorphism Utilities */
+/* Background Subtle Mesh Pattern */
+.bg-mesh-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Luxe Midnight Neon Glassmorphism & Card System */
 .glass-panel {
-  background: rgba(20, 20, 23, 0.75);
+  background: rgba(22, 21, 36, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-panel-hover:hover {
-  background: rgba(24, 24, 27, 0.9);
-  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(28, 26, 45, 0.95);
+  border-color: rgba(255, 107, 53, 0.5);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(255, 107, 53, 0.2),
+              0 0 25px -5px rgba(255, 107, 53, 0.15);
 }
 
-/* Signature Text Gradients for Pixel Karigars */
+.glass-card-active {
+  background: rgba(28, 26, 45, 0.95);
+  border-color: #FF6B35;
+  box-shadow: 0 20px 40px -15px rgba(255, 107, 53, 0.3),
+              0 0 30px -5px rgba(108, 76, 241, 0.3);
+}
+
+.glass-pill {
+  background: rgba(22, 21, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Signature Text Gradients */
 .text-gradient-coral {
-  background: linear-gradient(135deg, #FFFFFF 0%, #C084FC 50%, #EC4899 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C54 45%, #6C4CF1 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-sunset {
-  background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 50%, #EC4899 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FF6B35 60%, #6C4CF1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FF6B35 0%, #6C4CF1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #698EA2 0%, #152935 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -71,7 +120,7 @@
   aspect-ratio: 9 / 16;
 }
 
-/* Ticker Animation for Brand Motto */
+/* Marquee Animations */
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -80,9 +129,57 @@
 .animate-ticker {
   display: flex;
   width: 200%;
-  animation: ticker 25s linear infinite;
+  animation: ticker 28s linear infinite;
 }
 
 .animate-ticker:hover {
   animation-play-state: paused;
 }
+
+/* Soft Ambient Pulse Keyframe */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+
+/* Instagram Iconic Gradient Hover Utility */
+.instagram-hover-gradient {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.instagram-hover-gradient:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  color: #FFFFFF !important;
+  transform: scale(1.1) rotate(4deg);
+  box-shadow: 0 10px 25px -5px rgba(220, 39, 67, 0.4);
+}
+
+/* Floating Animation Keyframe */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 4s ease-in-out 2s infinite;
+}
+
+
+
+
+
+
+

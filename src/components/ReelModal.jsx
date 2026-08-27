@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Volume2, VolumeX, Sparkles, ExternalLink } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 
@@ -37,20 +38,26 @@ export default function ReelModal({ project, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
       
       {/* Backdrop Click to Close */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
       {/* Modal Container */}
-      <div className="relative z-10 w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 max-h-[90vh]">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ duration: 0.3 }}
+        className="relative z-10 w-full max-w-4xl bg-[#121216] border border-white/15 rounded-3xl overflow-hidden shadow-2xl shadow-amber-500/15 grid grid-cols-1 md:grid-cols-12 max-h-[90vh]"
+      >
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-30 p-2 rounded-full bg-black/60 text-slate-300 hover:text-white hover:bg-black transition-all"
+          className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-black/70 text-slate-300 hover:text-white hover:bg-black transition-all border border-white/10 cursor-pointer"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Left Side Video Player */}
@@ -71,9 +78,9 @@ export default function ReelModal({ project, onClose }) {
           <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
             <button
               onClick={toggleMute}
-              className="p-2.5 rounded-full bg-black/70 backdrop-blur-md text-amber-400 border border-white/20"
+              className="p-2.5 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20 hover:scale-105 transition-all cursor-pointer"
             >
-              {isMuted ? <VolumeX className="w-4 h-4 text-amber-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+              {isMuted ? <VolumeX className="w-4 h-4 text-amber-400" /> : <Volume2 className="w-4 h-4 text-amber-400 animate-pulse" />}
             </button>
           </div>
 
@@ -82,17 +89,17 @@ export default function ReelModal({ project, onClose }) {
               onClick={togglePlay}
               className="absolute inset-0 bg-black/40 flex items-center justify-center z-20 cursor-pointer"
             >
-              <div className="w-16 h-16 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-xl pl-1 animate-bounce">
-                <Play className="w-8 h-8 fill-slate-950" />
+              <div className="w-16 h-16 rounded-full bg-amber-500 text-black flex items-center justify-center shadow-xl pl-1 animate-bounce">
+                <Play className="w-8 h-8 fill-black" />
               </div>
             </div>
           )}
         </div>
 
         {/* Right Side Project Details */}
-        <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6 overflow-y-auto max-h-[550px]">
+        <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6 overflow-y-auto max-h-[550px] bg-[#161524] text-white border-l border-white/10">
           <div className="space-y-4">
-            <div className="inline-block px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-block px-3.5 py-1 rounded-full bg-[#FF6B35]/15 border border-[#FF6B35]/30 text-[#FF6B35] text-xs font-bold uppercase tracking-wider">
               {project.businessType}
             </div>
 
@@ -100,46 +107,48 @@ export default function ReelModal({ project, onClose }) {
               {project.title}
             </h3>
 
-            <p className="text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
               {project.description}
             </p>
 
-            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold flex items-center gap-2">
-              <Sparkles className="w-4 h-4 shrink-0 text-amber-400" />
+            <div className="p-4 rounded-2xl bg-[#FF6B35]/15 border border-[#FF6B35]/25 text-[#FF6B35] text-xs font-bold flex items-center gap-2">
+              <Sparkles className="w-4 h-4 shrink-0 text-[#FF6B35]" />
               <span>{project.stats}</span>
             </div>
 
             {project.clientQuote && (
-              <blockquote className="italic text-xs text-slate-400 border-l-2 border-amber-500 pl-3 py-1">
+              <blockquote className="italic text-xs text-slate-300 border-l-2 border-[#FF6B35] pl-3 py-1">
                 "{project.clientQuote}"
               </blockquote>
             )}
 
             <div className="flex flex-wrap gap-2 pt-2">
               {project.tags.map((tag, i) => (
-                <span key={i} className="text-[11px] px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-semibold border border-slate-700">
+                <span key={i} className="text-[11px] px-2.5 py-1 rounded-full bg-white/10 text-white font-semibold border border-white/15">
                   #{tag}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
+          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
             <a
               href={project.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02] transition-all"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm flex items-center justify-center gap-2 shadow-xl hover:scale-[1.02] transition-all group cursor-pointer"
             >
-              <InstagramIcon className="w-4 h-4 text-slate-950" />
+              <InstagramIcon className="w-4 h-4 text-white" />
               <span>Watch Reel on Instagram</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
 
-      </div>
+      </motion.div>
 
     </div>
   );
 }
+
+

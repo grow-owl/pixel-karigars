@@ -1,9 +1,9 @@
 export const BRAND_INFO = {
   name: "Pixel Karigars",
-  tagline: "YOUR BUSINESS DESERVES BETTER CONTENT.",
-  subheadline: "We create scroll-stopping reels, engaging social media content, and creative visuals that help your business stand out.",
-  aboutHeading: "GOOD BUSINESSES DESERVE GREAT CONTENT.",
-  aboutText: "Pixel Karigars is a creative content studio based in Siliguri, West Bengal. We specialize in reels, social media content management, visual storytelling, and transforming local and growing businesses into online powerhouses.",
+  tagline: "HIGH-IMPACT REELS & CREATIVE CONTENT FOR GROWING BRANDS",
+  subheadline: "Siliguri's dedicated video studio crafting scroll-stopping Reels, store walkthrough shoots, and brand visual strategy that turn social media views into paying customers.",
+  aboutHeading: "ELEVATE YOUR BRAND WITH HIGH-CONVERSION CONTENT.",
+  aboutText: "Pixel Karigars is a premier creative content studio based in Siliguri, West Bengal. We specialize in high-converting Instagram Reels, product & store video shoots, storytelling, and managing end-to-end social media growth.",
   email: "pixelkarigars@gmail.com",
   phone: "+91 98000 12345",
   whatsapp: "919800012345",
@@ -11,9 +11,9 @@ export const BRAND_INFO = {
   handle: "@pixelkarigars",
   instagramUrl: "https://www.instagram.com/pixelkarigars",
   stats: [
-    { label: "Reels & Short-Form Videos", value: "50+" },
-    { label: "Total Views Generated", value: "50K+" },
-    { label: "Active Business Clients", value: "25+" },
+    { label: "Viral Reels Produced", value: "50+" },
+    { label: "Total Reach Generated", value: "50K+" },
+    { label: "Active Business Partners", value: "25+" },
     { label: "Client Satisfaction Rate", value: "99%" },
   ]
 };
@@ -29,77 +29,77 @@ export const SERVICES = [
   {
     id: "reels",
     num: "01",
-    title: "Reels & Short-Form Content",
-    shortDesc: "High-impact, trend-focused short videos engineered to hook viewers in 3 seconds.",
+    title: "Reels & Short Video Shoots",
+    shortDesc: "Scroll-stopping vertical reels with viral hooks, crisp audio, and motion cuts engineered for high reach.",
     items: [
-      "Instagram Reels & TikTok/Shorts",
-      "Product Demonstration Videos",
-      "Promotional & Hype Videos",
-      "Trending Content Concepts",
-      "Creative Video Editing & Motion FX"
+      "Instagram Reels & YouTube Shorts",
+      "On-Location & Studio Shoots",
+      "Viral Hook Scriptwriting",
+      "Trending Audio & Color Grading",
+      "Fast 48-Hour Video Delivery"
     ],
     highlight: "Attention Grabber",
-    badgeColor: "from-[#E11D48] to-[#F43F5E]"
+    badgeColor: "from-[#FF6B35] to-[#E85A24]"
   },
   {
     id: "social",
     num: "02",
     title: "Social Media Management",
-    shortDesc: "End-to-end profile management ensuring brand consistency and daily engagement.",
+    shortDesc: "Complete monthly management of your Instagram & Facebook to maintain brand authority and daily growth.",
     items: [
-      "Content Calendar & Planning",
-      "Creative Post Design",
-      "Engaging Caption Writing",
-      "Strategic Hashtags & Posting Time",
-      "Profile Aesthetics & Consistency"
+      "Monthly Content Calendar & Planning",
+      "High-Converting Graphic Posts",
+      "Strategic Captions & Target Hashtags",
+      "Optimal Posting Schedules",
+      "Profile Grid Aesthetic Design"
     ],
     highlight: "Full Management",
-    badgeColor: "from-[#E11D48] to-[#F43F5E]"
+    badgeColor: "from-[#FF6B35] to-[#E85A24]"
   },
   {
     id: "product",
     num: "03",
-    title: "Product & Business Content",
-    shortDesc: "On-site video shoots & studio visuals showcasing your product or store in its best light.",
+    title: "Store & Product Walkthroughs",
+    shortDesc: "High-end visual shoots showcasing your showroom, restaurant dishes, or products in the best light.",
     items: [
-      "Product Showcase Videos",
-      "Store & Showroom Walkthroughs",
-      "Food & Culinary Reel Shoots",
-      "Lifestyle & Ambience Videos",
-      "Local Business Promotions"
+      "Store & Restaurant Walkthroughs",
+      "Food & Culinary Reel Production",
+      "Product Demonstration Videos",
+      "Customer Testimonial Shoots",
+      "Local Brand Promotions"
     ],
     highlight: "High Conversion",
-    badgeColor: "from-[#E11D48] to-[#F43F5E]"
+    badgeColor: "from-[#FF6B35] to-[#E85A24]"
   },
   {
     id: "strategy",
     num: "04",
-    title: "Content Strategy",
-    shortDesc: "Data-informed direction to position your brand above local competitors.",
+    title: "Content Strategy & Hook Bank",
+    shortDesc: "Data-driven roadmap to position your brand as the #1 market leader in your niche.",
     items: [
-      "Virality & Content Idea Bank",
-      "Monthly Content Roadmap",
-      "Viral Trend Adaptation",
-      "Audience-Focused Messaging",
-      "Brand Positioning Strategy"
+      "Viral Idea & Hook Repository",
+      "Competitor Market Analysis",
+      "Monthly Growth Roadmap",
+      "Target Audience Positioning",
+      "Offer & CTA Optimizations"
     ],
     highlight: "Growth Engine",
-    badgeColor: "from-[#E11D48] to-[#F43F5E]"
+    badgeColor: "from-[#FF6B35] to-[#E85A24]"
   },
   {
     id: "design",
     num: "05",
-    title: "Graphic & Creative Design",
-    shortDesc: "Thumb-stopping graphics, posters, and story designs that build brand authority.",
+    title: "Creative Graphic Design",
+    shortDesc: "Modern, high-converting social graphics, promotional posters, and story templates that build trust.",
     items: [
-      "Social Media Post Creatives",
-      "Promotional & Event Banners",
-      "Instagram Story Sequences",
-      "Campaign Ad Creatives",
-      "Brand Identity Visual Assets"
+      "Custom Social Media Creatives",
+      "Event & Campaign Banners",
+      "Interactive Instagram Story Sets",
+      "High-Click Ad Graphics",
+      "Visual Brand Assets"
     ],
-    highlight: "Visual Magic",
-    badgeColor: "from-[#E11D48] to-[#F43F5E]"
+    highlight: "Visual Impact",
+    badgeColor: "from-[#FF6B35] to-[#E85A24]"
   }
 ];
 
@@ -312,6 +312,6 @@ export const FAQS = [
   },
   {
     q: "How can I get started with Pixel Karigars?",
-    a: "You can reach out immediately via our website enquiry form below, send an email to pixelkarigars@gmail.com, or tap the WhatsApp button to chat directly with our team."
+    a: "You can reach out immediately via our website inquiry form below, send an email to pixelkarigars@gmail.com, or tap the WhatsApp button to chat directly with our team."
   }
 ];

@@ -10,6 +10,7 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ReelModal from './components/ReelModal';
+import SectionDivider from './components/SectionDivider';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -40,7 +41,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-white font-sans selection:bg-[#8B5CF6] selection:text-white">
+    <div className="min-h-screen bg-[#0F0E17] text-[#FFFFF0] font-sans selection:bg-[#FF6B35] selection:text-white">
       {/* Sticky Header */}
       <Navbar onOpenContact={scrollToContact} />
 
@@ -56,23 +57,41 @@ export default function App() {
       {/* Services Section */}
       <Services onSelectService={handleSelectService} />
 
+      {/* Glowing Neon Divider 1 */}
+      <SectionDivider accent="coral" />
+
       {/* Portfolio Section */}
       <Portfolio onOpenModal={(project) => setSelectedProject(project)} />
+
+      {/* Glowing Neon Divider 2 */}
+      <SectionDivider accent="violet" />
 
       {/* Why Choose Pixel Karigars */}
       <WhyUs />
 
+      {/* Glowing Neon Divider 3 */}
+      <SectionDivider accent="coral" />
+
       {/* Pricing Section */}
       <Pricing onSelectPlan={handleSelectPlan} />
 
+      {/* Glowing Neon Divider 4 */}
+      <SectionDivider accent="violet" />
+
       {/* FAQ Section */}
       <FAQ />
+
+      {/* Glowing Neon Divider 5 */}
+      <SectionDivider accent="coral" />
 
       {/* Lead Generation Contact Form */}
       <Contact
         preselectedService={preselectedService}
         preselectedPlan={preselectedPlan}
       />
+
+      {/* Glowing Neon Divider 6 */}
+      <SectionDivider accent="violet" />
 
       {/* Footer */}
       <Footer />
@@ -87,3 +106,7 @@ export default function App() {
     </div>
   );
 }
+
+
+
+

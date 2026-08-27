@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight, Heart, MapPin, Mail, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { MapPin, Mail, ArrowUp } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
@@ -10,79 +11,101 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#09090B] text-white pt-16 pb-12 relative overflow-hidden border-t border-white/10">
-      {/* Background Soft Glow */}
-      <div className="absolute top-0 right-10 w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[160px] pointer-events-none"></div>
+    <footer className="bg-[#0F0E17] text-white pt-16 pb-12 relative overflow-hidden border-t border-white/10 bg-mesh-grid">
+      
+      {/* Soft Ambient Background Glow Orbs */}
+      <div className="absolute top-0 right-10 w-[400px] h-[400px] bg-[#FF6B35]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+      <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-[#6C4CF1]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+        {/* 3-Column Balanced Layout: Left, Center, Right */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           
-          {/* Brand Info Column */}
-          <div className="md:col-span-5 space-y-4">
+          {/* LEFT: Brand Info & Logo & Instagram Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="md:col-span-5 space-y-4 text-left"
+          >
             <a href="#" className="inline-block">
-              <Logo animated={true} />
+              <Logo animated={true} lightText={true} />
             </a>
 
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed font-medium">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-sm leading-relaxed font-medium">
               {BRAND_INFO.aboutText}
             </p>
 
+            {/* Instagram Icon with Vibrant Gradient Hover Effect */}
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={BRAND_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/5 border border-white/10 text-white hover:text-[#C084FC] hover:border-[#8B5CF6] transition-all"
+                className="group relative p-2.5 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:border-transparent hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-md cursor-pointer"
                 title="Follow on Instagram"
               >
-                <InstagramIcon className="w-4 h-4 text-[#C084FC]" />
+                <InstagramIcon className="w-4 h-4 text-[#FF6B35] group-hover:text-white transition-colors" />
               </a>
-              <span className="text-xs font-bold text-slate-400">
-                Follow {BRAND_INFO.handle} on Instagram
+              <span className="text-xs font-bold text-slate-300">
+                Follow <span className="text-[#FF6B35]">{BRAND_INFO.handle}</span> on Instagram
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Navigation Links Column */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider font-display">
+          {/* CENTER: Quick Navigation Links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="md:col-span-3 space-y-4 md:text-center text-left"
+          >
+            <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
               Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400 font-semibold">
-              <li>
-                <a href="#services" className="hover:text-[#C084FC] transition-colors">Services & Offerings</a>
-              </li>
-              <li>
-                <a href="#work" className="hover:text-[#C084FC] transition-colors">Featured Client Reels</a>
-              </li>
-              <li>
-                <a href="#why-us" className="hover:text-[#C084FC] transition-colors">Why Choose Pixel Karigars</a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-[#C084FC] transition-colors">Pricing & Packages</a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#C084FC] transition-colors">Frequently Asked Questions</a>
-              </li>
+            <ul className="space-y-2.5 text-xs text-slate-300 font-semibold inline-block text-left">
+              {[
+                { name: 'Services & Offerings', href: '#services' },
+                { name: 'Featured Client Reels', href: '#work' },
+                { name: 'Why Choose Pixel Karigars', href: '#why-us' },
+                { name: 'Pricing & Packages', href: '#pricing' },
+                { name: 'Frequently Asked Questions', href: '#faq' },
+              ].map((link, i) => (
+                <li key={i}>
+                  <a 
+                    href={link.href} 
+                    className="hover:text-[#FF6B35] hover:translate-x-1 transition-all duration-200 inline-block"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Contact Direct Column */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider font-display">
+          {/* RIGHT: Studio Location & Back to Top */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="md:col-span-4 space-y-4 text-left md:text-right flex flex-col md:items-end"
+          >
+            <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
               Studio Location
             </h4>
             
-            <div className="space-y-3 text-xs text-slate-400 font-medium">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C084FC] shrink-0 mt-0.5" />
+            <div className="space-y-2.5 text-xs text-slate-300 font-medium">
+              <div className="flex items-start gap-2.5 md:justify-end">
+                <MapPin className="w-4 h-4 text-[#FF6B35] shrink-0 mt-0.5" />
                 <span>{BRAND_INFO.location}</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#C084FC] shrink-0" />
-                <a href={`mailto:${BRAND_INFO.email}`} className="hover:text-[#C084FC]">
+              <div className="flex items-center gap-2.5 md:justify-end">
+                <Mail className="w-4 h-4 text-[#FF6B35] shrink-0" />
+                <a href={`mailto:${BRAND_INFO.email}`} className="hover:text-[#FF6B35] transition-colors font-semibold text-white">
                   {BRAND_INFO.email}
                 </a>
               </div>
@@ -90,14 +113,17 @@ export default function Footer() {
 
             {/* Back to Top */}
             <div className="pt-2">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-extrabold text-slate-300 hover:text-white hover:border-violet-500 transition-all cursor-pointer"
+                className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-xs font-extrabold text-white transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-[#FF6B35]/25 group"
               >
-                <span>Back to Top ↑</span>
-              </button>
+                <span>Back to Top</span>
+                <ArrowUp className="w-3.5 h-3.5 text-white group-hover:-translate-y-0.5 transition-transform" />
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -112,7 +138,7 @@ export default function Footer() {
               href="https://www.growowl.online/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white font-medium hover:underline"
+              className="text-white hover:text-[#FF6B35] font-bold hover:underline transition-colors"
             >
               GrowOwl Pvt. Ltd.
             </a>
@@ -123,3 +149,7 @@ export default function Footer() {
     </footer>
   );
 }
+
+
+
+
