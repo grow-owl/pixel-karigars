@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Heart, MapPin, Mail, Phone, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Heart, MapPin, Mail, Phone } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
@@ -101,16 +101,22 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar Copyright */}
+        {/* Bottom Bar Copyright & GrowOwl Credit */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-medium text-center md:text-left">
           <p>
             © 2026 Pixel Karigars. All rights reserved. Good businesses deserve great content.
           </p>
-
-          <div className="flex items-center gap-2 text-slate-400">
-            <Sparkles className="w-4 h-4 text-[#C084FC]" />
-            <span>Crafted in Siliguri, India</span>
-          </div>
+          <p>
+            Designed & Developed by{' '}
+            <a
+              href="https://www.growowl.online/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white font-medium hover:underline"
+            >
+              GrowOwl Pvt. Ltd.
+            </a>
+          </p>
         </div>
 
       </div>
