@@ -101,31 +101,16 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar Copyright & GrowOwl Credit */}
+        {/* Bottom Bar Copyright */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-medium text-center md:text-left">
-          
-          <div className="space-y-1">
-            <p>
-              © 2026 Pixel Karigars. All rights reserved. Good businesses deserve great content.
-            </p>
-            <p className="text-slate-300 font-semibold">
-              Designed & Developed by{' '}
-              <a
-                href="https://www.growowl.online/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#C084FC] hover:underline font-extrabold"
-              >
-                GrowOwl Pvt. Ltd.
-              </a>
-            </p>
-          </div>
+          <p>
+            © 2026 Pixel Karigars. All rights reserved. Good businesses deserve great content.
+          </p>
 
           <div className="flex items-center gap-2 text-slate-400">
             <Sparkles className="w-4 h-4 text-[#C084FC]" />
             <span>Crafted in Siliguri, India</span>
           </div>
-
         </div>
 
       </div>
