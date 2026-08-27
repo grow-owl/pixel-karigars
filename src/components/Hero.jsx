@@ -12,11 +12,39 @@ export default function Hero({ onOpenContact }) {
   const videoRef = useRef(null);
 
   React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Try playing unmuted by default
+    video.muted = false;
+    
+    const playUnmuted = () => {
+      video.muted = false;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            setIsPlaying(true);
+            setIsMuted(false);
+          })
+          .catch(() => {
+            // If browser blocks unmuted autoplay without gesture, play muted temporarily
+            video.muted = true;
+            setIsMuted(true);
+            video.play().then(() => setIsPlaying(true)).catch(() => {});
+          });
+      }
+    };
+
+    playUnmuted();
+
+    // Trigger audio ON on first touch / click / interaction anywhere on screen
     const handleFirstUserGesture = () => {
-      if (videoRef.current) {
-        videoRef.current.muted = false;
-        videoRef.current.play().then(() => {
-          setIsMuted(false);
+      if (video) {
+        video.muted = false;
+        setIsMuted(false);
+        video.play().then(() => {
+          setIsPlaying(true);
         }).catch(() => {});
       }
       window.removeEventListener('click', handleFirstUserGesture);
@@ -24,28 +52,14 @@ export default function Hero({ onOpenContact }) {
       window.removeEventListener('keydown', handleFirstUserGesture);
     };
 
-    window.addEventListener('click', handleFirstUserGesture);
-    window.addEventListener('touchstart', handleFirstUserGesture);
-    window.addEventListener('keydown', handleFirstUserGesture);
-
-    if (videoRef.current) {
-      videoRef.current.muted = false;
-      videoRef.current.play().then(() => {
-        setIsMuted(false);
-      }).catch(() => {
-        // Fallback for strict browser autoplay policies
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          videoRef.current.play();
-          setIsMuted(true);
-        }
-      });
-    }
+    window.addEventListener('click', handleFirstUserGesture, { capture: true });
+    window.addEventListener('touchstart', handleFirstUserGesture, { capture: true });
+    window.addEventListener('keydown', handleFirstUserGesture, { capture: true });
 
     return () => {
-      window.removeEventListener('click', handleFirstUserGesture);
-      window.removeEventListener('touchstart', handleFirstUserGesture);
-      window.removeEventListener('keydown', handleFirstUserGesture);
+      window.removeEventListener('click', handleFirstUserGesture, { capture: true });
+      window.removeEventListener('touchstart', handleFirstUserGesture, { capture: true });
+      window.removeEventListener('keydown', handleFirstUserGesture, { capture: true });
     };
   }, []);
 
@@ -188,8 +202,7 @@ export default function Hero({ onOpenContact }) {
                   loop
                   muted={isMuted}
                   playsInline
-                  preload="metadata"
-                  loading="lazy"
+                  preload="auto"
                   className="w-full h-full object-cover cursor-pointer rounded-[46px]"
                   onClick={togglePlay}
                 />

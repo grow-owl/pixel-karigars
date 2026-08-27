@@ -106,8 +106,7 @@ export default function Portfolio({ onOpenModal }) {
                     loop
                     playsInline
                     autoPlay
-                    preload="metadata"
-                    loading="lazy"
+                    preload="auto"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
                   />
                   

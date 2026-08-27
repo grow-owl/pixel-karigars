@@ -13,6 +13,11 @@ export default function ReelModal({ project, onClose }) {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
+
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
