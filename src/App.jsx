@@ -40,7 +40,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans selection:bg-rose-500 selection:text-white">
+    <div className="min-h-screen bg-[#09090B] text-white font-sans selection:bg-[#8B5CF6] selection:text-white">
       {/* Sticky Header */}
       <Navbar onOpenContact={scrollToContact} />
 

@@ -18,6 +18,13 @@ export const BRAND_INFO = {
   ]
 };
 
+export const HERO_REEL = {
+  title: "Zero Civic Sense Reel",
+  instagramUrl: "https://www.instagram.com/reel/DZz0BmBSADU/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+  embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
+  stats: "4,476 Views • High Engagement"
+};
+
 export const SERVICES = [
   {
     id: "reels",
@@ -107,8 +114,8 @@ export const PORTFOLIO = [
     tags: ["Viral Hook", "Creative Shoot"],
     stats: "4,476 Views • High Engagement",
     videoPoster: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQM-cseYe3nyGO8IKtrSTFlKHJi1uMhAJzTV2a_qgYLnrcyEWrwjvtoc3Eb-G43hWjvbaY8uqYNEK5n0fmRF7yM1vPKmjF86.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
+    instagramUrl: "https://www.instagram.com/reel/DZz0BmBSADU/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
     clientQuote: "The video transitions were super crisp!"
   },
   {
@@ -121,51 +128,9 @@ export const PORTFOLIO = [
     tags: ["Food Reels", "Culinary Shoot", "Ambience"],
     stats: "3,376 Views • Table Bookings Up 35%",
     videoPoster: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQM-dOZAnTVAGW_IAg8_94cEdlS4VqtZR9pYdZBZnRwjIRU6bMeF-9fb4v4ChWEW2H-j-zWxtaOl79uiTFwtNHb3BNXdwQpw.mp4",
+    embedUrl: "https://www.instagram.com/reel/DZuroIbyZ93/embed",
     instagramUrl: "https://www.instagram.com/reel/DZuroIbyZ93/",
     clientQuote: "The reel quality doubled our weekend crowd in Siliguri."
-  },
-  {
-    id: "there-is-good-news",
-    featured: false,
-    title: "There is a Good News",
-    category: "Lifestyle Reel",
-    businessType: "Lifestyle Content",
-    description: "Aesthetic lifestyle announcement reel crafted with smooth storytelling.",
-    tags: ["Lifestyle", "Storytelling"],
-    stats: "4,335 Views • Viral Reach",
-    videoPoster: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQNKrcMxaFLaeJcjSzv4REs2qwbq9Yg4hS7ftDxL5JVxnZ7XY77UqB6t8XF6QhXQkq57VYqT11qT_0f_o9V1yrmG4V_axP_q.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Audience loved this story concept!"
-  },
-  {
-    id: "gumshuda-parichay",
-    featured: false,
-    title: "Gumshuda Parichay Teaser",
-    category: "Music & Production",
-    businessType: "Music Release Video",
-    description: "Atmospheric teaser reels and music launch visuals designed for maximum social engagement.",
-    tags: ["Music Video", "Teaser", "Hype Video"],
-    stats: "3,285 Views • Viral Reach",
-    videoPoster: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQNTHFTCL-YQiXJF52fLCn_S_vuew7aZvbXQcG4owZrtxDJrLlBoCRDWNzLoqKxXxV_BC75bNV6x5OMlnRFqhrUgseaGAQoh.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Super professional editing and crisp sound design!"
-  },
-  {
-    id: "chicken-roll-kitchen",
-    featured: false,
-    title: "Kitchen Stories #02 (Chicken Roll)",
-    category: "Food & Culinary",
-    businessType: "Culinary & Food Reels",
-    description: "Cinematic cooking closeups, dish preparation, and appetizing street food reels.",
-    tags: ["Food Reel", "Kitchen Stories", "Aesthetic"],
-    stats: "2,130 Views • High Engagement",
-    videoPoster: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQN9hzUNpvv0e-BGfMg3yPYgAJ4P4kNbIbIp5tZaKwpAdrEOVwG6kNhmBqc7iC5NNXVCae8dCL6o6YSkFYf1-rOJjdQ5pxrm.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Pixel Karigars captured the food vibes perfectly."
   },
   {
     id: "evergreen-corner",
@@ -177,7 +142,7 @@ export const PORTFOLIO = [
     tags: ["Home & Garden", "Lifestyle", "Visual Reel"],
     stats: "1,304 Views • High Engagement",
     videoPoster: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQMX5k6B0AzfzK4Dmfj7jwtKg9UZcyLDMMjWGfdQlBjRSSNSsAtAljmoG1QA5IMjsaA7qBLMAKaEdHlDFqGwABOiyvaplCSZ.mp4",
+    embedUrl: "https://www.instagram.com/reel/Da3JX8dPqQ3/embed",
     instagramUrl: "https://www.instagram.com/reel/Da3JX8dPqQ3/",
     clientQuote: "They understand how to make plants look trendy!"
   },
@@ -191,9 +156,37 @@ export const PORTFOLIO = [
     tags: ["Music Studio", "Audio Shoot", "Reel"],
     stats: "6,485 Views • High Reach",
     videoPoster: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/AQMUGe6b0g3zH5D2ovm_6Yc5xXdJ26YmtdhlZSlKZIoxZCKXTklg04KpciwmNBc7B1kDlF-VOgQ-9lFvjI8Eiq_7C2f-ELa0.mp4",
+    embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Pixel Karigars created a viral music studio showcase for our agency!"
+  },
+  {
+    id: "there-is-good-news",
+    featured: false,
+    title: "There is a Good News",
+    category: "Lifestyle Reel",
+    businessType: "Lifestyle Content",
+    description: "Aesthetic lifestyle announcement reel crafted with smooth storytelling.",
+    tags: ["Lifestyle", "Storytelling"],
+    stats: "4,335 Views • Viral Reach",
+    videoPoster: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Audience loved this story concept!"
+  },
+  {
+    id: "gumshuda-parichay",
+    featured: false,
+    title: "Gumshuda Parichay Teaser",
+    category: "Music & Production",
+    businessType: "Music Release Video",
+    description: "Atmospheric teaser reels and music launch visuals designed for maximum social engagement.",
+    tags: ["Music Video", "Teaser", "Hype Video"],
+    stats: "3,285 Views • Viral Reach",
+    videoPoster: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80",
+    embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Super professional editing and crisp sound design!"
   }
 ];
 
@@ -265,7 +258,7 @@ export const PRICING_PLANS = [
   {
     id: "growth",
     name: "GROWTH",
-    badge: "🔥 MOST POPULAR",
+    badge: "MOST POPULAR",
     popular: true,
     originalPrice: "₹12,999",
     price: "₹9,999",
@@ -277,7 +270,7 @@ export const PRICING_PLANS = [
       { name: "On-Site Shoot / Editing", value: "Priority Production" },
       { name: "Support & Management", value: "Dedicated Priority Growth Support" }
     ],
-    ctaText: "Get Started Growth 🔥",
+    ctaText: "Get Started Growth",
     accent: "border-[#E11D48] bg-rose-500/5 shadow-xl shadow-rose-500/10"
   },
   {

@@ -1,114 +1,119 @@
 import React from 'react';
 import { PRICING_PLANS } from '../data/content';
-import { Check, Flame, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 export default function Pricing({ onSelectPlan }) {
   return (
-    <section id="pricing" className="py-24 bg-[#F1F5F9] relative overflow-hidden">
-      {/* Glow Orbs */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+    <section id="pricing" className="py-24 bg-[#0C0C0E] relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[160px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-slate-300 text-[#0F172A] text-xs font-bold uppercase tracking-wider shadow-sm">
-            Clear Deliverables & Packages
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-violet-300 text-xs font-bold uppercase tracking-wider shadow-sm">
+            💎 Simple & Transparent Pricing
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#0F172A]">
-            PACKAGES & <span className="text-gradient-coral">PRICING</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white">
+            AFFORDABLE PACKAGES FOR <br className="hidden sm:inline" />
+            <span className="text-gradient-coral">EVERY STAGE OF GROWTH</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-700 font-medium">
-            Transparent content deliverables designed to fit small shops, growing brands, and custom campaigns.
+          <p className="text-base sm:text-lg text-slate-400 font-medium">
+            No hidden costs. Choose a plan or reach out for a tailored custom monthly quote.
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {PRICING_PLANS.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-3xl p-8 border transition-all duration-300 flex flex-col justify-between relative ${
+              className={`rounded-3xl p-8 flex flex-col justify-between relative transition-all duration-300 ${
                 plan.popular
-                  ? 'bg-[#0F172A] text-white border-[#E11D48] scale-105 z-20 shadow-2xl'
-                  : 'glass-panel border-slate-200 hover:scale-[1.02]'
+                  ? 'bg-[#18181B] text-white shadow-2xl shadow-violet-500/20 scale-[1.03] border-2 border-violet-500'
+                  : 'bg-[#141417] text-white border border-white/10 shadow-md hover:border-violet-500/40 hover:shadow-xl'
               }`}
             >
-              {/* Most Popular Badge Ribbon */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#E11D48] text-white font-black text-xs uppercase tracking-widest shadow-xl flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 fill-white" />
-                  <span>MOST POPULAR</span>
+              {/* Most Popular Highlight Badge (Icon removed as requested) */}
+              {plan.badge && (
+                <div className="mb-4">
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold tracking-wide ${
+                    plan.popular 
+                      ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md' 
+                      : 'bg-white/10 text-slate-300 border border-white/10'
+                  }`}>
+                    <span>{plan.badge}</span>
+                  </span>
                 </div>
               )}
 
-              <div>
-                {/* Plan Title & Badge */}
-                <div className="mb-6">
-                  <h3 className={`text-2xl font-black font-display mb-1 ${plan.popular ? 'text-white' : 'text-[#0F172A]'}`}>
+              <div className="space-y-6">
+                {/* Plan Header */}
+                <div>
+                  <h3 className="text-2xl font-black font-display text-white">
                     {plan.name}
                   </h3>
-                  <span className={`text-xs font-bold ${plan.popular ? 'text-rose-400' : 'text-[#E11D48]'}`}>
-                    {plan.badge}
-                  </span>
                 </div>
 
-                {/* Price Display */}
-                <div className={`py-4 border-y mb-6 ${plan.popular ? 'border-slate-800' : 'border-slate-200'}`}>
+                {/* Price Display with Strikethrough Original Price */}
+                <div className="py-4 border-y border-white/10 mb-6">
                   <div className="flex items-baseline gap-2.5">
-                    <div className={`text-3xl sm:text-4xl font-extrabold font-display ${plan.popular ? 'text-white' : 'text-[#0F172A]'}`}>
+                    <div className="text-3xl sm:text-4xl font-extrabold font-display text-white">
                       {plan.price}
                     </div>
                     {plan.originalPrice && (
-                      <div className="text-base sm:text-lg font-bold line-through text-slate-400">
+                      <div className="text-base sm:text-lg font-bold line-through text-slate-500">
                         {plan.originalPrice}
                       </div>
                     )}
                   </div>
-                  <div className={`text-xs mt-1.5 ${plan.popular ? 'text-slate-300' : 'text-slate-600'}`}>
+                  <div className="text-xs mt-1.5 text-slate-400">
                     {plan.priceNote}
                   </div>
                 </div>
 
-                {/* Deliverables List */}
-                <div className="space-y-4 mb-8">
-                  <div className={`text-xs font-bold uppercase tracking-wider ${plan.popular ? 'text-slate-400' : 'text-slate-500'}`}>
-                    Included Deliverables:
-                  </div>
-
-                  {plan.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start justify-between gap-3 text-xs">
-                      <div className={`flex items-center gap-2 ${plan.popular ? 'text-slate-200' : 'text-slate-800'}`}>
-                        <Check className="w-4 h-4 text-[#E11D48] shrink-0" />
-                        <span className="font-semibold">{feat.name}:</span>
+                {/* Feature List */}
+                <ul className="space-y-3">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm">
+                      <div className={`p-1 rounded-full shrink-0 mt-0.5 ${
+                        plan.popular ? 'bg-violet-600 text-white' : 'bg-white/10 text-violet-400'
+                      }`}>
+                        <Check className="w-3.5 h-3.5" />
                       </div>
-                      <span className={`font-bold text-right ${plan.popular ? 'text-white' : 'text-[#0F172A]'}`}>{feat.value}</span>
-                    </div>
+                      <div>
+                        <span className="font-semibold text-slate-300">
+                          {feature.name}:
+                        </span>{' '}
+                        <strong className="text-white">
+                          {feature.value}
+                        </strong>
+                      </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
-              {/* Action Button */}
-              <button
-                onClick={() => onSelectPlan(plan.name)}
-                className={`w-full py-4 px-6 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 ${
-                  plan.popular
-                    ? 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-xl hover:scale-[1.02]'
-                    : 'bg-[#0F172A] hover:bg-[#E11D48] text-white shadow-md'
-                }`}
-              >
-                <span>{plan.ctaText}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              {/* CTA Button */}
+              <div className="pt-8 mt-6 border-t border-white/10">
+                <button
+                  onClick={() => onSelectPlan(plan.name)}
+                  className={`w-full py-4 px-6 rounded-2xl font-extrabold text-sm transition-all flex items-center justify-center gap-2 group cursor-pointer ${
+                    plan.popular
+                      ? 'bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white shadow-xl shadow-violet-500/25 hover:scale-[1.02]'
+                      : 'bg-white/10 hover:bg-violet-600 text-white shadow-md'
+                  }`}
+                >
+                  <span>{plan.ctaText}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
             </div>
           ))}
-        </div>
-
-        {/* Note */}
-        <div className="mt-12 text-center text-xs text-slate-600 font-semibold">
-          * Exact package numbers & shooting location schedules confirmed during initial business discussion.
         </div>
 
       </div>

@@ -2,8 +2,8 @@
 
 @layer base {
   body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #09090B;
+    color: #FFFFFF;
   }
 }
 
@@ -13,14 +13,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #09090B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #27272A;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E11D48;
+  background: #8B5CF6;
 }
 
 /* Hide Scrollbar for Horizontal Sliders */
@@ -32,35 +32,35 @@
   scrollbar-width: none;
 }
 
-/* Crisp White Glassmorphism Utilities */
+/* Obsidian Glassmorphism Utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(20, 20, 23, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .glass-panel-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-panel-hover:hover {
-  background: #ffffff;
-  border-color: rgba(225, 29, 72, 0.4);
+  background: rgba(24, 24, 27, 0.9);
+  border-color: rgba(139, 92, 246, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
 }
 
 /* Signature Text Gradients for Pixel Karigars */
 .text-gradient-coral {
-  background: linear-gradient(135deg, #0F172A 0%, #E11D48 60%, #F43F5E 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #C084FC 50%, #EC4899 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-rose {
-  background: linear-gradient(135deg, #E11D48 0%, #F43F5E 50%, #FB7185 100%);
+.text-gradient-sunset {
+  background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 50%, #EC4899 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

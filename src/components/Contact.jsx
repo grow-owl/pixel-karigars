@@ -1,283 +1,275 @@
-import React, { useState } from 'react';
-import { BRAND_INFO } from '../data/content';
-import { CheckCircle2, MessageSquare, Mail, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Send, Phone, Mail, MapPin, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
+import InstagramIcon from './InstagramIcon';
+import { BRAND_INFO, SERVICES, PRICING_PLANS } from '../data/content';
 
 export default function Contact({ preselectedService, preselectedPlan }) {
   const [formData, setFormData] = useState({
     name: '',
-    businessName: '',
     phone: '',
     email: '',
-    businessType: '',
-    service: preselectedService || preselectedPlan || 'Reels & Video Content',
-    projectDetails: '',
+    businessName: '',
+    service: preselectedService || '',
+    plan: preselectedPlan || '',
+    message: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const serviceOptions = [
-    'Reels & Video Content',
-    'Social Media Management',
-    'Content Strategy',
-    'Graphic & Creative Design',
-    'Custom Project',
-  ];
+  useEffect(() => {
+    if (preselectedService) {
+      setFormData((prev) => ({ ...prev, service: preselectedService, plan: '' }));
+    }
+  }, [preselectedService]);
+
+  useEffect(() => {
+    if (preselectedPlan) {
+      setFormData((prev) => ({ ...prev, plan: preselectedPlan, service: '' }));
+    }
+  }, [preselectedPlan]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-  };
-
-  const generateWhatsAppUrl = () => {
-    const text = `Hi Pixel Karigars! 👋%0A%0AName: ${encodeURIComponent(formData.name || 'Client')}%0ABusiness: ${encodeURIComponent(formData.businessName || 'N/A')}%0APhone: ${encodeURIComponent(formData.phone || 'N/A')}%0AService Requested: ${encodeURIComponent(formData.service)}%0AProject Details: ${encodeURIComponent(formData.projectDetails || 'Interested in upgrading content.')}`;
-    return `https://wa.me/${BRAND_INFO.whatsapp}?text=${text}`;
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        businessName: '',
+        service: '',
+        plan: '',
+        message: ''
+      });
+    }, 5000);
   };
 
   return (
-    <section id="contact" className="py-14 bg-[#F1F5F9] relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-rose-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="contact" className="py-14 bg-[#09090B] relative overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute top-1/2 left-10 w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[160px] pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Compact Header */}
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-violet-300 text-xs font-bold uppercase tracking-wider shadow-sm">
+            📩 Start Your Project
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-black font-display tracking-tight text-white">
+            LET'S MAKE YOUR BRAND <span className="text-gradient-coral">GO VIRAL</span>
+          </h2>
+
+          <p className="text-sm text-slate-400 font-medium">
+            Fill out the form below or reach out directly to schedule a strategy call.
+          </p>
+        </div>
+
+        {/* Compact Grid Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Side Info */}
-          <div className="lg:col-span-5 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-white border border-slate-300 text-[#0F172A] text-xs font-bold uppercase tracking-wider shadow-sm">
-              Start A Project
-            </div>
+          {/* Left Info Column */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="glass-panel rounded-2xl p-5 space-y-4">
+              <h3 className="text-xl font-extrabold text-white font-display">
+                Studio Contact Info
+              </h3>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-[#0F172A] leading-tight">
-              LET'S CREATE SOMETHING <br />
-              <span className="text-gradient-coral">WORTH WATCHING.</span>
-            </h2>
-
-            <p className="text-sm text-slate-700 font-medium leading-relaxed">
-              Fill out the quick inquiry form. We respond within 2 hours during business schedules.
-            </p>
-
-            {/* Direct Contact Cards */}
-            <div className="space-y-3 pt-2">
-              <a
-                href={`mailto:${BRAND_INFO.email}`}
-                className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#E11D48] transition-all flex items-center gap-3 group shadow-sm"
-              >
-                <div className="w-10 h-10 rounded-lg bg-rose-500/10 text-[#E11D48] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-bold text-slate-500 uppercase">Official Email</div>
-                  <div className="text-sm font-bold text-[#0F172A] group-hover:text-[#E11D48] transition-colors">
-                    {BRAND_INFO.email}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="w-10 h-10 rounded-lg bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase block">Email Studio</span>
+                    <a href={`mailto:${BRAND_INFO.email}`} className="text-xs font-bold text-white hover:text-violet-300">
+                      {BRAND_INFO.email}
+                    </a>
                   </div>
                 </div>
-              </a>
 
-              <a
-                href={`https://wa.me/${BRAND_INFO.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 transition-all flex items-center gap-3 group shadow-sm"
-              >
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-700 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <MessageSquare className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-bold text-slate-500 uppercase">Instant WhatsApp Chat</div>
-                  <div className="text-sm font-bold text-emerald-700 group-hover:text-emerald-800 transition-colors">
-                    Chat with Pixel Karigars →
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="w-10 h-10 rounded-lg bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase block">Studio Location</span>
+                    <span className="text-xs font-bold text-white">{BRAND_INFO.location}</span>
                   </div>
                 </div>
-              </a>
 
-              <div className="p-3.5 rounded-xl bg-white border border-slate-200 flex items-center gap-3 shadow-sm">
-                <div className="w-10 h-10 rounded-lg bg-rose-500/10 text-[#E11D48] flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-bold text-slate-500 uppercase">Studio Location</div>
-                  <div className="text-sm font-bold text-[#0F172A]">
-                    {BRAND_INFO.location}
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="w-10 h-10 rounded-lg bg-violet-500/10 text-violet-400 flex items-center justify-center shrink-0">
+                    <InstagramIcon className="w-5 h-5 text-violet-400" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase block">Official Handle</span>
+                    <a href={BRAND_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-white hover:text-violet-300">
+                      {BRAND_INFO.handle}
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Quick Response Banner */}
+            <div className="p-4 rounded-2xl bg-[#141417] text-white space-y-2 border border-white/10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-fuchsia-400" />
+                <span className="text-xs font-bold text-slate-100">Guaranteed 2-Hour Response Time</span>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-relaxed font-medium">
+                Our team reviews inquiries daily. You will receive a custom quote & strategy roadmap within 2 hours.
+              </p>
+            </div>
           </div>
 
-          {/* Right Side Form Container */}
+          {/* Right Lead Form Column */}
           <div className="lg:col-span-7">
-            <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-slate-200 bg-white shadow-lg relative">
+            <div className="glass-panel rounded-2xl p-6 sm:p-8">
               
               {submitted ? (
-                <div className="text-center py-8 space-y-4 animate-in fade-in duration-500">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-500/30 animate-bounce">
+                <div className="py-12 text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-violet-500/10 text-violet-400 flex items-center justify-center mx-auto animate-bounce">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-
-                  <h3 className="text-2xl font-black text-[#0F172A] font-display">
-                    Thank You, {formData.name || 'Friend'}!
+                  <h3 className="text-2xl font-black text-white font-display">
+                    Thank You! Inquiry Received.
                   </h3>
-
-                  <p className="text-sm text-slate-700 max-w-md mx-auto">
-                    Your inquiry has been received! Our content team will review your business details and get back to you shortly.
+                  <p className="text-xs text-slate-400 max-w-md mx-auto">
+                    We have received your business details. A Pixel Karigars content strategist will contact you shortly on WhatsApp / Phone.
                   </p>
-
-                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a
-                      href={generateWhatsAppUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-bold text-xs shadow-md flex items-center gap-2 hover:scale-105 transition-all"
-                    >
-                      <MessageSquare className="w-4 h-4 text-[#E11D48]" />
-                      <span>Send via WhatsApp Now</span>
-                    </a>
-
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="px-5 py-2.5 rounded-full bg-slate-100 text-slate-800 font-bold text-xs hover:bg-slate-200"
-                    >
-                      Submit Another Inquiry
-                    </button>
-                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Your Name */}
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
                         Your Name *
                       </label>
                       <input
                         type="text"
                         name="name"
                         required
-                        placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
+                        placeholder="John Doe"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-500"
                       />
                     </div>
 
-                    {/* Business Name */}
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                        Business Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="businessName"
-                        required
-                        placeholder="e.g. MK Traders / Cafe Sage"
-                        value={formData.businessName}
-                        onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Phone Number */}
-                    <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
                         Phone / WhatsApp *
                       </label>
                       <input
                         type="tel"
                         name="phone"
                         required
-                        placeholder="e.g. +91 98765 43210"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
-                      />
-                    </div>
-
-                    {/* Email Address */}
-                    <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="yourname@gmail.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
+                        placeholder="+91 98000 00000"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-500"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Business Category */}
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                        Business Type
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Email Address
                       </label>
                       <input
-                        type="text"
-                        name="businessType"
-                        placeholder="e.g. Restaurant, Mobile Store"
-                        value={formData.businessType}
+                        type="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
+                        placeholder="you@business.com"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-500"
                       />
                     </div>
 
-                    {/* Service Dropdown */}
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                        Service Needed *
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Business Name
+                      </label>
+                      <input
+                        type="text"
+                        name="businessName"
+                        value={formData.businessName}
+                        onChange={handleChange}
+                        placeholder="Store / Restaurant Name"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Select Service / Plan */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Select Service Needed
                       </label>
                       <select
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 focus:outline-none focus:border-[#E11D48] transition-colors text-xs"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all"
                       >
-                        {serviceOptions.map((opt, i) => (
-                          <option key={i} value={opt} className="bg-white text-slate-900">
-                            {opt}
-                          </option>
+                        <option value="">-- Choose Service --</option>
+                        {SERVICES.map((s) => (
+                          <option key={s.id} value={s.title}>{s.title}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Select Package Plan
+                      </label>
+                      <select
+                        name="plan"
+                        value={formData.plan}
+                        onChange={handleChange}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all"
+                      >
+                        <option value="">-- Choose Package --</option>
+                        {PRICING_PLANS.map((p) => (
+                          <option key={p.id} value={p.name}>{p.name} Plan ({p.price})</option>
                         ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Project Details */}
                   <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Project Details
+                    <label className="block text-xs font-bold text-slate-300 mb-1">
+                      Project Details / Message
                     </label>
                     <textarea
-                      name="projectDetails"
-                      rows="2"
-                      placeholder="Share your goals or video shoot expectations..."
-                      value={formData.projectDetails}
+                      name="message"
+                      rows={3}
+                      value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2 rounded-lg bg-[#F8FAFC] border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#E11D48] transition-colors text-xs resize-none"
-                    ></textarea>
+                      placeholder="Tell us about your business goals..."
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all resize-none placeholder:text-slate-500"
+                    />
                   </div>
 
-                  {/* Submit CTA Button */}
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-full bg-[#0F172A] hover:bg-[#E11D48] text-white font-black text-sm shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white font-black text-sm shadow-lg shadow-violet-500/25 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    <span>LET'S TALK →</span>
+                    <span>Send Inquiry Now</span>
+                    <Send className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
                   </button>
-
-                  <div className="text-center text-[10px] text-slate-500 font-medium">
-                    We respect your privacy. No spam guaranteed.
-                  </div>
 
                 </form>
               )}
@@ -286,7 +278,6 @@ export default function Contact({ preselectedService, preselectedPlan }) {
           </div>
 
         </div>
-
       </div>
     </section>
   );
