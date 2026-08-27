@@ -1,4 +1,4 @@
-# 🎬 Pixel Karigars — Premier Content Studio
+# Pixel Karigars — Premier Content Studio
 
 > **"YOUR BUSINESS DESERVES BETTER CONTENT."**
 
@@ -6,18 +6,7 @@ Pixel Karigars is a premier content creation studio based in Siliguri, West Beng
 
 ---
 
-## ✨ Features & Highlights
-
-- 📱 **Zero-Bezel iPhone 16 Pro Reel Player**: Ultra-modern hero mock-up playing full-bleed vertical 9:16 video content with interactive mobile Instagram overlays, tap-to-unmute audio toggle, and real-time like interactions.
-- 🎨 **Dark Obsidian & Neon Violet Glow Aesthetic**: Built with a sleek, Framer & Apple studio-inspired UI palette (`#09090B` Obsidian Dark, `#8B5CF6` Electric Violet, and `#EC4899` Sunset Rose).
-- 🎬 **Side-Scrollable Client Portfolio**: Interactive horizontal video carousel displaying real client reels with verified organic view counts (6,485+ views, 4,476+ views, etc.).
-- 💎 **Transparent Pricing & Services**: Clean, structured breakdown of Starter, Growth, and Custom monthly packages.
-- 📩 **Instant Lead Generation & WhatsApp Integration**: Direct lead form with auto-preselected services/plans and instant WhatsApp inquiry links.
-- ⚡ **Lightning Fast & Fully Responsive**: Optimized with Vite 6 and Tailwind CSS for mobile, tablet, and desktop screens.
-
----
-
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Framework**: [React 19](https://react.dev/)
 - **Build Tool**: [Vite 6](https://vitejs.dev/)
@@ -27,7 +16,7 @@ Pixel Karigars is a premier content creation studio based in Siliguri, West Beng
 
 ---
 
-## 🚀 Getting Started Locally
+## Getting Started Locally
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on your machine.
@@ -60,14 +49,14 @@ Make sure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on y
 
 ## 📌 Studio Info
 
-- 📸 **Instagram**: [@pixelkarigars](https://www.instagram.com/pixelkarigars/)
-- 📍 **Location**: Siliguri, West Bengal, India
-- ✉️ **Email**: pixelkarigars@gmail.com
-- 🌐 **Org Repo**: [GrowOwl GitHub](https://github.com/grow-owl)
+- **Instagram**: [@pixelkarigars](https://www.instagram.com/pixelkarigars/)
+- **Location**: Siliguri, West Bengal, India
+- **Email**: pixelkarigars@gmail.com
+- **Org Repo**: [GrowOwl GitHub](https://github.com/grow-owl)
 
 ---
 
 ## 🤝 Credits & Copyright
 
-- **© 2026 Pixel Karigars**. All rights reserved.
+- **© 2026 Dhiraj kumar sahu**  All rights reserved.
 - **Designed & Developed by**: [GrowOwl Pvt. Ltd.](https://www.growowl.online/)
