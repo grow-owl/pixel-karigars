@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Volume2, VolumeX, Heart, MessageCircle, Share2, Sparkles, ArrowRight, CheckCircle2, Zap } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
@@ -9,78 +9,141 @@ export default function Hero({ onOpenContact }) {
   const [isMuted, setIsMuted] = useState(false);
   const [liked, setLiked] = useState(true);
   const [likeCount, setLikeCount] = useState(4476);
-  const videoRef = useRef(null);
 
-  React.useEffect(() => {
+  const videoRef = useRef(null);
+  const heroRef = useRef(null);
+  const userMutedManualRef = useRef(false);
+
+  // 1. Autoplay WITH SOUND by default on load (or unmute on first gesture if blocked)
+  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Try playing unmuted by default
+    // Set video.muted = false explicitly to autoplay with sound
     video.muted = false;
-    
-    const playUnmuted = () => {
-      video.muted = false;
-      const promise = video.play();
-      if (promise !== undefined) {
-        promise
-          .then(() => {
-            setIsPlaying(true);
-            setIsMuted(false);
-          })
-          .catch(() => {
-            // If browser blocks unmuted autoplay without gesture, play muted temporarily
-            video.muted = true;
-            setIsMuted(true);
-            video.play().then(() => setIsPlaying(true)).catch(() => {});
-          });
+    video.playsInline = true;
+
+    const playWithSound = async () => {
+      try {
+        video.muted = false;
+        await video.play();
+        setIsPlaying(true);
+        setIsMuted(false);
+      } catch (err) {
+        // If browser blocks unmuted autoplay without prior interaction, play muted temporarily
+        video.muted = true;
+        setIsMuted(true);
+        try {
+          await video.play();
+          setIsPlaying(true);
+        } catch (e) {
+          console.log("Muted fallback error:", e);
+        }
       }
     };
 
-    playUnmuted();
+    playWithSound();
 
-    // Trigger audio ON on first touch / click / interaction anywhere on screen
-    const handleFirstUserGesture = () => {
-      if (video) {
+    // Interaction / gesture listener: unmute sound as soon as user touches, moves mouse, or clicks
+    const enableAudioOnGesture = (e) => {
+      if (e && e.target && e.target.closest && e.target.closest('[data-mute-btn]')) {
+        return;
+      }
+
+      if (video && !userMutedManualRef.current) {
         video.muted = false;
         setIsMuted(false);
-        video.play().then(() => {
-          setIsPlaying(true);
-        }).catch(() => {});
+        if (video.paused) {
+          video.play().then(() => setIsPlaying(true)).catch(() => {});
+        }
       }
-      window.removeEventListener('click', handleFirstUserGesture);
-      window.removeEventListener('touchstart', handleFirstUserGesture);
-      window.removeEventListener('keydown', handleFirstUserGesture);
+
+      window.removeEventListener('pointerdown', enableAudioOnGesture, true);
+      window.removeEventListener('touchstart', enableAudioOnGesture, true);
+      window.removeEventListener('click', enableAudioOnGesture, true);
+      window.removeEventListener('keydown', enableAudioOnGesture, true);
     };
 
-    window.addEventListener('click', handleFirstUserGesture, { capture: true });
-    window.addEventListener('touchstart', handleFirstUserGesture, { capture: true });
-    window.addEventListener('keydown', handleFirstUserGesture, { capture: true });
+    window.addEventListener('pointerdown', enableAudioOnGesture, { capture: true, once: true });
+    window.addEventListener('touchstart', enableAudioOnGesture, { capture: true, once: true });
+    window.addEventListener('click', enableAudioOnGesture, { capture: true, once: true });
+    window.addEventListener('keydown', enableAudioOnGesture, { capture: true, once: true });
 
     return () => {
-      window.removeEventListener('click', handleFirstUserGesture, { capture: true });
-      window.removeEventListener('touchstart', handleFirstUserGesture, { capture: true });
-      window.removeEventListener('keydown', handleFirstUserGesture, { capture: true });
+      window.removeEventListener('pointerdown', enableAudioOnGesture, true);
+      window.removeEventListener('touchstart', enableAudioOnGesture, true);
+      window.removeEventListener('click', enableAudioOnGesture, true);
+      window.removeEventListener('keydown', enableAudioOnGesture, true);
     };
   }, []);
 
-  const togglePlay = () => {
+  // 2. IntersectionObserver: Automatically MUTE audio when user scrolls down to explore the page
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    const video = videoRef.current;
+    if (!heroElement || !video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // When scrolled down away from Hero section (< 30% visible) -> MUTE AUDIO
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.3) {
+            video.muted = true;
+            setIsMuted(true);
+          } else {
+            // When scrolled back up into Hero section -> UNMUTE AUDIO (if user hasn't explicitly muted)
+            if (!userMutedManualRef.current) {
+              video.muted = false;
+              setIsMuted(false);
+              if (video.paused) {
+                video.play().then(() => setIsPlaying(true)).catch(() => {});
+              }
+            }
+          }
+        });
+      },
+      { threshold: [0, 0.3, 0.6, 1.0] }
+    );
+
+    observer.observe(heroElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const togglePlay = (e) => {
+    if (e) e.stopPropagation();
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
         setIsPlaying(false);
       } else {
-        videoRef.current.play();
+        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
         setIsPlaying(true);
       }
     }
   };
 
   const toggleMute = (e) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      const nextMuteState = !isMuted;
-      videoRef.current.muted = nextMuteState;
-      setIsMuted(nextMuteState);
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    const newMutedState = !video.muted;
+    video.muted = newMutedState;
+    setIsMuted(newMutedState);
+
+    if (newMutedState) {
+      userMutedManualRef.current = true;
+    } else {
+      userMutedManualRef.current = false;
+      if (video.paused) {
+        video.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
     }
   };
 
@@ -96,7 +159,7 @@ export default function Hero({ onOpenContact }) {
   };
 
   return (
-    <section id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
+    <section ref={heroRef} id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
       {/* Soft Ambient Background Orbs */}
       <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B35]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
       <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6C4CF1]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
@@ -202,6 +265,7 @@ export default function Hero({ onOpenContact }) {
                   loop
                   muted={isMuted}
                   playsInline
+                  webkit-playsinline="true"
                   preload="auto"
                   className="w-full h-full object-cover cursor-pointer rounded-[46px]"
                   onClick={togglePlay}
@@ -218,6 +282,7 @@ export default function Hero({ onOpenContact }) {
                   
                   <div className="flex items-center gap-2 pointer-events-auto">
                     <button
+                      data-mute-btn="true"
                       onClick={toggleMute}
                       className="p-2 rounded-full bg-black/70 backdrop-blur-md text-white hover:bg-black transition-all border border-white/20 shadow-md cursor-pointer flex items-center gap-1"
                       title={isMuted ? "Click to Unmute Sound" : "Click to Mute"}
