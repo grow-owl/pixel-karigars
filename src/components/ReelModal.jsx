@@ -14,8 +14,25 @@ export default function ReelModal({ project, onClose }) {
     };
     window.addEventListener('keydown', handleKeyDown);
 
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (video) {
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', 'true');
+
+      // Attempt playback on modal open (fallback to muted if mobile blocks audio)
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            video.muted = true;
+            setIsMuted(true);
+            video.play().then(() => setIsPlaying(true)).catch(() => {});
+          });
+      }
     }
 
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -75,6 +92,17 @@ export default function ReelModal({ project, onClose }) {
             loop
             muted={isMuted}
             playsInline
+            webkit-playsinline="true"
+            onCanPlay={() => {
+              if (videoRef.current && videoRef.current.paused) {
+                videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+              }
+            }}
+            onLoadedData={() => {
+              if (videoRef.current && videoRef.current.paused) {
+                videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+              }
+            }}
             className="w-full h-full object-cover max-h-[550px] cursor-pointer"
             onClick={togglePlay}
           />

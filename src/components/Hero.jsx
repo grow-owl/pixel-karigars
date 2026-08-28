@@ -14,37 +14,42 @@ export default function Hero({ onOpenContact }) {
   const heroRef = useRef(null);
   const userMutedManualRef = useRef(false);
 
-  // 1. Autoplay WITH SOUND by default on load (or unmute on first gesture if blocked)
+  // 1. Guaranteed Hero Autoplay on Load & Reload with Audio (Mobile & Desktop)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Set video.muted = false explicitly to autoplay with sound
-    video.muted = false;
+    // Attributes required for iOS Safari and Chrome Android inline playback
     video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
 
-    const playWithSound = async () => {
+    const startAutoplayWithAudio = async () => {
+      // Attempt unmuted play first (Audio Enabled)
       try {
         video.muted = false;
+        setIsMuted(false);
         await video.play();
         setIsPlaying(true);
-        setIsMuted(false);
       } catch (err) {
-        // If browser blocks unmuted autoplay without prior interaction, play muted temporarily
+        // Mobile browsers block unmuted autoplay on cold reload without gesture.
+        // Fallback: Start playing muted instantly, and unmute on first gesture
         video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('muted', '');
         setIsMuted(true);
         try {
           await video.play();
           setIsPlaying(true);
         } catch (e) {
-          console.log("Muted fallback error:", e);
+          console.log("Muted autoplay fallback catch:", e);
         }
       }
     };
 
-    playWithSound();
+    startAutoplayWithAudio();
 
-    // Interaction / gesture listener: unmute sound as soon as user touches, moves mouse, or clicks
+    // Automatically enable audio on very first screen touch / tap / scroll on mobile
     const enableAudioOnGesture = (e) => {
       if (e && e.target && e.target.closest && e.target.closest('[data-mute-btn]')) {
         return;
@@ -58,26 +63,41 @@ export default function Hero({ onOpenContact }) {
         }
       }
 
+      removeGestureListeners();
+    };
+
+    const removeGestureListeners = () => {
       window.removeEventListener('pointerdown', enableAudioOnGesture, true);
       window.removeEventListener('touchstart', enableAudioOnGesture, true);
       window.removeEventListener('click', enableAudioOnGesture, true);
+      window.removeEventListener('scroll', enableAudioOnGesture, true);
       window.removeEventListener('keydown', enableAudioOnGesture, true);
     };
 
     window.addEventListener('pointerdown', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('touchstart', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('click', enableAudioOnGesture, { capture: true, once: true });
+    window.addEventListener('scroll', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('keydown', enableAudioOnGesture, { capture: true, once: true });
 
+    // Handle tab visibility (resume play when user switches back to tab)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && video) {
+        if (video.paused) {
+          video.play().then(() => setIsPlaying(true)).catch(() => {});
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
-      window.removeEventListener('pointerdown', enableAudioOnGesture, true);
-      window.removeEventListener('touchstart', enableAudioOnGesture, true);
-      window.removeEventListener('click', enableAudioOnGesture, true);
-      window.removeEventListener('keydown', enableAudioOnGesture, true);
+      removeGestureListeners();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 
-  // 2. IntersectionObserver: Automatically MUTE audio when user scrolls down to explore the page
+  // 2. IntersectionObserver: Scroll-down -> MUTE & PAUSE reel. Scroll-up -> UNMUTE & PLAY reel.
   useEffect(() => {
     const heroElement = heroRef.current;
     const video = videoRef.current;
@@ -86,19 +106,24 @@ export default function Hero({ onOpenContact }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // When scrolled down away from Hero section (< 30% visible) -> MUTE AUDIO
           if (!entry.isIntersecting || entry.intersectionRatio < 0.3) {
+            // Scrolled down away from Hero section -> Mute audio & Pause video
             video.muted = true;
             setIsMuted(true);
+            video.pause();
+            setIsPlaying(false);
           } else {
-            // When scrolled back up into Hero section -> UNMUTE AUDIO (if user hasn't explicitly muted)
+            // Scrolled back up to Hero section -> Unmute audio & Play video
             if (!userMutedManualRef.current) {
               video.muted = false;
               setIsMuted(false);
-              if (video.paused) {
-                video.play().then(() => setIsPlaying(true)).catch(() => {});
-              }
             }
+            video.play().then(() => setIsPlaying(true)).catch((err) => {
+              // Fallback to muted play if browser blocks unmuted play on scroll-up
+              video.muted = true;
+              setIsMuted(true);
+              video.play().then(() => setIsPlaying(true)).catch(() => {});
+            });
           }
         });
       },
@@ -257,7 +282,6 @@ export default function Hero({ onOpenContact }) {
               {/* Screen Player */}
               <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
                 
-                {/* HTML5 Reel Video Player with Preload Optimization */}
                 <video
                   ref={videoRef}
                   src="/videos/hero-reel.mp4"
@@ -267,6 +291,16 @@ export default function Hero({ onOpenContact }) {
                   playsInline
                   webkit-playsinline="true"
                   preload="auto"
+                  onCanPlay={() => {
+                    if (videoRef.current && videoRef.current.paused) {
+                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                    }
+                  }}
+                  onLoadedData={() => {
+                    if (videoRef.current && videoRef.current.paused) {
+                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                    }
+                  }}
                   className="w-full h-full object-cover cursor-pointer rounded-[46px]"
                   onClick={togglePlay}
                 />

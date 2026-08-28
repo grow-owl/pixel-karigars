@@ -4,8 +4,6 @@ import Hero from './components/Hero';
 import TickerBar from './components/TickerBar';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
-import WhyUs from './components/WhyUs';
-import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -31,12 +29,6 @@ export default function App() {
   const handleSelectService = (serviceName) => {
     setPreselectedService(serviceName);
     setPreselectedPlan('');
-    scrollToContact();
-  };
-
-  const handleSelectPlan = (planName) => {
-    setPreselectedPlan(planName);
-    setPreselectedService('');
     scrollToContact();
   };
 
@@ -78,7 +70,7 @@ export default function App() {
         preselectedPlan={preselectedPlan}
       />
 
-      {/* Glowing Neon Divider 6 */}
+      {/* Glowing Neon Divider 4 */}
       <SectionDivider accent="violet" />
 
       {/* Footer */}
@@ -94,7 +86,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-

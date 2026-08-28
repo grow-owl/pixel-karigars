@@ -98,15 +98,10 @@ export default function Portfolio({ onOpenModal }) {
                   onClick={() => onOpenModal(project)}
                   className="relative w-full h-[300px] sm:h-[340px] aspect-[9/14] overflow-hidden cursor-pointer group/img"
                 >
-                  {/* HTML5 Background Reel Video Preview with Lazy Metadata Preload */}
-                  <video
-                    src={project.videoUrl}
-                    poster={project.videoPoster}
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    preload="auto"
+                  <img
+                    src={project.videoPoster}
+                    alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
                   />
                   
