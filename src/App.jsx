@@ -13,7 +13,6 @@ import SectionDivider from './components/SectionDivider';
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [preselectedService, setPreselectedService] = useState('');
-  const [preselectedPlan, setPreselectedPlan] = useState('');
 
   const scrollToContact = () => {
     const contactSection = document.querySelector('#contact');
@@ -28,7 +27,6 @@ export default function App() {
 
   const handleSelectService = (serviceName) => {
     setPreselectedService(serviceName);
-    setPreselectedPlan('');
     scrollToContact();
   };
 
@@ -67,7 +65,6 @@ export default function App() {
       {/* Lead Generation Contact Form */}
       <Contact
         preselectedService={preselectedService}
-        preselectedPlan={preselectedPlan}
       />
 
       {/* Glowing Neon Divider 4 */}

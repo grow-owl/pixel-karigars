@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin, CheckCircle2, MessageSquare, Sparkles, Zap, ArrowRight } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
-import { BRAND_INFO, SERVICES, PRICING_PLANS } from '../data/content';
+import { BRAND_INFO, SERVICES } from '../data/content';
 
-export default function Contact({ preselectedService, preselectedPlan }) {
+export default function Contact({ preselectedService }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     businessName: '',
     service: preselectedService || '',
-    plan: preselectedPlan || '',
     message: ''
   });
 
@@ -19,15 +18,9 @@ export default function Contact({ preselectedService, preselectedPlan }) {
 
   useEffect(() => {
     if (preselectedService) {
-      setFormData((prev) => ({ ...prev, service: preselectedService, plan: '' }));
+      setFormData((prev) => ({ ...prev, service: preselectedService }));
     }
   }, [preselectedService]);
-
-  useEffect(() => {
-    if (preselectedPlan) {
-      setFormData((prev) => ({ ...prev, plan: preselectedPlan, service: '' }));
-    }
-  }, [preselectedPlan]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +38,6 @@ export default function Contact({ preselectedService, preselectedPlan }) {
         email: '',
         businessName: '',
         service: '',
-        plan: '',
         message: ''
       });
     }, 5000);
@@ -187,12 +179,12 @@ export default function Contact({ preselectedService, preselectedPlan }) {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
 
-                  {/* Pre-selection Notice Badge if user clicked a service or plan button */}
-                  {(formData.service || formData.plan) && (
+                  {/* Pre-selection Notice Badge if user clicked a service button */}
+                  {formData.service && (
                     <div className="p-3 rounded-2xl bg-[#FF6B35]/15 border border-[#FF6B35]/30 text-[#FF6B35] text-xs font-extrabold flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-[#FF6B35] shrink-0" />
                       <span>
-                        Selected Target: {formData.service ? `Service — ${formData.service}` : `Package — ${formData.plan}`}
+                        Selected Target: Service — {formData.service}
                       </span>
                     </div>
                   )}
@@ -259,49 +251,25 @@ export default function Contact({ preselectedService, preselectedPlan }) {
                     </div>
                   </div>
 
-                  {/* Select Service / Plan with Glassmorphism Dropdowns */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-extrabold text-white mb-1.5">
-                        Select Service
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="service"
-                          value={formData.service}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3.5 rounded-2xl bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-xs font-bold text-white focus:outline-none focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 shadow-inner transition-all cursor-pointer appearance-none pr-10"
-                        >
-                          <option value="" className="bg-[#161524] text-white">-- Choose Service --</option>
-                          {SERVICES.map((s) => (
-                            <option key={s.id} value={s.title} className="bg-[#161524] text-white">{s.title}</option>
-                          ))}
-                        </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF6B35]">
-                          ▼
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-extrabold text-white mb-1.5">
-                        Select Package (Optional)
-                      </label>
-                      <div className="relative">
-                        <select
-                          name="plan"
-                          value={formData.plan}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3.5 rounded-2xl bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-xs font-bold text-white focus:outline-none focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 shadow-inner transition-all cursor-pointer appearance-none pr-10"
-                        >
-                          <option value="" className="bg-[#161524] text-white">-- Choose Monthly Package --</option>
-                          {PRICING_PLANS.map((p) => (
-                            <option key={p.id} value={p.name} className="bg-[#161524] text-white">{p.name} ({p.price})</option>
-                          ))}
-                        </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF6B35]">
-                          ▼
-                        </div>
+                  {/* Select Service Dropdown */}
+                  <div>
+                    <label className="block text-xs font-extrabold text-white mb-1.5">
+                      Select Service
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3.5 rounded-2xl bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-xs font-bold text-white focus:outline-none focus:border-[#FF6B35] focus:ring-2 focus:ring-[#FF6B35]/20 shadow-inner transition-all cursor-pointer appearance-none pr-10"
+                      >
+                        <option value="" className="bg-[#161524] text-white">-- Choose Service --</option>
+                        {SERVICES.map((s) => (
+                          <option key={s.id} value={s.title} className="bg-[#161524] text-white">{s.title}</option>
+                        ))}
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF6B35]">
+                        ▼
                       </div>
                     </div>
                   </div>
