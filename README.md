@@ -47,7 +47,7 @@ Make sure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on y
 
 ---
 
-## 📌 Studio Info
+## Studio Info
 
 - **Instagram**: [@pixelkarigars](https://www.instagram.com/pixelkarigars/)
 - **Location**: Siliguri, West Bengal, India
@@ -56,7 +56,7 @@ Make sure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on y
 
 ---
 
-## 🤝 Credits & Copyright
+## Credits & Copyright
 
-- **© 2026 Dhiraj kumar sahu**  All rights reserved.
+- **© 2026 Dhiraj kumar sah**  All rights reserved.
 - **Designed & Developed by**: [GrowOwl Pvt. Ltd.](https://www.growowl.online/)
