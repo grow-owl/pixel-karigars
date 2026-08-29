@@ -109,11 +109,6 @@ export default function Portfolio({ onOpenModal }) {
                     </div>
                   </div>
 
-                  {/* Category Overlay */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-white text-[10px] font-extrabold">
-                    {project.businessType}
-                  </div>
-
                   {/* Stat Overlay at Bottom of Video */}
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2 rounded-xl bg-[#0F0E17]/90 backdrop-blur-md border border-white/15 text-white flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-[#FF6B35] shrink-0" />
