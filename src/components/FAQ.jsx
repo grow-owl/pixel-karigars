@@ -19,36 +19,15 @@ export default function FAQ() {
 
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF6B35]/15 border border-[#FF6B35]/30 text-[#FF6B35] text-xs font-bold uppercase tracking-wider shadow-sm backdrop-blur-md"
-          >
-            <Sparkles className="w-4 h-4 text-[#FF6B35]" />
-            <span>Got Questions?</span>
-          </motion.div>
-
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white font-display"
           >
-            FREQUENTLY ASKED <span className="text-gradient-coral">QUESTIONS</span>
+            FREQUENTLY ASKED <span className="text-[#FF6B35]">QUESTIONS</span>
           </motion.h2>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-base text-slate-300 font-medium"
-          >
-            Everything you need to know about working with Pixel Karigars.
-          </motion.p>
         </div>
 
         {/* Accordion List */}

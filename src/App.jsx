@@ -12,7 +12,6 @@ import SectionDivider from './components/SectionDivider';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [preselectedService, setPreselectedService] = useState('');
 
   const scrollToContact = () => {
     const contactSection = document.querySelector('#contact');
@@ -25,11 +24,6 @@ export default function App() {
     }
   };
 
-  const handleSelectService = (serviceName) => {
-    setPreselectedService(serviceName);
-    scrollToContact();
-  };
-
   return (
     <div className="min-h-screen bg-[#0F0E17] text-[#FFFFF0] font-sans selection:bg-[#FF6B35] selection:text-white">
       {/* Sticky Header */}
@@ -38,19 +32,18 @@ export default function App() {
       {/* Hero Section */}
       <Hero
         onOpenContact={scrollToContact}
-        onSelectReel={(project) => setSelectedProject(project)}
       />
 
       {/* Marquee Banner */}
       <TickerBar />
 
       {/* Services Section */}
-      <Services onSelectService={handleSelectService} />
+      <Services onOpenContact={scrollToContact} />
 
       {/* Glowing Neon Divider 1 */}
       <SectionDivider accent="coral" />
 
-      {/* Portfolio Section */}
+      {/* Featured Client Reels Section */}
       <Portfolio onOpenModal={(project) => setSelectedProject(project)} />
 
       {/* Glowing Neon Divider 2 */}
@@ -63,9 +56,7 @@ export default function App() {
       <SectionDivider accent="coral" />
 
       {/* Lead Generation Contact Form */}
-      <Contact
-        preselectedService={preselectedService}
-      />
+      <Contact />
 
       {/* Glowing Neon Divider 4 */}
       <SectionDivider accent="violet" />
@@ -73,7 +64,7 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Portfolio Video Modal */}
+      {/* Video Modal Player */}
       {selectedProject && (
         <ReelModal
           project={selectedProject}

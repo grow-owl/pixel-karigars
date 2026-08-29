@@ -84,12 +84,9 @@
   border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* Signature Text Gradients */
+/* Signature Highlight Text Color */
 .text-gradient-coral {
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8C54 45%, #6C4CF1 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF6B35;
 }
 
 .text-gradient-sunset {

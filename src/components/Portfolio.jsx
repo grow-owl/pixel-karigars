@@ -10,11 +10,13 @@ export default function Portfolio({ onOpenModal }) {
 
   const categories = [
     'All',
-    'Food & Culinary',
-    'Home & Garden',
-    'Music & Production',
-    'Social Awareness',
-    'Lifestyle Reel'
+    'Gourmet & Luxury',
+    'Lifestyle Reel',
+    'Architecture & Decor',
+    'Real Estate',
+    'Beauty & Style',
+    'Fashion & Lifestyle',
+    'Travel & Outdoor'
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -42,17 +44,9 @@ export default function Portfolio({ onOpenModal }) {
 
         {/* Section Header */}
         <div className="text-center md:text-left space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#6C4CF1]/15 border border-[#6C4CF1]/30 text-white text-xs font-bold uppercase tracking-wider shadow-sm backdrop-blur-md">
-            🎬 Portfolio • Real Work
-          </div>
-
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
-            FEATURED <span className="text-gradient-coral">CLIENT REELS</span>
+            FEATURED <span className="text-[#FF6B35]">CLIENT REELS</span>
           </h2>
-
-          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-lg">
-            Tap any reel to preview the full high-conversion edit, video stats, and client feedback.
-          </p>
         </div>
 
         {/* Category Filter Pills */}
@@ -129,10 +123,6 @@ export default function Portfolio({ onOpenModal }) {
                   <h3 className="text-base font-extrabold text-white group-hover:text-[#FF6B35] transition-colors truncate font-display">
                     {project.title}
                   </h3>
-
-                  <p className="text-xs text-slate-300 leading-snug line-clamp-2 font-medium">
-                    {project.description}
-                  </p>
 
                   <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
                     <button

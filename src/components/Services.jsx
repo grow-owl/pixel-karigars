@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SERVICES } from '../data/content';
 import { Video, Share2, Camera, Compass, Palette, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 
-export default function Services({ onSelectService }) {
+export default function Services({ onOpenContact }) {
   const iconMap = {
     "01": Video,
     "02": Share2,
@@ -21,36 +21,15 @@ export default function Services({ onSelectService }) {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF6B35]/15 border border-[#FF6B35]/30 text-[#FF6B35] text-xs font-bold uppercase tracking-wider shadow-sm backdrop-blur-md"
-          >
-            <Sparkles className="w-4 h-4 text-[#FF6B35]" />
-            <span>Core Agency Offerings</span>
-          </motion.div>
-
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white font-display"
           >
-            SERVICES THAT DRIVE <span className="text-gradient-coral">REAL GROWTH</span>
+            OUR <span className="text-[#FF6B35]">SERVICES</span>
           </motion.h2>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-base text-slate-300 font-medium max-w-xl mx-auto"
-          >
-            From high-converting Reels to full social media management, we build content designed to capture attention and convert viewers into loyal customers.
-          </motion.p>
         </div>
 
         {/* Services Grid */}
@@ -99,19 +78,6 @@ export default function Services({ onSelectService }) {
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                {/* Card Footer CTA */}
-                <div className="pt-8">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => onSelectService(service.title)}
-                    className="w-full py-3 px-4 rounded-xl bg-white/10 border border-white/15 text-white font-bold tracking-wide text-xs sm:text-sm hover:bg-[#FF6B35] hover:border-[#FF6B35] transition-all flex items-center justify-center gap-2 shadow-sm group/btn cursor-pointer"
-                  >
-                    <span>Choose {service.title.split(' ')[0]}</span>
-                    <ArrowRight className="w-4 h-4 text-[#FF6B35] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all" />
-                  </motion.button>
                 </div>
 
               </motion.div>

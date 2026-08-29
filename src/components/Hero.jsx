@@ -1,6 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Volume2, VolumeX, Heart, MessageCircle, Share2, Sparkles, ArrowRight, CheckCircle2, Zap } from 'lucide-react';
+import { 
+  Play, 
+  Volume2, 
+  VolumeX, 
+  Heart, 
+  MessageCircle, 
+  Share2, 
+  Sparkles, 
+  ArrowRight, 
+  CheckCircle2, 
+  Video,
+  Clock,
+  Flame,
+  MessageSquare
+} from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
 import Logo from './Logo';
 
@@ -14,47 +28,39 @@ export default function Hero({ onOpenContact }) {
   const heroRef = useRef(null);
   const userMutedManualRef = useRef(false);
 
-  // 1. Guaranteed Hero Autoplay on Load & Reload with Audio (Mobile & Desktop)
+  // Autoplay handler with audio enabled by default
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Attributes required for iOS Safari and Chrome Android inline playback
     video.playsInline = true;
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', 'true');
 
-    const startAutoplayWithAudio = async () => {
-      // Attempt unmuted play first (Audio Enabled)
+    // Attempt unmuted audio playback on load
+    const attemptUnmutedAutoplay = async () => {
       try {
         video.muted = false;
         setIsMuted(false);
         await video.play();
         setIsPlaying(true);
       } catch (err) {
-        // Mobile browsers block unmuted autoplay on cold reload without gesture.
-        // Fallback: Start playing muted instantly, and unmute on first gesture
+        // Fallback: If browser blocks unmuted autoplay without user gesture, start muted temporarily
         video.muted = true;
-        video.defaultMuted = true;
-        video.setAttribute('muted', '');
         setIsMuted(true);
         try {
           await video.play();
           setIsPlaying(true);
         } catch (e) {
-          console.log("Muted autoplay fallback catch:", e);
+          console.log("Muted autoplay fallback error:", e);
         }
       }
     };
 
-    startAutoplayWithAudio();
+    attemptUnmutedAutoplay();
 
-    // Automatically enable audio on very first screen touch / tap / scroll on mobile
-    const enableAudioOnGesture = (e) => {
-      if (e && e.target && e.target.closest && e.target.closest('[data-mute-btn]')) {
-        return;
-      }
-
+    // Enable unmuted audio on first interaction anywhere on screen
+    const enableAudioOnGesture = () => {
       if (video && !userMutedManualRef.current) {
         video.muted = false;
         setIsMuted(false);
@@ -62,7 +68,6 @@ export default function Hero({ onOpenContact }) {
           video.play().then(() => setIsPlaying(true)).catch(() => {});
         }
       }
-
       removeGestureListeners();
     };
 
@@ -71,6 +76,7 @@ export default function Hero({ onOpenContact }) {
       window.removeEventListener('touchstart', enableAudioOnGesture, true);
       window.removeEventListener('click', enableAudioOnGesture, true);
       window.removeEventListener('scroll', enableAudioOnGesture, true);
+      window.removeEventListener('mousemove', enableAudioOnGesture, true);
       window.removeEventListener('keydown', enableAudioOnGesture, true);
     };
 
@@ -78,9 +84,9 @@ export default function Hero({ onOpenContact }) {
     window.addEventListener('touchstart', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('click', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('scroll', enableAudioOnGesture, { capture: true, once: true });
+    window.addEventListener('mousemove', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('keydown', enableAudioOnGesture, { capture: true, once: true });
 
-    // Handle tab visibility (resume play when user switches back to tab)
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible' && video) {
         if (video.paused) {
@@ -97,7 +103,7 @@ export default function Hero({ onOpenContact }) {
     };
   }, []);
 
-  // 2. IntersectionObserver: Scroll-down -> MUTE & PAUSE reel. Scroll-up -> UNMUTE & PLAY reel.
+  // Resume playback on scroll back into view
   useEffect(() => {
     const heroElement = heroRef.current;
     const video = videoRef.current;
@@ -106,20 +112,15 @@ export default function Hero({ onOpenContact }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting || entry.intersectionRatio < 0.3) {
-            // Scrolled down away from Hero section -> Mute audio & Pause video
-            video.muted = true;
-            setIsMuted(true);
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
             video.pause();
             setIsPlaying(false);
           } else {
-            // Scrolled back up to Hero section -> Unmute audio & Play video
             if (!userMutedManualRef.current) {
               video.muted = false;
               setIsMuted(false);
             }
-            video.play().then(() => setIsPlaying(true)).catch((err) => {
-              // Fallback to muted play if browser blocks unmuted play on scroll-up
+            video.play().then(() => setIsPlaying(true)).catch(() => {
               video.muted = true;
               setIsMuted(true);
               video.play().then(() => setIsPlaying(true)).catch(() => {});
@@ -127,7 +128,7 @@ export default function Hero({ onOpenContact }) {
           }
         });
       },
-      { threshold: [0, 0.3, 0.6, 1.0] }
+      { threshold: [0, 0.2, 0.5, 1.0] }
     );
 
     observer.observe(heroElement);
@@ -183,47 +184,42 @@ export default function Hero({ onOpenContact }) {
     }
   };
 
+  const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars,%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business!`;
+
   return (
-    <section ref={heroRef} id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
-      {/* Soft Ambient Background Orbs */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B35]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6C4CF1]/20 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+    <section ref={heroRef} id="about" className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
+      {/* Background Soft Mesh Glow */}
+      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B35]/15 rounded-full blur-[170px] pointer-events-none animate-soft-pulse"></div>
+      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6C4CF1]/15 rounded-full blur-[170px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Side Copy */}
+          {/* Left Side: Clean, High-Impact Agency Copy */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-8 text-center lg:text-left"
+            className="lg:col-span-7 space-y-7 text-center lg:text-left"
           >
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#6C4CF1]/15 border border-[#6C4CF1]/30 text-white text-xs sm:text-sm font-bold backdrop-blur-md shadow-sm">
-              <Zap className="w-4 h-4 text-[#FF6B35]" />
-              <span>Siliguri's Premier Creative Content Studio</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.12]">
-              YOUR BUSINESS <br className="hidden sm:inline" />
-              <span className="text-gradient-coral">DESERVES BETTER</span> <br />
-              CONTENT.
+            {/* Clean, Minimal Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] font-display">
+              HIGH-CONVERTING REELS <br />
+              FOR <span className="text-[#FF6B35]">YOUR BRAND.</span>
             </h1>
 
-            {/* Supporting Text */}
+            {/* Short Minimal Subheadline */}
             <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-              {BRAND_INFO.subheadline}
+              Premium video shoots & Instagram reels engineered for organic growth.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onOpenContact}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
+                className="w-full sm:w-auto px-7 py-4 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs sm:text-sm shadow-xl shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/30 transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
               >
                 <span>Let's Work Together</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
@@ -232,15 +228,13 @@ export default function Hero({ onOpenContact }) {
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="#work"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 border border-white/15 text-white font-bold text-xs sm:text-sm hover:bg-white/15 hover:border-[#FF6B35] transition-all flex items-center justify-center gap-2.5 shadow-sm backdrop-blur-md group"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#25D366]/15 border border-[#25D366]/35 text-[#25D366] font-bold text-xs sm:text-sm hover:bg-[#25D366]/25 transition-all flex items-center justify-center gap-2.5 shadow-md backdrop-blur-md group"
               >
-                <Play className="w-3.5 h-3.5 fill-[#FF6B35] text-[#FF6B35]" />
-                <span>Watch Reel Showcase</span>
+                <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                <span>Chat on WhatsApp</span>
               </motion.a>
             </div>
 
@@ -261,25 +255,26 @@ export default function Hero({ onOpenContact }) {
             </div>
           </motion.div>
 
-          {/* Right Side Visual: Reel Video in Zero-Bezel iPhone 16 Pro */}
+          {/* Right Side: Clean iPhone 16 Pro Reel Showcase (No clutter) */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative"
           >
-            {/* Soft Ambient Glow Halo */}
+            {/* Ambient Background Halo */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B35]/20 via-[#6C4CF1]/15 to-[#FF6B35]/20 rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
 
-            <div className="relative w-[345px] sm:w-[360px] lg:w-[360px] aspect-reel rounded-[48px] overflow-hidden bg-black shadow-2xl border-[2px] border-white/20 group hover:border-[#FF6B35]/50 transition-all duration-300">
+            {/* Sleek iPhone 16 Pro Frame */}
+            <div className="relative w-[290px] xs:w-[320px] sm:w-[355px] aspect-reel rounded-[44px] sm:rounded-[48px] overflow-hidden bg-black shadow-2xl border-[2px] border-white/20 group hover:border-[#FF6B35]/50 transition-all duration-300">
               
-              {/* iPhone Dynamic Island Notch */}
+              {/* Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-22 h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#0a0a0d]"></div>
                 <div className="w-1.5 h-1.5 rounded-full bg-[#101018]"></div>
               </div>
 
-              {/* Screen Player */}
+              {/* Reel Video Player */}
               <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
                 
                 <video
@@ -308,9 +303,9 @@ export default function Hero({ onOpenContact }) {
                 {/* Header Overlay */}
                 <div className="absolute top-8 left-0 right-0 px-4 flex items-center justify-between z-40 pointer-events-none">
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-black tracking-wider text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                      REELS
+                    <span className="text-[10px] font-black tracking-wider text-white bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
+                      <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-ping"></span>
+                      REEL SHOWCASE
                     </span>
                   </div>
                   
@@ -318,32 +313,32 @@ export default function Hero({ onOpenContact }) {
                     <button
                       data-mute-btn="true"
                       onClick={toggleMute}
-                      className="p-2 rounded-full bg-black/70 backdrop-blur-md text-white hover:bg-black transition-all border border-white/20 shadow-md cursor-pointer flex items-center gap-1"
-                      title={isMuted ? "Click to Unmute Sound" : "Click to Mute"}
+                      className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-white hover:bg-black transition-all border border-white/25 shadow-md cursor-pointer flex items-center gap-1.5"
+                      title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
                     >
                       {isMuted ? (
                         <>
-                          <VolumeX className="w-3.5 h-3.5 text-cyan-400" />
-                          <span className="text-[9px] font-extrabold text-cyan-300">TAP AUDIO</span>
+                          <VolumeX className="w-3.5 h-3.5 text-[#FF6B35]" />
+                          <span className="text-[9px] font-extrabold text-[#FF6B35]">TAP AUDIO</span>
                         </>
                       ) : (
                         <>
-                          <Volume2 className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-                          <span className="text-[9px] font-extrabold text-cyan-300">ON</span>
+                          <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                          <span className="text-[9px] font-extrabold text-emerald-300">AUDIO ON</span>
                         </>
                       )}
                     </button>
                   </div>
                 </div>
 
-                {/* Pause Overlay Indicator */}
+                {/* Play/Pause Overlay Indicator */}
                 {!isPlaying && (
                   <div 
                     onClick={togglePlay}
                     className="absolute inset-0 bg-black/40 flex items-center justify-center z-30 cursor-pointer"
                   >
-                    <div className="w-14 h-14 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-2xl pl-1 animate-bounce">
-                      <Play className="w-7 h-7 fill-black" />
+                    <div className="w-14 h-14 rounded-full bg-[#FF6B35] text-white flex items-center justify-center shadow-2xl pl-1 animate-bounce">
+                      <Play className="w-7 h-7 fill-white" />
                     </div>
                   </div>
                 )}
@@ -354,33 +349,33 @@ export default function Hero({ onOpenContact }) {
                     onClick={toggleLike}
                     className="flex flex-col items-center gap-1 group/btn cursor-pointer"
                   >
-                    <div className={`p-2 rounded-full bg-black/50 backdrop-blur-md transition-all ${liked ? 'text-cyan-400 scale-110' : 'text-white hover:text-cyan-400'}`}>
-                      <Heart className={`w-5 h-5 ${liked ? 'fill-cyan-400' : ''}`} />
+                    <div className={`p-2 rounded-full bg-black/60 backdrop-blur-md transition-all ${liked ? 'text-[#FF6B35] scale-110' : 'text-white hover:text-[#FF6B35]'}`}>
+                      <Heart className={`w-5 h-5 ${liked ? 'fill-[#FF6B35]' : ''}`} />
                     </div>
                     <span className="text-[10px] font-bold text-white shadow-sm">
                       {(likeCount / 1000).toFixed(1)}k
                     </span>
                   </button>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-cyan-400 cursor-pointer">
-                    <div className="p-2 rounded-full bg-black/50 backdrop-blur-md">
+                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B35] cursor-pointer">
+                    <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
                       <MessageCircle className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-bold text-white">482</span>
                   </button>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-cyan-400 cursor-pointer">
-                    <div className="p-2 rounded-full bg-black/50 backdrop-blur-md">
+                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B35] cursor-pointer">
+                    <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
                       <Share2 className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-bold text-white">Share</span>
                   </button>
                 </div>
 
-                {/* Account Overlay */}
-                <div className="absolute bottom-3 left-3 right-12 z-40 text-left text-white space-y-1.5 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-2.5 rounded-2xl">
+                {/* Instagram Profile Overlay Footer */}
+                <div className="absolute bottom-3 left-3 right-12 z-40 text-left text-white space-y-1.5 bg-gradient-to-t from-black/95 via-black/65 to-transparent p-3 rounded-2xl">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center p-0.5 border border-white shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-[#FF6B35] flex items-center justify-center p-0.5 border border-white shrink-0">
                       <Logo size="small" showText={false} />
                     </div>
                     <span className="text-[11px] font-bold text-white tracking-wide truncate">
@@ -390,19 +385,19 @@ export default function Hero({ onOpenContact }) {
                       href={BRAND_INFO.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[9px] px-2 py-0.5 rounded bg-cyan-400 hover:bg-cyan-500 text-black font-black shrink-0 transition-colors"
+                      className="text-[9px] px-2 py-0.5 rounded-full bg-[#FF6B35] hover:bg-[#E85A24] text-white font-black shrink-0 transition-colors shadow-sm"
                     >
                       Follow
                     </a>
                   </div>
 
                   <p className="text-[10px] text-slate-200 line-clamp-2 font-medium leading-snug">
-                    Helping local brands stand out. That's the goal. 🚀 #ContentCreation #BrandContent #SocialMedia
+                    Turning views into real customers for Siliguri brands. 🚀 #PixelKarigars #ReelsProduction #BrandGrowth
                   </p>
 
                   <div className="flex items-center gap-1.5 text-[9px] text-slate-300">
-                    <Sparkles className="w-3 h-3 text-cyan-400 animate-spin shrink-0" />
-                    <span className="truncate">Original Audio • Pixel Karigars Studio</span>
+                    <Sparkles className="w-3 h-3 text-[#FF6B35] animate-spin shrink-0" />
+                    <span className="truncate">Original Production • Pixel Karigars Studio</span>
                   </div>
                 </div>
 
@@ -416,6 +411,8 @@ export default function Hero({ onOpenContact }) {
     </section>
   );
 }
+
+
 
 
 

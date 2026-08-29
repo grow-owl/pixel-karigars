@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, ArrowUp } from 'lucide-react';
+import { MapPin, Mail, ArrowUp, MessageSquare } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
@@ -10,146 +10,124 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars!`;
+
   return (
-    <footer className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+    <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
       
-      {/* Wider Symmetrical Card Container */}
-      <div className="glass-panel rounded-3xl p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-white/12 shadow-2xl bg-mesh-grid">
+      {/* Compressed Compact Glass Card Container */}
+      <div className="glass-panel rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/12 shadow-xl bg-mesh-grid">
         
         {/* Soft Ambient Background Glow Orbs */}
-        <div className="absolute top-0 right-10 w-[450px] h-[450px] bg-[#FF6B35]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
-        <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#6C4CF1]/[0.10] rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+        <div className="absolute top-0 right-10 w-[300px] h-[300px] bg-[#FF6B35]/[0.08] rounded-full blur-[140px] pointer-events-none"></div>
 
-        <div className="relative z-10 space-y-10">
+        <div className="relative z-10 space-y-6">
 
-          {/* 3-Column Balanced Layout: Left, Center, Right */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-          
-          {/* LEFT: Brand Info & Logo & Instagram Badge */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-5 space-y-4 text-left"
-          >
-            <a href="#" className="inline-block">
-              <Logo animated={true} lightText={true} />
-            </a>
-
-            <p className="text-xs sm:text-sm text-slate-300 max-w-sm leading-relaxed font-medium">
-              {BRAND_INFO.aboutText}
-            </p>
-
-            {/* Instagram Icon with Vibrant Gradient Hover Effect */}
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href={BRAND_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative p-2.5 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:border-transparent hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-md cursor-pointer"
-                title="Follow on Instagram"
-              >
-                <InstagramIcon className="w-4 h-4 text-[#FF6B35] group-hover:text-white transition-colors" />
-              </a>
-              <span className="text-xs font-bold text-slate-300">
-                Follow <span className="text-[#FF6B35]">{BRAND_INFO.handle}</span> on Instagram
-              </span>
-            </div>
-          </motion.div>
-
-          {/* CENTER: Quick Navigation Links */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="md:col-span-3 space-y-4 md:text-center text-left"
-          >
-            <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
-              Quick Navigation
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300 font-semibold inline-block text-left">
-              {[
-                { name: 'About Us', href: '#' },
-                { name: 'Services & Offerings', href: '#services' },
-                { name: 'Featured Client Reels', href: '#work' },
-                { name: 'Frequently Asked Questions', href: '#faq' },
-                { name: 'Contact Us', href: '#contact' },
-              ].map((link, i) => (
-                <li key={i}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-[#FF6B35] hover:translate-x-1 transition-all duration-200 inline-block"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* RIGHT: Studio Location & Back to Top */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:col-span-4 space-y-4 text-left md:text-right flex flex-col md:items-end"
-          >
-            <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
-              Studio Location
-            </h4>
+          {/* Balanced Layout: Left Logo & Socials, Middle Nav, Right Location/Top */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
-            <div className="space-y-2.5 text-xs text-slate-300 font-medium">
-              <div className="flex items-start gap-2.5 md:justify-end">
-                <MapPin className="w-4 h-4 text-[#FF6B35] shrink-0 mt-0.5" />
-                <span>{BRAND_INFO.location}</span>
-              </div>
-              <div className="flex items-center gap-2.5 md:justify-end">
-                <Mail className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                <a href={`mailto:${BRAND_INFO.email}`} className="hover:text-[#FF6B35] transition-colors font-semibold text-white">
-                  {BRAND_INFO.email}
+            {/* LEFT: Logo & Social Icons (Instagram, WhatsApp, Email) */}
+            <div className="md:col-span-4 flex items-center gap-3.5 justify-between md:justify-start">
+              <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
+                <Logo size="small" animated={true} />
+              </a>
+
+              <div className="flex items-center gap-2">
+                {/* Instagram Icon */}
+                <a
+                  href={BRAND_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  title="Follow on Instagram"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+
+                {/* WhatsApp Icon */}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#25D366] hover:bg-[#25D366] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  title="Chat on WhatsApp"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                </a>
+
+                {/* Email Icon */}
+                <a
+                  href={`mailto:${BRAND_INFO.email}`}
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  title="Send Email"
+                >
+                  <Mail className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
-            {/* Back to Top */}
-            <div className="pt-2">
+            {/* CENTER: Compact Nav Links */}
+            <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300">
+              {[
+                { name: 'About Us', href: '#' },
+                { name: 'Services', href: '#services' },
+                { name: 'Client Reels', href: '#work' },
+                { name: 'FAQ', href: '#faq' },
+                { name: 'Contact', href: '#contact' },
+              ].map((link, i) => (
+                <a 
+                  key={i}
+                  href={link.href} 
+                  className="hover:text-[#FF6B35] transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* RIGHT: Location & Back to Top */}
+            <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-3">
+              <div className="text-[11px] text-slate-300 font-medium">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#FF6B35] shrink-0" />
+                  <span className="truncate">{BRAND_INFO.location}</span>
+                </div>
+              </div>
+
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
-                className="px-4 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-xs font-extrabold text-white transition-all cursor-pointer flex items-center gap-2 shadow-md hover:shadow-lg group"
+                className="p-2.5 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B35] hover:border-[#FF6B35] transition-all cursor-pointer shadow-md flex items-center justify-center shrink-0"
+                title="Back to top"
               >
-                <span>Back to Top</span>
-                <ArrowUp className="w-3.5 h-3.5 text-white group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUp className="w-4 h-4 text-white" />
               </motion.button>
             </div>
-          </motion.div>
 
-        </div>
+          </div>
 
-        {/* Bottom Bar Copyright & GrowOwl Credit */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-medium text-center md:text-left">
-          <p>
-            © 2026 Pixel Karigars. All rights reserved. Good businesses deserve great content.
-          </p>
-          <p>
-            Designed & Developed by{' '}
-            <a
-              href="https://www.growowl.online/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#FF6B35] font-bold hover:underline transition-colors"
-            >
-              GrowOwl Pvt. Ltd.
-            </a>
-          </p>
+          {/* Bottom Copyright & Credit Bar */}
+          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400 font-medium text-center sm:text-left">
+            <p>
+              © 2026 Pixel Karigars. All rights reserved.
+            </p>
+            <p>
+              Designed & Developed by{' '}
+              <a
+                href="https://www.growowl.online/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#FF6B35] font-bold hover:underline transition-colors"
+              >
+                GrowOwl
+              </a>
+            </p>
+          </div>
+
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   );
 }
 
