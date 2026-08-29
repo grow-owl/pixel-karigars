@@ -87,21 +87,24 @@ export default function Portfolio({ onOpenModal }) {
                 transition={{ duration: 0.4 }}
                 className="w-[245px] sm:w-[275px] shrink-0 snap-start glass-panel rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
               >
-                {/* Compact Vertical Video Reel Card Thumbnail */}
+                {/* Real Video Reel Card Preview (Plays on Tap/Click) */}
                 <div
                   onClick={() => onOpenModal(project)}
-                  className="relative w-full h-[300px] sm:h-[340px] aspect-[9/14] overflow-hidden cursor-pointer group/img"
+                  className="relative w-full h-[300px] sm:h-[340px] aspect-[9/14] overflow-hidden cursor-pointer group/img bg-black"
                 >
-                  <img
-                    src={project.videoPoster}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
+                  <video
+                    src={project.videoUrl}
+                    loop
+                    muted
+                    playsInline
+                    webkit-playsinline="true"
+                    preload="metadata"
+                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 pointer-events-none"
                   />
                   
-                  {/* Dark Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E17] via-[#0F0E17]/30 to-transparent flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-[#FF6B35] text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform">
+                  {/* Dark Overlay Gradient on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E17] via-transparent to-transparent flex items-center justify-center opacity-80 group-hover/img:opacity-100 transition-opacity">
+                    <div className="w-12 h-12 rounded-full bg-[#FF6B35]/90 text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform backdrop-blur-sm">
                       <Play className="w-5 h-5 fill-white" />
                     </div>
                   </div>
