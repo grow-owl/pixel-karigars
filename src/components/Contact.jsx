@@ -70,8 +70,8 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 md:py-28 bg-[#111111] relative overflow-hidden bg-mesh-grid">
       {/* Soft Ambient Background Glow Orbs */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#FF6B4A]/[0.03] rounded-full blur-[190px] pointer-events-none animate-soft-pulse"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-[#C7F36B]/[0.03] rounded-full blur-[190px] pointer-events-none animate-soft-pulse"></div>
+      <div className="hidden md:block absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#FF6B4A]/[0.03] rounded-full blur-[190px] pointer-events-none animate-soft-pulse"></div>
+      <div className="hidden md:block absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-[#C7F36B]/[0.03] rounded-full blur-[190px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

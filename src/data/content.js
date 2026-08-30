@@ -20,7 +20,7 @@ export const SERVICES = [
     id: "reels",
     num: "01",
     title: "Reels & Short Video Shoots",
-    shortDesc: "Scroll-stopping vertical reels with viral hooks, crisp audio, and motion cuts engineered for high reach.",
+    shortDesc: "Scroll-stopping vertical reels with viral hooks & crisp motion cuts.",
     items: [
       "Instagram Reels & YouTube Shorts",
       "On-Location & Studio Shoots",
@@ -34,7 +34,7 @@ export const SERVICES = [
     id: "social",
     num: "02",
     title: "Social Media Management",
-    shortDesc: "Complete monthly management of your Instagram & Facebook to maintain brand authority and daily growth.",
+    shortDesc: "Complete monthly management of your Instagram & Facebook.",
     items: [
       "Monthly Content Calendar & Planning",
       "High-Converting Graphic Posts",
@@ -48,7 +48,7 @@ export const SERVICES = [
     id: "product",
     num: "03",
     title: "Store & Product Walkthroughs",
-    shortDesc: "High-end visual shoots showcasing your showroom, restaurant dishes, or products in the best light.",
+    shortDesc: "High-end visual shoots showcasing your store, restaurant, or products.",
     items: [
       "Store & Restaurant Walkthroughs",
       "Food & Culinary Reel Production",
@@ -62,7 +62,7 @@ export const SERVICES = [
     id: "strategy",
     num: "04",
     title: "Content Strategy & Hook Bank",
-    shortDesc: "Data-driven roadmap to position your brand as a dominant market leader in your niche.",
+    shortDesc: "Data-driven roadmap to position your brand as a market leader.",
     items: [
       "Viral Idea & Hook Repository",
       "Competitor Market Analysis",
@@ -76,7 +76,7 @@ export const SERVICES = [
     id: "design",
     num: "05",
     title: "Creative Graphic Design",
-    shortDesc: "Modern, high-converting social graphics, promotional posters, and story templates that build trust.",
+    shortDesc: "Modern social graphics, promotional posters, and story templates.",
     items: [
       "Custom Social Media Creatives",
       "Event & Campaign Banners",

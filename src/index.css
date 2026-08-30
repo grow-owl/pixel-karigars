@@ -65,16 +65,26 @@
 
 /* Luxe Midnight Subdued Pure Blur Card System */
 .glass-panel {
-  background: rgba(24, 24, 24, 0.92);
+  background: rgba(24, 24, 24, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
-@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
-  .glass-panel {
-    background: rgba(24, 24, 24, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+@media (min-width: 769px) {
+  @supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+    .glass-panel {
+      background: rgba(24, 24, 24, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
   }
+}
+
+/* iOS WebKit Hardware Video Clipping & Compositing Isolation Fix */
+.ios-video-container {
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  transform: translateZ(0);
 }
 
 .glass-panel-hover {
@@ -144,7 +154,6 @@
   width: 200%;
   animation: ticker 28s linear infinite;
   will-change: transform;
-  transform: translateZ(0);
 }
 
 .animate-ticker:hover {

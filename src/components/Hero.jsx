@@ -168,9 +168,9 @@ export default function Hero({ onOpenContact }) {
 
   return (
     <section ref={heroRef} id="about" className="relative pt-24 pb-16 md:pt-36 md:pb-28 overflow-hidden bg-[#111111] bg-mesh-grid">
-      {/* Background Soft Mesh Glow */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
+      {/* Background Soft Mesh Glow - Hidden on Mobile for GPU Performance */}
+      <div className="hidden md:block absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
+      <div className="hidden md:block absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -192,7 +192,7 @@ export default function Hero({ onOpenContact }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818] border border-[#C7F36B]/20 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 hover:border-[#C7F36B]/40 transition-all backdrop-blur-xl select-none group cursor-pointer btn-shimmer"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818] border border-[#C7F36B]/20 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 hover:border-[#C7F36B]/40 transition-all select-none group cursor-pointer btn-shimmer"
               title="Claim 10% OFF on Instagram"
             >
               <div className="relative flex items-center justify-center">
@@ -234,7 +234,7 @@ export default function Hero({ onOpenContact }) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#C7F36B]/10 border border-[#C7F36B]/20 text-[#C7F36B] font-bold text-xs sm:text-sm hover:bg-[#C7F36B]/15 hover:border-[#C7F36B]/40 transition-all flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 backdrop-blur-md group btn-shimmer"
+                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#C7F36B]/10 border border-[#C7F36B]/20 text-[#C7F36B] font-bold text-xs sm:text-sm hover:bg-[#C7F36B]/15 hover:border-[#C7F36B]/40 transition-all flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 group btn-shimmer"
               >
                 <MessageSquare className="w-4 h-4 text-[#C7F36B] group-hover:scale-110 transition-transform duration-300" />
                 <span>Chat on WhatsApp</span>
@@ -265,11 +265,11 @@ export default function Hero({ onOpenContact }) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative mt-2 lg:mt-0"
           >
-            {/* Ambient Background Halo */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B4A]/[0.04] via-[#C7F36B]/[0.03] to-[#FF6B4A]/[0.04] rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
+            {/* Optimized Ambient Background Halo */}
+            <div className="absolute inset-0 bg-radial from-[#FF6B4A]/10 via-[#C7F36B]/5 to-transparent rounded-[50px] -z-10 transform scale-105 pointer-events-none"></div>
 
-            {/* Sleek iPhone 16 Pro Frame - Larger prominent responsive sizing for mobile */}
-            <div className="relative w-[285px] xs:w-[325px] sm:w-[355px] lg:w-[380px] aspect-reel rounded-[44px] sm:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300">
+            {/* Sleek iPhone 16 Pro Frame - Hardware isolated for iOS WebKit video clipping */}
+            <div className="relative w-[285px] xs:w-[325px] sm:w-[355px] lg:w-[380px] aspect-reel rounded-[44px] sm:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300 ios-video-container">
               
               {/* Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-22 h-3.5 sm:h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
@@ -307,7 +307,7 @@ export default function Hero({ onOpenContact }) {
                 {/* Header Overlay */}
                 <div className="absolute top-8 left-0 right-0 px-4 flex items-center justify-between z-40 pointer-events-none">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-black tracking-wider text-white bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
+                    <span className="text-[10px] font-black tracking-wider text-white bg-black/85 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
                       <span className="w-2 h-2 rounded-full bg-[#FF6B4A] animate-ping"></span>
                       REEL SHOWCASE
                     </span>
@@ -317,7 +317,7 @@ export default function Hero({ onOpenContact }) {
                     <button
                       data-mute-btn="true"
                       onClick={toggleMute}
-                      className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-white hover:bg-black transition-all border border-white/25 shadow-md cursor-pointer flex items-center gap-1.5"
+                      className="px-2.5 py-1 rounded-full bg-black/85 text-white hover:bg-black transition-all border border-white/25 shadow-md cursor-pointer flex items-center gap-1.5"
                       title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
                     >
                       {isMuted ? (
@@ -353,7 +353,7 @@ export default function Hero({ onOpenContact }) {
                     onClick={toggleLike}
                     className="flex flex-col items-center gap-1 group/btn cursor-pointer"
                   >
-                    <div className={`p-2 rounded-full bg-black/60 backdrop-blur-md transition-all ${liked ? 'text-[#FF6B4A] scale-110' : 'text-white hover:text-[#FF6B4A]'}`}>
+                    <div className={`p-2 rounded-full bg-black/80 transition-all ${liked ? 'text-[#FF6B4A] scale-110' : 'text-white hover:text-[#FF6B4A]'}`}>
                       <Heart className={`w-5 h-5 ${liked ? 'fill-[#FF6B4A]' : ''}`} />
                     </div>
                     <span className="text-[10px] font-bold text-white shadow-sm">
@@ -362,14 +362,14 @@ export default function Hero({ onOpenContact }) {
                   </button>
 
                   <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
-                    <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
+                    <div className="p-2 rounded-full bg-black/80">
                       <MessageCircle className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-bold text-white">482</span>
                   </button>
 
                   <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
-                    <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
+                    <div className="p-2 rounded-full bg-black/80">
                       <Share2 className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-bold text-white">Share</span>

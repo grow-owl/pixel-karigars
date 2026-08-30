@@ -43,7 +43,7 @@ export default function ClientGrowth() {
   return (
     <section className="py-24 bg-[#111111] relative overflow-hidden border-t border-white/5">
       {/* Soft Ambient Background Glow Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#C7F36B]/[0.03] rounded-full blur-[200px] pointer-events-none"></div>
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#C7F36B]/[0.03] rounded-full blur-[200px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         

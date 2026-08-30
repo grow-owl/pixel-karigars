@@ -7,7 +7,7 @@ export default function Pricing({ onSelectPlan }) {
   return (
     <section id="pricing" className="py-24 bg-[#111111] relative overflow-hidden bg-mesh-grid">
       {/* Soft Ambient Background Glow Orbs */}
-      <div className="absolute top-1/3 left-10 w-[450px] h-[450px] bg-[#FF6B4A]/[0.03] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
+      <div className="hidden md:block absolute top-1/3 left-10 w-[450px] h-[450px] bg-[#FF6B4A]/[0.03] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

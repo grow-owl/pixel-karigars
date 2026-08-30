@@ -59,7 +59,7 @@ export default function ReelModal({ project, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 animate-in fade-in duration-300">
       
       {/* Backdrop Click to Close */}
       <div className="absolute inset-0" onClick={onClose}></div>
@@ -82,7 +82,7 @@ export default function ReelModal({ project, onClose }) {
         </button>
 
         {/* Left Side Video Player */}
-        <div className="md:col-span-6 bg-black flex items-center justify-center relative min-h-[380px] md:min-h-[500px]">
+        <div className="md:col-span-6 bg-black flex items-center justify-center relative min-h-[380px] md:min-h-[500px] ios-video-container">
           <video
             ref={videoRef}
             src={project.videoUrl}
@@ -110,7 +110,7 @@ export default function ReelModal({ project, onClose }) {
           <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
             <button
               onClick={toggleMute}
-              className="p-2.5 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20 hover:scale-105 transition-all cursor-pointer"
+              className="p-2.5 rounded-full bg-black/85 text-white border border-white/20 hover:scale-105 transition-all cursor-pointer"
             >
               {isMuted ? <VolumeX className="w-4 h-4 text-[#FF6B4A]" /> : <Volume2 className="w-4 h-4 text-[#FF6B4A] animate-pulse" />}
             </button>

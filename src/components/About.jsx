@@ -36,7 +36,7 @@ export default function About({ onOpenContact }) {
   return (
     <section id="about" className="py-24 bg-[#111111] relative overflow-hidden">
       {/* Decorative Orbs */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#FF6B4A]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="hidden md:block absolute top-1/2 left-0 w-96 h-96 bg-[#FF6B4A]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
