@@ -283,7 +283,7 @@ export default function Hero({ onOpenContact }) {
                 <video
                   ref={videoRef}
                   src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071681/pixel-karigars/hero-reel.mp4"
-                  poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
+                  poster="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071681/pixel-karigars/hero-reel.jpg"
                   autoPlay
                   loop
                   muted={isMuted}
