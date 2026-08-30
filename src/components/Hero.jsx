@@ -193,14 +193,14 @@ export default function Hero({ onOpenContact }) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818] border border-[#C7F36B]/20 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 hover:border-[#C7F36B]/40 transition-all select-none group cursor-pointer btn-shimmer"
-              title="Claim 10% OFF on Instagram"
+              title="Claim 25% OFF on Instagram"
             >
               <div className="relative flex items-center justify-center">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#C7F36B]"></span>
                 <span className="absolute w-2.5 h-2.5 rounded-full bg-[#C7F36B] animate-ping opacity-75"></span>
               </div>
               <span className="text-xs sm:text-sm font-extrabold text-[#F5F3EE] tracking-wide flex items-center gap-1.5">
-                <span>LIMITED OFFER: <span className="text-[#C7F36B]">Get Extra 10% OFF!</span></span>
+                <span>LIMITED OFFER: <span className="text-[#C7F36B]">Get Extra 25% OFF!</span></span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#C7F36B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </span>
             </motion.a>
