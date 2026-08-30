@@ -41,9 +41,9 @@ export default function ClientGrowth() {
   ];
 
   return (
-    <section className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/5">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-violet-600/10 rounded-full blur-[180px] pointer-events-none"></div>
+    <section className="py-24 bg-[#111111] relative overflow-hidden border-t border-white/5">
+      {/* Soft Ambient Background Glow Orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#C7F36B]/[0.03] rounded-full blur-[200px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
@@ -54,9 +54,9 @@ export default function ClientGrowth() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold uppercase tracking-wider shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C7F36B]/10 border border-[#C7F36B]/30 text-[#C7F36B] text-xs font-bold uppercase tracking-wider shadow-sm"
           >
-            <TrendingUp className="w-4 h-4 text-fuchsia-400" />
+            <TrendingUp className="w-4 h-4 text-[#C7F36B]" />
             <span>Proven Business Impact</span>
           </motion.div>
 
@@ -65,7 +65,7 @@ export default function ClientGrowth() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-[#F5F3EE]"
           >
             NOT JUST VIEWS. <br className="hidden sm:inline" />
             <span className="text-gradient-coral">MEASURABLE CLIENT GROWTH.</span>
@@ -76,7 +76,7 @@ export default function ClientGrowth() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-slate-400 font-medium"
+            className="text-base sm:text-lg text-[#A6A39D] font-medium"
           >
             We optimize every video reel for retention, brand awareness, and local customer conversion.
           </motion.p>
@@ -96,7 +96,7 @@ export default function ClientGrowth() {
               <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-gradient-sunset">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-bold text-slate-300">
+              <div className="text-xs sm:text-sm font-bold text-[#A6A39D]">
                 {stat.label}
               </div>
             </motion.div>
@@ -106,8 +106,8 @@ export default function ClientGrowth() {
         {/* Before vs After Case Studies Grid */}
         <div className="space-y-8">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white font-display flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-fuchsia-400" />
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#F5F3EE] font-display flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-[#C7F36B]" />
               <span>Real Client Transformations</span>
             </h3>
           </div>
@@ -124,42 +124,42 @@ export default function ClientGrowth() {
               >
                 {/* Top Badge */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-violet-500/10 text-violet-300 border border-violet-500/20">
+                  <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-[#FF6B4A]/10 text-[#FF6B4A] border border-[#FF6B4A]/20">
                     {item.category}
                   </span>
-                  <span className="text-xs font-black text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20 flex items-center gap-1">
+                  <span className="text-xs font-black text-[#C7F36B] bg-[#C7F36B]/10 px-2.5 py-1 rounded-md border border-[#C7F36B]/20 flex items-center gap-1">
                     <TrendingUp className="w-3.5 h-3.5" />
                     {item.growth}
                   </span>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="text-lg font-black text-white font-display group-hover:text-violet-300 transition-colors">
+                  <h4 className="text-lg font-black text-[#F5F3EE] font-display group-hover:text-[#C7F36B] transition-colors">
                     {item.client}
                   </h4>
 
                   {/* Before vs After Visual Pill Box */}
                   <div className="grid grid-cols-2 gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-500 block">Before Reels</span>
-                      <span className="text-xs font-bold text-slate-400 line-through">{item.beforeViews}</span>
+                      <span className="text-[10px] uppercase font-bold text-[#A6A39D] block">Before Reels</span>
+                      <span className="text-xs font-bold text-[#A6A39D]/70 line-through">{item.beforeViews}</span>
                     </div>
                     <div className="border-l border-white/10 pl-2">
-                      <span className="text-[10px] uppercase font-bold text-fuchsia-400 block">With Pixel Karigars</span>
-                      <span className="text-xs font-black text-white">{item.afterViews}</span>
+                      <span className="text-[10px] uppercase font-bold text-[#C7F36B] block">With Pixel Karigars</span>
+                      <span className="text-xs font-black text-[#F5F3EE]">{item.afterViews}</span>
                     </div>
                   </div>
 
                   {/* Client Testimonial */}
-                  <blockquote className="text-xs text-slate-300 leading-relaxed italic border-l-2 border-fuchsia-500 pl-3 py-1">
+                  <blockquote className="text-xs text-[#A6A39D] leading-relaxed italic border-l-2 border-[#FF6B4A] pl-3 py-1">
                     "{item.testimonial}"
                   </blockquote>
                 </div>
 
                 {/* Bottom Metric Footer */}
                 <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="font-semibold text-slate-400">{item.metricLabel}:</span>
-                  <span className="font-extrabold text-white bg-white/10 px-2.5 py-0.5 rounded-full">{item.metricValue}</span>
+                  <span className="font-semibold text-[#A6A39D]">{item.metricLabel}:</span>
+                  <span className="font-extrabold text-[#F5F3EE] bg-white/10 px-2.5 py-0.5 rounded-full">{item.metricValue}</span>
                 </div>
               </motion.div>
             ))}

@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-bg: #111111;
+  --color-secondary-bg: #181818;
+  --color-primary-text: #F5F3EE;
+  --color-secondary-text: #A6A39D;
+  --color-coral-orange: #FF6B4A;
+  --color-warm-cream: #E8DCC8;
+  --color-electric-lime: #C7F36B;
+}
+
 @layer base {
   body {
-    background-color: #0F0E17;
-    color: #FFFFF0;
+    background-color: #111111;
+    color: #F5F3EE;
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
     letter-spacing: -0.015em;
+    color: #F5F3EE;
   }
 }
 
@@ -27,14 +38,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F0E17;
+  background: #111111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FF6B35;
+  background: #FF6B4A;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6C4CF1;
+  background: #C7F36B;
 }
 
 /* Hide Scrollbar for Horizontal Sliders */
@@ -48,16 +59,16 @@
 
 /* Background Crisp Vibrant Mesh Dot Grid */
 .bg-mesh-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(245, 243, 238, 0.12) 1.2px, transparent 1.2px);
   background-size: 28px 28px;
 }
 
-/* Luxe Midnight Neon Pure Blur Card System */
+/* Luxe Midnight Subdued Pure Blur Card System */
 .glass-panel {
-  background: rgba(22, 21, 36, 0.85);
+  background: rgba(24, 24, 24, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
@@ -65,46 +76,50 @@
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-panel-hover:hover {
-  background: rgba(28, 26, 45, 0.95);
-  border-color: rgba(255, 107, 53, 0.5);
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(255, 107, 74, 0.3);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(255, 107, 74, 0.15);
 }
 
 .glass-card-active {
-  background: rgba(28, 26, 45, 0.95);
-  border-color: #FF6B35;
-  box-shadow: 0 20px 40px -15px rgba(255, 107, 53, 0.3);
+  background: rgba(30, 30, 30, 0.95);
+  border-color: #C7F36B;
+  box-shadow: 0 20px 40px -15px rgba(199, 243, 107, 0.2);
 }
 
 .glass-pill {
-  background: rgba(22, 21, 36, 0.85);
+  background: rgba(24, 24, 24, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Signature Highlight Text Color */
+/* Signature Highlight Text Colors */
 .text-gradient-coral {
-  color: #FF6B35;
+  color: #FF6B4A;
+}
+
+.text-gradient-lime {
+  color: #C7F36B;
 }
 
 .text-gradient-sunset {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FF6B35 60%, #6C4CF1 100%);
+  background: linear-gradient(135deg, #F5F3EE 0%, #FF6B4A 60%, #C7F36B 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FF6B35 0%, #6C4CF1 100%);
+  background: linear-gradient(135deg, #FF6B4A 0%, #C7F36B 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #698EA2 0%, #152935 100%);
+  background: linear-gradient(135deg, #E8DCC8 0%, #A6A39D 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -131,15 +146,15 @@
   animation-play-state: paused;
 }
 
-/* Soft Ambient Pulse Keyframe */
+/* Soft Ambient Subdued Pulse Keyframe */
 @keyframes softPulse {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.06;
     transform: scale(1);
   }
   50% {
-    opacity: 0.65;
-    transform: scale(1.05);
+    opacity: 0.15;
+    transform: scale(1.03);
   }
 }
 
@@ -170,6 +185,52 @@
 
 .animate-float-delayed {
   animation: float 4s ease-in-out 2s infinite;
+}
+
+/* Premium Shimmer Light-Sweep & Interactive Glow Button Effects */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.04) 65%,
+    transparent 100%
+  );
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.75s ease-in-out;
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::before {
+  transform: rotate(30deg) translateX(100%);
+}
+
+.btn-glow-coral {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glow-coral:hover {
+  box-shadow: 0 12px 30px -5px rgba(255, 107, 74, 0.45);
+}
+
+.btn-glow-lime {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glow-lime:hover {
+  box-shadow: 0 12px 30px -5px rgba(199, 243, 107, 0.45);
 }
 
 

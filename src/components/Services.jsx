@@ -13,9 +13,9 @@ export default function Services({ onOpenContact }) {
   };
 
   return (
-    <section id="services" className="py-24 bg-[#0F0E17] relative overflow-hidden bg-mesh-grid">
-      {/* Soft Ambient Background Glow */}
-      <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-[#FF6B35]/10 rounded-full blur-[160px] pointer-events-none animate-soft-pulse"></div>
+    <section id="services" className="py-24 bg-[#111111] relative overflow-hidden bg-mesh-grid">
+      {/* Soft Ambient Background Glow Orbs */}
+      <div className="absolute top-1/2 right-0 w-[450px] h-[450px] bg-[#FF6B4A]/[0.03] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -26,9 +26,9 @@ export default function Services({ onOpenContact }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white font-display"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F5F3EE] font-display"
           >
-            OUR <span className="text-[#FF6B35]">SERVICES</span>
+            OUR <span className="text-[#FF6B4A]">SERVICES</span>
           </motion.h2>
         </div>
 
@@ -50,21 +50,21 @@ export default function Services({ onOpenContact }) {
                 <div className="space-y-5">
                   {/* Card Number & Icon Header */}
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FF6B35]/15 text-[#FF6B35] flex items-center justify-center group-hover:bg-[#FF6B35] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-[#FF6B4A]/15 text-[#FF6B4A] flex items-center justify-center group-hover:bg-[#FF6B4A] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-md">
                       <IconComponent className="w-6 h-6" />
                     </div>
 
-                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-white/10 text-white tracking-wider border border-white/15">
+                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-white/10 text-[#F5F3EE] tracking-wider border border-white/15">
                       {service.num}
                     </span>
                   </div>
 
                   {/* Title & Short Description */}
                   <div className="space-y-2">
-                    <h3 className="text-xl font-extrabold text-white group-hover:text-[#FF6B35] transition-colors">
+                    <h3 className="text-xl font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                    <p className="text-xs sm:text-sm text-[#A6A39D] leading-relaxed font-medium">
                       {service.shortDesc}
                     </p>
                   </div>
@@ -72,8 +72,8 @@ export default function Services({ onOpenContact }) {
                   {/* Feature Checklist */}
                   <ul className="space-y-2.5 pt-2 border-t border-white/10">
                     {service.items.map((item, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-xs text-slate-200 font-semibold">
-                        <CheckCircle2 className="w-4 h-4 text-[#6C4CF1] shrink-0" />
+                      <li key={i} className="flex items-center gap-2.5 text-xs text-[#F5F3EE] font-semibold">
+                        <CheckCircle2 className="w-4 h-4 text-[#C7F36B] shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}

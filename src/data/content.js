@@ -1,9 +1,6 @@
 export const BRAND_INFO = {
   name: "Pixel Karigars",
   tagline: "HIGH-CONVERTING REELS & VISUAL STRATEGY",
-  subheadline: "Siliguri's dedicated video production studio. We engineer scroll-stopping Instagram Reels, store walkthrough shoots, and brand visual strategies built to convert views into revenue.",
-  aboutHeading: "STRATEGIC VIDEO CONTENT CRAFTED FOR BUSINESS GROWTH.",
-  aboutText: "Pixel Karigars is a premier creative video studio based in Siliguri, West Bengal. We specialize in high-converting Instagram Reels, product & store video shoots, storytelling, and end-to-end social media growth.",
   email: "pixelkarigars@gmail.com",
   phone: "+91 95472 34476",
   whatsapp: "919547234476",
@@ -16,13 +13,6 @@ export const BRAND_INFO = {
     { label: "Active Business Partners", value: "25+" },
     { label: "Client Satisfaction Rate", value: "99%" },
   ]
-};
-
-export const HERO_REEL = {
-  title: "Zero Civic Sense Reel",
-  instagramUrl: "https://www.instagram.com/reel/DZz0BmBSADU/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
-  embedUrl: "https://www.instagram.com/reel/DZz0BmBSADU/embed",
-  stats: "4,476 Views • High Engagement"
 };
 
 export const SERVICES = [
@@ -38,8 +28,7 @@ export const SERVICES = [
       "Trending Audio & Color Grading",
       "Fast 48-Hour Video Delivery"
     ],
-    highlight: "Attention Grabber",
-    badgeColor: "from-[#FF6B35] to-[#E85A24]"
+    highlight: "Attention Grabber"
   },
   {
     id: "social",
@@ -53,8 +42,7 @@ export const SERVICES = [
       "Optimal Posting Schedules",
       "Profile Grid Aesthetic Design"
     ],
-    highlight: "Full Management",
-    badgeColor: "from-[#FF6B35] to-[#E85A24]"
+    highlight: "Full Management"
   },
   {
     id: "product",
@@ -68,8 +56,7 @@ export const SERVICES = [
       "Customer Testimonial Shoots",
       "Local Brand Promotions"
     ],
-    highlight: "High Conversion",
-    badgeColor: "from-[#FF6B35] to-[#E85A24]"
+    highlight: "High Conversion"
   },
   {
     id: "strategy",
@@ -83,8 +70,7 @@ export const SERVICES = [
       "Target Audience Positioning",
       "Offer & CTA Optimizations"
     ],
-    highlight: "Growth Engine",
-    badgeColor: "from-[#FF6B35] to-[#E85A24]"
+    highlight: "Growth Engine"
   },
   {
     id: "design",
@@ -98,8 +84,7 @@ export const SERVICES = [
       "High-Click Ad Graphics",
       "Visual Brand Assets"
     ],
-    highlight: "Visual Impact",
-    badgeColor: "from-[#FF6B35] to-[#E85A24]"
+    highlight: "Visual Impact"
   }
 ];
 
@@ -175,18 +160,18 @@ export const PORTFOLIO = [
     clientQuote: "Loved the color grading and quick pacing!"
   },
   {
-    id: "hsr-lifestyle",
+    id: "himalyan-sage-restaurant",
     featured: false,
-    title: "HSR Fashion & Lifestyle Reel",
-    category: "Fashion & Lifestyle",
-    businessType: "Apparel & Retail Shoot",
-    description: "Trendy vertical reel showcasing modern apparel styling with rhythmic cuts and viral social hooks.",
-    tags: ["Fashion Reel", "Apparel Shoot", "Lifestyle"],
-    stats: "9,150 Views • High Reach",
-    videoPoster: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/reel-hsr.mp4",
+    title: "Himalyan Sage Restaurant",
+    category: "Gourmet & Luxury",
+    businessType: "Restaurant & Culinary Shoot",
+    description: "Atmospheric culinary walkthrough reel for Himalayan Sage Restaurant capturing gourmet dishes and vibrant ambiance.",
+    tags: ["Restaurant Shoot", "Food Reel", "Culinary"],
+    stats: "10,500+ Views • High Footfall",
+    videoPoster: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    videoUrl: "/videos/Himalyan-sage-resturant.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Boosted our online product sales within 3 days."
+    clientQuote: "Brought in foodies and table reservations straight from Instagram!"
   },
   {
     id: "kass-trip",
@@ -280,8 +265,7 @@ export const PRICING_PLANS = [
       { name: "Editing & Sound Mix", value: "Included" },
       { name: "Support", value: "Monthly Account Review" }
     ],
-    ctaText: "Choose Starter",
-    accent: "border-slate-300 hover:border-[#E11D48]"
+    ctaText: "Choose Starter"
   },
   {
     id: "growth",
@@ -298,8 +282,7 @@ export const PRICING_PLANS = [
       { name: "On-Site Shoot / Editing", value: "Priority Production" },
       { name: "Support & Management", value: "Dedicated Priority Growth Support" }
     ],
-    ctaText: "Get Started Growth",
-    accent: "border-[#E11D48] bg-rose-500/5 shadow-xl shadow-rose-500/10"
+    ctaText: "Get Started Growth"
   },
   {
     id: "custom",
@@ -316,8 +299,7 @@ export const PRICING_PLANS = [
       { name: "Shoots & Special FX", value: "Multi-Day Shoots Included" },
       { name: "Support", value: "24/7 VIP Channel Support" }
     ],
-    ctaText: "Request Custom Package",
-    accent: "border-slate-300 hover:border-[#E11D48]"
+    ctaText: "Request Custom Package"
   }
 ];
 

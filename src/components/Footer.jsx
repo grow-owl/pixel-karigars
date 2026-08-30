@@ -19,7 +19,7 @@ export default function Footer() {
       <div className="glass-panel rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/12 shadow-xl bg-mesh-grid">
         
         {/* Soft Ambient Background Glow Orbs */}
-        <div className="absolute top-0 right-10 w-[300px] h-[300px] bg-[#FF6B35]/[0.08] rounded-full blur-[140px] pointer-events-none"></div>
+        <div className="absolute top-0 right-10 w-[300px] h-[300px] bg-[#FF6B4A]/[0.02] rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="relative z-10 space-y-6">
 
@@ -38,7 +38,7 @@ export default function Footer() {
                   href={BRAND_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 transition-all shadow-md cursor-pointer"
                   title="Follow on Instagram"
                 >
                   <InstagramIcon className="w-4 h-4" />
@@ -49,7 +49,7 @@ export default function Footer() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#25D366] hover:bg-[#25D366] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#C7F36B] hover:bg-[#C7F36B] hover:text-[#111111] hover:scale-110 transition-all shadow-md cursor-pointer"
                   title="Chat on WhatsApp"
                 >
                   <MessageSquare className="w-4 h-4" />
@@ -58,7 +58,7 @@ export default function Footer() {
                 {/* Email Icon */}
                 <a
                   href={`mailto:${BRAND_INFO.email}`}
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
                   title="Send Email"
                 >
                   <Mail className="w-4 h-4" />
@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
 
             {/* CENTER: Compact Nav Links */}
-            <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300">
+            <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-[#A6A39D]">
               {[
                 { name: 'About Us', href: '#' },
                 { name: 'Services', href: '#services' },
@@ -78,7 +78,7 @@ export default function Footer() {
                 <a 
                   key={i}
                   href={link.href} 
-                  className="hover:text-[#FF6B35] transition-colors"
+                  className="hover:text-[#FF6B4A] transition-colors"
                 >
                   {link.name}
                 </a>
@@ -87,28 +87,28 @@ export default function Footer() {
 
             {/* RIGHT: Location & Back to Top */}
             <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-3">
-              <div className="text-[11px] text-slate-300 font-medium">
+              <div className="text-[11px] text-[#A6A39D] font-medium">
                 <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#FF6B35] shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-[#FF6B4A] shrink-0" />
                   <span className="truncate">{BRAND_INFO.location}</span>
                 </div>
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={scrollToTop}
-                className="p-2.5 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B35] hover:border-[#FF6B35] transition-all cursor-pointer shadow-md flex items-center justify-center shrink-0"
+                className="p-2.5 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B4A] hover:border-[#FF6B4A] transition-all cursor-pointer shadow-md hover:shadow-xl hover:shadow-[#FF6B4A]/40 flex items-center justify-center shrink-0 group btn-glow-coral"
                 title="Back to top"
               >
-                <ArrowUp className="w-4 h-4 text-white" />
+                <ArrowUp className="w-4 h-4 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
               </motion.button>
             </div>
 
           </div>
 
           {/* Bottom Copyright & Credit Bar */}
-          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400 font-medium text-center sm:text-left">
+          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#A6A39D] font-medium text-center sm:text-left">
             <p>
               © 2026 Pixel Karigars. All rights reserved.
             </p>
@@ -118,7 +118,7 @@ export default function Footer() {
                 href="https://www.growowl.online/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#FF6B35] font-bold hover:underline transition-colors"
+                className="text-[#F5F3EE] hover:text-[#FF6B4A] font-bold hover:underline transition-colors"
               >
                 GrowOwl
               </a>

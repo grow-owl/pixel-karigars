@@ -9,6 +9,7 @@ import {
   Share2, 
   Sparkles, 
   ArrowRight, 
+  ArrowUpRight,
   CheckCircle2, 
   Video,
   Clock,
@@ -187,10 +188,10 @@ export default function Hero({ onOpenContact }) {
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars,%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business!`;
 
   return (
-    <section ref={heroRef} id="about" className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#0F0E17] bg-mesh-grid">
+    <section ref={heroRef} id="about" className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#111111] bg-mesh-grid">
       {/* Background Soft Mesh Glow */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B35]/15 rounded-full blur-[170px] pointer-events-none animate-soft-pulse"></div>
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#6C4CF1]/15 rounded-full blur-[170px] pointer-events-none animate-soft-pulse"></div>
+      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
+      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -202,38 +203,61 @@ export default function Hero({ onOpenContact }) {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-7 text-center lg:text-left"
           >
+            {/* High-Converting Clickable Promo Offer Badge Redirecting to Instagram */}
+            <motion.a
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              href={BRAND_INFO.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818] border border-[#C7F36B]/20 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 hover:border-[#C7F36B]/40 transition-all backdrop-blur-xl select-none group cursor-pointer btn-shimmer"
+              title="Claim 10% OFF on Instagram"
+            >
+              <div className="relative flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C7F36B]"></span>
+                <span className="absolute w-2.5 h-2.5 rounded-full bg-[#C7F36B] animate-ping opacity-75"></span>
+              </div>
+              <span className="text-xs sm:text-sm font-extrabold text-[#F5F3EE] tracking-wide flex items-center gap-1.5">
+                <span>LIMITED OFFER: <span className="text-[#C7F36B]">Get Extra 10% OFF!</span></span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#C7F36B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              </span>
+            </motion.a>
+
             {/* Clean, Minimal Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] font-display">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F5F3EE] leading-[1.15] font-display">
               HIGH-CONVERTING REELS <br />
-              FOR <span className="text-[#FF6B35]">YOUR BRAND.</span>
+              FOR <span className="text-[#FF6B4A]">YOUR BRAND.</span>
             </h1>
 
             {/* Short Minimal Subheadline */}
-            <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+            <p className="text-sm sm:text-base text-[#A6A39D] max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
               Premium video shoots & Instagram reels engineered for organic growth.
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onOpenContact}
-                className="w-full sm:w-auto px-7 py-4 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs sm:text-sm shadow-xl shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/30 transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
+                className="w-full sm:w-auto px-7 py-4 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs sm:text-sm shadow-md shadow-[#E85536]/20 hover:shadow-lg hover:shadow-[#FF6B4A]/30 transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer btn-shimmer"
               >
                 <span>Let's Work Together</span>
-                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform duration-300" />
               </motion.button>
 
               <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.97 }}
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#25D366]/15 border border-[#25D366]/35 text-[#25D366] font-bold text-xs sm:text-sm hover:bg-[#25D366]/25 transition-all flex items-center justify-center gap-2.5 shadow-md backdrop-blur-md group"
+                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#C7F36B]/10 border border-[#C7F36B]/20 text-[#C7F36B] font-bold text-xs sm:text-sm hover:bg-[#C7F36B]/15 hover:border-[#C7F36B]/40 transition-all flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 backdrop-blur-md group btn-shimmer"
               >
-                <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                <MessageSquare className="w-4 h-4 text-[#C7F36B] group-hover:scale-110 transition-transform duration-300" />
                 <span>Chat on WhatsApp</span>
               </motion.a>
             </div>
@@ -241,16 +265,16 @@ export default function Hero({ onOpenContact }) {
             {/* Trust Highlights */}
             <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 max-w-xl mx-auto lg:mx-0">
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B35] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">50+ Viral Reels</span>
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
+                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">50+ Viral Reels</span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#6C4CF1] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">500K+ Organic Reach</span>
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#C7F36B] shrink-0" />
+                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">500K+ Organic Reach</span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B35] shrink-0" />
-                <span className="text-xs sm:text-sm text-slate-200 font-semibold whitespace-nowrap">Siliguri Studio</span>
+                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
+                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">Siliguri Studio</span>
               </div>
             </div>
           </motion.div>
@@ -263,10 +287,10 @@ export default function Hero({ onOpenContact }) {
             className="lg:col-span-5 flex flex-col items-center justify-center relative"
           >
             {/* Ambient Background Halo */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B35]/20 via-[#6C4CF1]/15 to-[#FF6B35]/20 rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B4A]/[0.04] via-[#C7F36B]/[0.03] to-[#FF6B4A]/[0.04] rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
 
             {/* Sleek iPhone 16 Pro Frame */}
-            <div className="relative w-[290px] xs:w-[320px] sm:w-[355px] aspect-reel rounded-[44px] sm:rounded-[48px] overflow-hidden bg-black shadow-2xl border-[2px] border-white/20 group hover:border-[#FF6B35]/50 transition-all duration-300">
+            <div className="relative w-[290px] xs:w-[320px] sm:w-[355px] aspect-reel rounded-[44px] sm:rounded-[48px] overflow-hidden bg-black shadow-xl border border-white/10 group hover:border-[#FF6B4A]/25 transition-all duration-300">
               
               {/* Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-22 h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
@@ -304,7 +328,7 @@ export default function Hero({ onOpenContact }) {
                 <div className="absolute top-8 left-0 right-0 px-4 flex items-center justify-between z-40 pointer-events-none">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-black tracking-wider text-white bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
-                      <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-ping"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#FF6B4A] animate-ping"></span>
                       REEL SHOWCASE
                     </span>
                   </div>
@@ -318,13 +342,13 @@ export default function Hero({ onOpenContact }) {
                     >
                       {isMuted ? (
                         <>
-                          <VolumeX className="w-3.5 h-3.5 text-[#FF6B35]" />
-                          <span className="text-[9px] font-extrabold text-[#FF6B35]">TAP AUDIO</span>
+                          <VolumeX className="w-3.5 h-3.5 text-[#FF6B4A]" />
+                          <span className="text-[9px] font-extrabold text-[#FF6B4A]">TAP AUDIO</span>
                         </>
                       ) : (
                         <>
-                          <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                          <span className="text-[9px] font-extrabold text-emerald-300">AUDIO ON</span>
+                          <Volume2 className="w-3.5 h-3.5 text-[#C7F36B] animate-pulse" />
+                          <span className="text-[9px] font-extrabold text-[#C7F36B]">AUDIO ON</span>
                         </>
                       )}
                     </button>
@@ -337,7 +361,7 @@ export default function Hero({ onOpenContact }) {
                     onClick={togglePlay}
                     className="absolute inset-0 bg-black/40 flex items-center justify-center z-30 cursor-pointer"
                   >
-                    <div className="w-14 h-14 rounded-full bg-[#FF6B35] text-white flex items-center justify-center shadow-2xl pl-1 animate-bounce">
+                    <div className="w-14 h-14 rounded-full bg-[#FF6B4A] text-white flex items-center justify-center shadow-2xl pl-1 animate-bounce">
                       <Play className="w-7 h-7 fill-white" />
                     </div>
                   </div>
@@ -349,22 +373,22 @@ export default function Hero({ onOpenContact }) {
                     onClick={toggleLike}
                     className="flex flex-col items-center gap-1 group/btn cursor-pointer"
                   >
-                    <div className={`p-2 rounded-full bg-black/60 backdrop-blur-md transition-all ${liked ? 'text-[#FF6B35] scale-110' : 'text-white hover:text-[#FF6B35]'}`}>
-                      <Heart className={`w-5 h-5 ${liked ? 'fill-[#FF6B35]' : ''}`} />
+                    <div className={`p-2 rounded-full bg-black/60 backdrop-blur-md transition-all ${liked ? 'text-[#FF6B4A] scale-110' : 'text-white hover:text-[#FF6B4A]'}`}>
+                      <Heart className={`w-5 h-5 ${liked ? 'fill-[#FF6B4A]' : ''}`} />
                     </div>
                     <span className="text-[10px] font-bold text-white shadow-sm">
                       {(likeCount / 1000).toFixed(1)}k
                     </span>
                   </button>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B35] cursor-pointer">
+                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
                     <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
                       <MessageCircle className="w-5 h-5" />
                     </div>
                     <span className="text-[10px] font-bold text-white">482</span>
                   </button>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B35] cursor-pointer">
+                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
                     <div className="p-2 rounded-full bg-black/60 backdrop-blur-md">
                       <Share2 className="w-5 h-5" />
                     </div>
@@ -375,7 +399,7 @@ export default function Hero({ onOpenContact }) {
                 {/* Instagram Profile Overlay Footer */}
                 <div className="absolute bottom-3 left-3 right-12 z-40 text-left text-white space-y-1.5 bg-gradient-to-t from-black/95 via-black/65 to-transparent p-3 rounded-2xl">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-[#FF6B35] flex items-center justify-center p-0.5 border border-white shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-[#FF6B4A] flex items-center justify-center p-0.5 border border-white shrink-0">
                       <Logo size="small" showText={false} />
                     </div>
                     <span className="text-[11px] font-bold text-white tracking-wide truncate">
@@ -385,18 +409,18 @@ export default function Hero({ onOpenContact }) {
                       href={BRAND_INFO.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[9px] px-2 py-0.5 rounded-full bg-[#FF6B35] hover:bg-[#E85A24] text-white font-black shrink-0 transition-colors shadow-sm"
+                      className="text-[9px] px-2 py-0.5 rounded-full bg-[#FF6B4A] hover:bg-[#E85536] text-white font-black shrink-0 transition-colors shadow-sm"
                     >
                       Follow
                     </a>
                   </div>
 
-                  <p className="text-[10px] text-slate-200 line-clamp-2 font-medium leading-snug">
+                  <p className="text-[10px] text-[#F5F3EE] line-clamp-2 font-medium leading-snug">
                     Turning views into real customers for Siliguri brands. 🚀 #PixelKarigars #ReelsProduction #BrandGrowth
                   </p>
 
-                  <div className="flex items-center gap-1.5 text-[9px] text-slate-300">
-                    <Sparkles className="w-3 h-3 text-[#FF6B35] animate-spin shrink-0" />
+                  <div className="flex items-center gap-1.5 text-[9px] text-[#A6A39D]">
+                    <Sparkles className="w-3 h-3 text-[#FF6B4A] animate-spin shrink-0" />
                     <span className="truncate">Original Production • Pixel Karigars Studio</span>
                   </div>
                 </div>

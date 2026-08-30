@@ -61,7 +61,7 @@ export default function Navbar({ onOpenContact }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0F0E17]/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl'
+          ? 'bg-[#111111]/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl'
           : 'bg-transparent py-5'
       }`}
     >
@@ -74,13 +74,13 @@ export default function Navbar({ onOpenContact }) {
           </a>
 
           {/* Desktop Nav Links in Floating Glass Pill */}
-          <nav className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#161524]/80 border border-white/10 backdrop-blur-md shadow-lg">
+          <nav className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#181818]/80 border border-white/10 backdrop-blur-md shadow-lg">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs font-bold text-slate-300 hover:text-[#FF6B35] px-3.5 py-1.5 rounded-full transition-all hover:bg-white/10"
+                className="text-xs font-bold text-[#A6A39D] hover:text-[#FF6B4A] px-3.5 py-1.5 rounded-full transition-all hover:bg-white/10"
               >
                 {link.name}
               </a>
@@ -93,20 +93,20 @@ export default function Navbar({ onOpenContact }) {
               href={BRAND_INFO.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-white/10 border border-white/15 text-[#FF6B35] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white hover:border-transparent hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-md group cursor-pointer"
+              className="p-2.5 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-md group cursor-pointer"
               title="Visit Instagram"
             >
-              <InstagramIcon className="w-4 h-4 text-[#FF6B35] group-hover:text-white transition-colors" />
+              <InstagramIcon className="w-4 h-4 text-[#FF6B4A] group-hover:text-white transition-colors" />
             </a>
 
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={onOpenContact}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 group cursor-pointer"
+              className="px-5.5 py-2.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs shadow-md shadow-[#E85536]/20 hover:shadow-xl hover:shadow-[#FF6B4A]/30 transition-all duration-300 flex items-center gap-1.5 group cursor-pointer btn-shimmer"
             >
               <span>Get Started</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-300" />
             </motion.button>
           </div>
 
@@ -117,7 +117,7 @@ export default function Navbar({ onOpenContact }) {
               className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-white focus:outline-none cursor-pointer active:scale-95 transition-transform"
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF6B35]" /> : <Menu className="w-5 h-5 text-white" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF6B4A]" /> : <Menu className="w-5 h-5 text-white" />}
             </button>
           </div>
 
@@ -131,16 +131,16 @@ export default function Navbar({ onOpenContact }) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-[#161524]/98 backdrop-blur-2xl border-b border-white/15 px-5 pt-5 pb-7 space-y-4 shadow-2xl relative z-50"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#181818] border-b border-white/10 px-4 pt-2 pb-6 space-y-4 shadow-2xl overflow-hidden"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col space-y-2 pt-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="px-4 py-3 rounded-xl font-bold text-sm text-slate-200 hover:text-[#FF6B35] hover:bg-white/10 active:bg-white/15 transition-colors block cursor-pointer text-left"
+                  className="text-sm font-semibold text-[#F5F3EE] hover:text-[#FF6B4A] py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
                 >
                   {link.name}
                 </a>
@@ -148,16 +148,18 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             <div className="pt-4 border-t border-white/15 flex flex-col gap-3">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={(e) => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#E85A24] text-white font-bold tracking-wide text-sm text-center flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer active:scale-98"
+                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-sm text-center flex items-center justify-center gap-2 shadow-lg shadow-[#E85536]/25 hover:shadow-[#FF6B4A]/40 transition-all duration-300 cursor-pointer active:scale-98 btn-shimmer"
               >
                 <span>Book Strategy Call</span>
                 <ArrowUpRight className="w-4 h-4 text-white" />
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}

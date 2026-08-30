@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F0E17] text-[#FFFFF0] font-sans selection:bg-[#FF6B35] selection:text-white">
+    <div className="min-h-screen bg-[#111111] text-[#F5F3EE] font-sans selection:bg-[#FF6B4A] selection:text-white">
       {/* Sticky Header */}
       <Navbar onOpenContact={scrollToContact} />
 
@@ -36,6 +36,9 @@ export default function App() {
 
       {/* Marquee Banner */}
       <TickerBar />
+
+      {/* Glowing Neon Divider */}
+      <SectionDivider accent="lime" />
 
       {/* Services Section */}
       <Services onOpenContact={scrollToContact} />
