@@ -268,8 +268,8 @@ export default function Hero({ onOpenContact }) {
             {/* Ambient Background Halo */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B4A]/[0.04] via-[#C7F36B]/[0.03] to-[#FF6B4A]/[0.04] rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
 
-            {/* Sleek iPhone 16 Pro Frame - Optimized responsive sizing for mobile */}
-            <div className="relative w-[250px] xs:w-[280px] sm:w-[320px] lg:w-[355px] aspect-reel rounded-[40px] sm:rounded-[48px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300">
+            {/* Sleek iPhone 16 Pro Frame - Larger prominent responsive sizing for mobile */}
+            <div className="relative w-[285px] xs:w-[325px] sm:w-[355px] lg:w-[380px] aspect-reel rounded-[44px] sm:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300">
               
               {/* Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-22 h-3.5 sm:h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
@@ -282,7 +282,7 @@ export default function Hero({ onOpenContact }) {
                 
                 <video
                   ref={videoRef}
-                  src="/videos/hero-reel.mp4"
+                  src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071681/pixel-karigars/hero-reel.mp4"
                   poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
                   autoPlay
                   loop

@@ -65,11 +65,16 @@
 
 /* Luxe Midnight Subdued Pure Blur Card System */
 .glass-panel {
-  background: rgba(24, 24, 24, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(24, 24, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+@supports (backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px)) {
+  .glass-panel {
+    background: rgba(24, 24, 24, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 .glass-panel-hover {
@@ -89,10 +94,8 @@
 }
 
 .glass-pill {
-  background: rgba(24, 24, 24, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(24, 24, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Signature Highlight Text Colors */
@@ -132,14 +135,16 @@
 
 /* Marquee Animations */
 @keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .animate-ticker {
   display: flex;
   width: 200%;
   animation: ticker 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-ticker:hover {

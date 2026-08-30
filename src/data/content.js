@@ -99,7 +99,7 @@ export const PORTFOLIO = [
     tags: ["Luxury Shoot", "Jewellery Reel", "High Conversion"],
     stats: "12,400+ Views • 48% Footfall Jump",
     videoPoster: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/gld-final.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071674/pixel-karigars/gld-final.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "The reel quality brought in premium buyers directly from Instagram."
   },
@@ -113,7 +113,7 @@ export const PORTFOLIO = [
     tags: ["Salon Reel", "Kolkata Shoot", "Beauty & Care"],
     stats: "8,920 Views • 42 New Appointments",
     videoPoster: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/hair-saloon-kolkata.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071678/pixel-karigars/hair-saloon-kolkata.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Super professional editing and stunning visual lighting!"
   },
@@ -127,7 +127,7 @@ export const PORTFOLIO = [
     tags: ["Interior Shoot", "Showroom Walkthrough", "Architectural"],
     stats: "6,840 Views • High Lead Rate",
     videoPoster: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/js-glass-house.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071707/pixel-karigars/js-glass-house.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Increased our showroom inquiries significantly in Siliguri."
   },
@@ -141,7 +141,7 @@ export const PORTFOLIO = [
     tags: ["Real Estate", "Property Tour", "Cinematic Reel"],
     stats: "15,300 Views • 24 Qualified Enquiries",
     videoPoster: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/real-estate.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071730/pixel-karigars/real-estate.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "The video flow gave buyers a real feel of the property."
   },
@@ -155,7 +155,7 @@ export const PORTFOLIO = [
     tags: ["Grooming", "Styling Reel", "Makeover"],
     stats: "5,410 Views • High Engagement",
     videoPoster: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/saloon-sample.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071751/pixel-karigars/saloon-sample.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Loved the color grading and quick pacing!"
   },
@@ -169,7 +169,7 @@ export const PORTFOLIO = [
     tags: ["Restaurant Shoot", "Food Reel", "Culinary"],
     stats: "10,500+ Views • High Footfall",
     videoPoster: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/Himalyan-sage-resturant.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071697/pixel-karigars/Himalyan-sage-resturant.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Brought in foodies and table reservations straight from Instagram!"
   },
@@ -183,7 +183,7 @@ export const PORTFOLIO = [
     tags: ["Travel Visual", "Outdoor Shoot", "Cinematic"],
     stats: "11,800 Views • High Share Rate",
     videoPoster: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/kass-trip.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071723/pixel-karigars/kass-trip.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Captivating visuals that kept scrollers hooked till the end."
   },
@@ -197,7 +197,7 @@ export const PORTFOLIO = [
     tags: ["Brand Story", "Creative Reel", "High Reach"],
     stats: "7,640 Views • High Engagement",
     videoPoster: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    videoUrl: "/videos/reel-3.mp4",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071743/pixel-karigars/reel-3.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Exactly what we needed to build trust with local clients."
   }

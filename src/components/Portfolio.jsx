@@ -85,21 +85,18 @@ export default function Portfolio({ onOpenModal }) {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.4 }}
-                className="w-[245px] sm:w-[275px] shrink-0 snap-start glass-panel rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
+                className="w-[265px] sm:w-[285px] shrink-0 snap-start glass-panel rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
               >
                 {/* Real Video Reel Card Preview (Plays on Tap/Click) */}
                 <div
                   onClick={() => onOpenModal(project)}
-                  className="relative w-full h-[300px] sm:h-[340px] aspect-[9/14] overflow-hidden cursor-pointer group/img bg-black"
+                  className="relative w-full h-[320px] sm:h-[350px] aspect-[9/14] overflow-hidden cursor-pointer group/img bg-black"
                 >
-                  <video
-                    src={project.videoUrl}
-                    poster={project.videoPoster}
-                    loop
-                    muted
-                    playsInline
-                    webkit-playsinline="true"
-                    preload="metadata"
+                  <img
+                    src={project.videoPoster}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 pointer-events-none"
                   />
                   
