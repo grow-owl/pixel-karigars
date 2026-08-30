@@ -21,7 +21,7 @@ import Logo from './Logo';
 
 export default function Hero({ onOpenContact }) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [liked, setLiked] = useState(true);
   const [likeCount, setLikeCount] = useState(4476);
 
@@ -29,44 +29,35 @@ export default function Hero({ onOpenContact }) {
   const heroRef = useRef(null);
   const userMutedManualRef = useRef(false);
 
-  // Autoplay handler with audio enabled by default
+  // iOS Safari compliant autoplay handler: Start MUTED initially to satisfy iOS autoplay policy
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     video.playsInline = true;
-    video.setAttribute('playsinline', '');
+    video.setAttribute('playsinline', 'true');
     video.setAttribute('webkit-playsinline', 'true');
+    video.muted = true;
+    setIsMuted(true);
 
-    // Attempt unmuted audio playback on load
-    const attemptUnmutedAutoplay = async () => {
+    const startAutoplay = async () => {
       try {
-        video.muted = false;
-        setIsMuted(false);
         await video.play();
         setIsPlaying(true);
       } catch (err) {
-        // Fallback: If browser blocks unmuted autoplay without user gesture, start muted temporarily
-        video.muted = true;
-        setIsMuted(true);
-        try {
-          await video.play();
-          setIsPlaying(true);
-        } catch (e) {
-          console.log("Muted autoplay fallback error:", e);
-        }
+        console.log("Autoplay initial start:", err);
       }
     };
 
-    attemptUnmutedAutoplay();
+    startAutoplay();
 
-    // Enable unmuted audio on first interaction anywhere on screen
+    // Enable unmuted audio on first explicit touch/click if user hasn't manually muted
     const enableAudioOnGesture = () => {
-      if (video && !userMutedManualRef.current) {
-        video.muted = false;
+      if (videoRef.current && !userMutedManualRef.current) {
+        videoRef.current.muted = false;
         setIsMuted(false);
-        if (video.paused) {
-          video.play().then(() => setIsPlaying(true)).catch(() => {});
+        if (videoRef.current.paused) {
+          videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
         }
       }
       removeGestureListeners();
@@ -76,22 +67,16 @@ export default function Hero({ onOpenContact }) {
       window.removeEventListener('pointerdown', enableAudioOnGesture, true);
       window.removeEventListener('touchstart', enableAudioOnGesture, true);
       window.removeEventListener('click', enableAudioOnGesture, true);
-      window.removeEventListener('scroll', enableAudioOnGesture, true);
-      window.removeEventListener('mousemove', enableAudioOnGesture, true);
-      window.removeEventListener('keydown', enableAudioOnGesture, true);
     };
 
     window.addEventListener('pointerdown', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('touchstart', enableAudioOnGesture, { capture: true, once: true });
     window.addEventListener('click', enableAudioOnGesture, { capture: true, once: true });
-    window.addEventListener('scroll', enableAudioOnGesture, { capture: true, once: true });
-    window.addEventListener('mousemove', enableAudioOnGesture, { capture: true, once: true });
-    window.addEventListener('keydown', enableAudioOnGesture, { capture: true, once: true });
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible' && video) {
-        if (video.paused) {
-          video.play().then(() => setIsPlaying(true)).catch(() => {});
+      if (document.visibilityState === 'visible' && videoRef.current) {
+        if (videoRef.current.paused) {
+          videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
         }
       }
     };
@@ -113,19 +98,13 @@ export default function Hero({ onOpenContact }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting || entry.intersectionRatio < 0.2) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+            if (video.paused) {
+              video.play().then(() => setIsPlaying(true)).catch(() => {});
+            }
+          } else {
             video.pause();
             setIsPlaying(false);
-          } else {
-            if (!userMutedManualRef.current) {
-              video.muted = false;
-              setIsMuted(false);
-            }
-            video.play().then(() => setIsPlaying(true)).catch(() => {
-              video.muted = true;
-              setIsMuted(true);
-              video.play().then(() => setIsPlaying(true)).catch(() => {});
-            });
           }
         });
       },
@@ -188,20 +167,20 @@ export default function Hero({ onOpenContact }) {
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars,%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business!`;
 
   return (
-    <section ref={heroRef} id="about" className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#111111] bg-mesh-grid">
+    <section ref={heroRef} id="about" className="relative pt-24 pb-16 md:pt-36 md:pb-28 overflow-hidden bg-[#111111] bg-mesh-grid">
       {/* Background Soft Mesh Glow */}
       <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
       <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* Left Side: Clean, High-Impact Agency Copy */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-7 text-center lg:text-left"
+            className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
             {/* High-Converting Clickable Promo Offer Badge Redirecting to Instagram */}
             <motion.a
@@ -279,23 +258,23 @@ export default function Hero({ onOpenContact }) {
             </div>
           </motion.div>
 
-          {/* Right Side: Clean iPhone 16 Pro Reel Showcase (No clutter) */}
+          {/* Right Side: Clean iPhone 16 Pro Reel Showcase */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col items-center justify-center relative"
+            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-2 lg:mt-0"
           >
             {/* Ambient Background Halo */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6B4A]/[0.04] via-[#C7F36B]/[0.03] to-[#FF6B4A]/[0.04] rounded-[50px] blur-3xl -z-10 transform scale-105 pointer-events-none"></div>
 
-            {/* Sleek iPhone 16 Pro Frame */}
-            <div className="relative w-[290px] xs:w-[320px] sm:w-[355px] aspect-reel rounded-[44px] sm:rounded-[48px] overflow-hidden bg-black shadow-xl border border-white/10 group hover:border-[#FF6B4A]/25 transition-all duration-300">
+            {/* Sleek iPhone 16 Pro Frame - Optimized responsive sizing for mobile */}
+            <div className="relative w-[250px] xs:w-[280px] sm:w-[320px] lg:w-[355px] aspect-reel rounded-[40px] sm:rounded-[48px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300">
               
               {/* Dynamic Island Notch */}
-              <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-22 h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#0a0a0d]"></div>
-                <div className="w-1.5 h-1.5 rounded-full bg-[#101018]"></div>
+              <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-22 h-3.5 sm:h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
+                <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#0a0a0d]"></div>
+                <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#101018]"></div>
               </div>
 
               {/* Reel Video Player */}
@@ -304,6 +283,7 @@ export default function Hero({ onOpenContact }) {
                 <video
                   ref={videoRef}
                   src="/videos/hero-reel.mp4"
+                  poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
                   autoPlay
                   loop
                   muted={isMuted}
@@ -320,7 +300,7 @@ export default function Hero({ onOpenContact }) {
                       videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
                     }
                   }}
-                  className="w-full h-full object-cover cursor-pointer rounded-[46px]"
+                  className="w-full h-full object-cover cursor-pointer rounded-[40px] sm:rounded-[46px]"
                   onClick={togglePlay}
                 />
 

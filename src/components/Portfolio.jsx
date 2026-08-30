@@ -94,6 +94,7 @@ export default function Portfolio({ onOpenModal }) {
                 >
                   <video
                     src={project.videoUrl}
+                    poster={project.videoPoster}
                     loop
                     muted
                     playsInline

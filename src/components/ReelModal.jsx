@@ -5,7 +5,7 @@ import InstagramIcon from './InstagramIcon';
 
 export default function ReelModal({ project, onClose }) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -17,20 +17,19 @@ export default function ReelModal({ project, onClose }) {
     const video = videoRef.current;
     if (video) {
       video.playsInline = true;
-      video.setAttribute('playsinline', '');
+      video.setAttribute('playsinline', 'true');
       video.setAttribute('webkit-playsinline', 'true');
+      video.muted = true;
+      setIsMuted(true);
 
-      // Attempt playback on modal open (fallback to muted if mobile blocks audio)
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
             setIsPlaying(true);
           })
-          .catch(() => {
-            video.muted = true;
-            setIsMuted(true);
-            video.play().then(() => setIsPlaying(true)).catch(() => {});
+          .catch((err) => {
+            console.log("Modal video play error:", err);
           });
       }
     }
