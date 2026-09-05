@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TickerBar from './components/TickerBar';
@@ -7,8 +7,9 @@ import Portfolio from './components/Portfolio';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ReelModal from './components/ReelModal';
 import SectionDivider from './components/SectionDivider';
+
+const ReelModal = lazy(() => import('./components/ReelModal'));
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -67,12 +68,14 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Video Modal Player */}
+      {/* Video Modal Player (Lazy Loaded) */}
       {selectedProject && (
-        <ReelModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        <Suspense fallback={null}>
+          <ReelModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        </Suspense>
       )}
     </div>
   );

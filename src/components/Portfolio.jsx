@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PORTFOLIO } from '../data/content';
-import { Play, Sparkles, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 
 export default function Portfolio({ onOpenModal }) {
@@ -57,11 +57,10 @@ export default function Portfolio({ onOpenModal }) {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                  isActive
-                    ? 'bg-gradient-to-r from-[#FF6B4A] to-[#E85536] text-white shadow-lg shadow-[#FF6B4A]/25 border border-[#FF6B4A]'
-                    : 'bg-white/10 text-[#A6A39D] hover:text-[#F5F3EE] hover:bg-white/15 border border-white/15'
-                }`}
+                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition-all cursor-pointer shrink-0 ${isActive
+                  ? 'bg-gradient-to-r from-[#FF6B4A] to-[#E85536] text-white shadow-lg shadow-[#FF6B4A]/25 border border-[#FF6B4A]'
+                  : 'bg-white/10 text-[#A6A39D] hover:text-[#F5F3EE] hover:bg-white/15 border border-white/15'
+                  }`}
               >
                 {cat}
               </button>
@@ -85,12 +84,12 @@ export default function Portfolio({ onOpenModal }) {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.4 }}
-                className="w-[265px] sm:w-[285px] shrink-0 snap-start glass-panel rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
+                className="w-[210px] sm:w-[230px] shrink-0 snap-start glass-panel rounded-2xl sm:rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
               >
-                {/* Real Video Reel Card Preview (Plays on Tap/Click) */}
+                {/* Real 9:16 Video Reel Card Preview (Plays on Tap/Click) */}
                 <div
                   onClick={() => onOpenModal(project)}
-                  className="relative w-full h-[320px] sm:h-[350px] aspect-[9/14] overflow-hidden cursor-pointer group/img bg-black"
+                  className="relative w-full aspect-[2/3] overflow-hidden cursor-pointer group/img bg-black"
                 >
                   <img
                     src={project.videoPoster}
@@ -99,43 +98,48 @@ export default function Portfolio({ onOpenModal }) {
                     decoding="async"
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 pointer-events-none"
                   />
-                  
-                  {/* Dark Overlay Gradient on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent flex items-center justify-center opacity-80 group-hover/img:opacity-100 transition-opacity">
-                    <div className="w-12 h-12 rounded-full bg-[#FF6B4A]/90 text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform backdrop-blur-sm">
-                      <Play className="w-5 h-5 fill-white" />
-                    </div>
+
+                  {/* Top Reel Badges */}
+                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-20 pointer-events-none">
+                    <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-white bg-black/80 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-white/15 flex items-center gap-1 shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B4A] animate-ping"></span>
+                      REEL
+                    </span>
+                    <span className="text-[8px] sm:text-[9px] font-bold text-white/90 bg-black/70 backdrop-blur-md px-1.5 sm:px-2 py-0.5 rounded-full border border-white/10">
+                      {project.category}
+                    </span>
                   </div>
 
-                  {/* Stat Overlay at Bottom of Video */}
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2 rounded-xl bg-[#111111]/90 backdrop-blur-md border border-white/15 text-[#F5F3EE] flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-[#FF6B4A] shrink-0" />
-                    <span className="text-[10px] font-bold truncate">{project.stats}</span>
+                  {/* Dark Overlay Gradient on Hover with Play Icon */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-black/20 to-transparent flex items-center justify-center opacity-75 group-hover/img:opacity-100 transition-opacity">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FF6B4A] text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform backdrop-blur-sm">
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                    </div>
                   </div>
                 </div>
 
                 {/* Card Details Below Video */}
-                <div className="p-4 sm:p-5 space-y-2 bg-[#181818]">
-                  <h3 className="text-base font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors truncate font-display">
+                <div className="p-3 sm:p-3.5 space-y-1.5 bg-[#181818]">
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors truncate font-display">
                     {project.title}
                   </h3>
 
-                  <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                     <button
                       onClick={() => onOpenModal(project)}
-                      className="text-xs font-bold text-[#FF6B4A] hover:text-white flex items-center gap-1 cursor-pointer"
+                      className="text-[11px] sm:text-xs font-bold text-[#FF6B4A] hover:text-white flex items-center gap-1 cursor-pointer"
                     >
                       <span>Watch Reel</span>
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                     </button>
 
                     <a
                       href={project.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-bold text-[#A6A39D] hover:text-[#C7F36B] flex items-center gap-1"
+                      className="text-[11px] sm:text-xs font-bold text-[#A6A39D] hover:text-[#C7F36B] flex items-center gap-1"
                     >
-                      <InstagramIcon className="w-3.5 h-3.5 text-[#C7F36B]" />
+                      <InstagramIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C7F36B]" />
                       <span>Instagram</span>
                     </a>
                   </div>

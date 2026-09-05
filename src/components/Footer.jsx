@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, ArrowUp, MessageSquare } from 'lucide-react';
+import { MapPin, Mail, ArrowUp, MessageSquare, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
+import growOwlLogoImg from '../assets/growowl-logo.png';
 import { BRAND_INFO } from '../data/content';
 
 export default function Footer() {
@@ -108,19 +109,24 @@ export default function Footer() {
           </div>
 
           {/* Bottom Copyright & Credit Bar */}
-          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#A6A39D] font-medium text-center sm:text-left">
+          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#A6A39D] font-medium text-center sm:text-left">
             <p>
               © 2026 Pixel Karigars. All rights reserved.
             </p>
-            <p>
-              Designed & Developed by{' '}
+            <p className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
+              <span>Strategic Digital Growth Partner:</span>
               <a
-                href="https://www.growowl.online/"
+                href="https://www.growowl.online"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#F5F3EE] hover:text-[#FF6B4A] font-bold hover:underline transition-colors"
+                className="inline-flex items-center hover:opacity-80 transition-opacity"
+                title="GrowOwl"
               >
-                GrowOwl
+                <img 
+                  src={growOwlLogoImg} 
+                  alt="GrowOwl" 
+                  className="h-4 sm:h-4.5 w-auto object-contain inline-block" 
+                />
               </a>
             </p>
           </div>

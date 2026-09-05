@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, Volume2, VolumeX, Sparkles, ExternalLink } from 'lucide-react';
+import { X, Play, Volume2, VolumeX, ExternalLink } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 
 export default function ReelModal({ project, onClose }) {
@@ -142,11 +142,6 @@ export default function ReelModal({ project, onClose }) {
             <p className="text-xs sm:text-sm text-[#A6A39D] leading-relaxed font-medium">
               {project.description}
             </p>
-
-            <div className="p-4 rounded-2xl bg-[#FF6B4A]/15 border border-[#FF6B4A]/25 text-[#FF6B4A] text-xs font-bold flex items-center gap-2">
-              <Sparkles className="w-4 h-4 shrink-0 text-[#FF6B4A]" />
-              <span>{project.stats}</span>
-            </div>
 
             {project.clientQuote && (
               <blockquote className="italic text-xs text-[#A6A39D] border-l-2 border-[#FF6B4A] pl-3 py-1">

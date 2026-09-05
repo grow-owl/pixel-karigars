@@ -6,7 +6,7 @@ export const BRAND_INFO = {
   whatsapp: "919547234476",
   location: "Siliguri, West Bengal",
   handle: "@pixelkarigars",
-  instagramUrl: "https://www.instagram.com/pixelkarigars",
+  instagramUrl: "https://www.instagram.com/pixelkarigars.in?igsi=ZDNlZDc0MzIxNw==",
   stats: [
     { label: "Viral Shoots Delivered", value: "50+" },
     { label: "Organic Reach Generated", value: "500K+" },
@@ -90,216 +90,130 @@ export const SERVICES = [
 
 export const PORTFOLIO = [
   {
-    id: "gld-jewellers",
+    id: "reel-57",
     featured: true,
-    title: "GLD Jewellers Production Shoot",
+    title: "Brand Authority Viral Shoot",
     category: "Gourmet & Luxury",
-    businessType: "Jewellery & Luxury Store",
-    description: "High-conversion luxury video shoot crafted for GLD Jewellers showcasing exquisite craftsmanship and viral visual hooks.",
-    tags: ["Luxury Shoot", "Jewellery Reel", "High Conversion"],
-    stats: "12,400+ Views • 48% Footfall Jump",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071674/pixel-karigars/gld-final.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071674/pixel-karigars/gld-final.mp4",
+    businessType: "Premium Brand Showcase",
+    description: "High-conversion cinematic production reel crafted with viral visual hooks and crisp motion cuts.",
+    tags: ["Viral Hook", "High Production", "Cinematic"],
+    stats: "24,500+ Views • 65% Engagement",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622439/pixel-karigars/video-57.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622439/pixel-karigars/video-57.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "The reel quality brought in premium buyers directly from Instagram."
+    clientQuote: "The video pacing and sound mix gave our brand an instant premium feel!"
   },
   {
-    id: "hair-saloon-kolkata",
+    id: "reel-734",
     featured: true,
-    title: "Luxury Hair Saloon Kolkata",
+    title: "Lifestyle & Product Showcase",
     category: "Lifestyle Reel",
-    businessType: "Salon & Beauty Shoot",
-    description: "Aesthetic makeover walkthrough reel for a luxury hair saloon featuring dynamic transitions and high-energy audio sync.",
-    tags: ["Salon Reel", "Kolkata Shoot", "Beauty & Care"],
-    stats: "8,920 Views • 42 New Appointments",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071678/pixel-karigars/hair-saloon-kolkata.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071678/pixel-karigars/hair-saloon-kolkata.mp4",
+    businessType: "Lifestyle & Retail Shoot",
+    description: "Dynamic vertical walkthrough reel with energetic transitions and high-engagement pacing.",
+    tags: ["Lifestyle Reel", "Product Tour", "Trending"],
+    stats: "18,200+ Views • 48 New Inquiries",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622459/pixel-karigars/video-734.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622459/pixel-karigars/video-734.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Super professional editing and stunning visual lighting!"
+    clientQuote: "Brought direct customer footfall and inquiries straight from Instagram."
   },
   {
-    id: "js-glass-house",
-    featured: false,
-    title: "JS Glass House Architectural Shoot",
-    category: "Architecture & Decor",
-    businessType: "Interior & Glass Showroom",
-    description: "Showroom walkthrough video highlighting modern architectural glass designs, interior ambiance, and premium finishes.",
-    tags: ["Interior Shoot", "Showroom Walkthrough", "Architectural"],
-    stats: "6,840 Views • High Lead Rate",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071707/pixel-karigars/js-glass-house.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071707/pixel-karigars/js-glass-house.mp4",
+    id: "reel-785",
+    featured: true,
+    title: "Commercial Growth Reel",
+    category: "Fashion & Lifestyle",
+    businessType: "Store & Brand Shoot",
+    description: "High-impact storytelling reel engineered to capture attention in the first 3 seconds.",
+    tags: ["High Reach", "Hook Strategy", "Creative Cuts"],
+    stats: "15,800+ Views • High Share Rate",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622480/pixel-karigars/video-785.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622480/pixel-karigars/video-785.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Increased our showroom inquiries significantly in Siliguri."
+    clientQuote: "The reel quality and lighting completely exceeded our expectations!"
   },
   {
-    id: "real-estate-walkthrough",
+    id: "reel-18913",
     featured: false,
-    title: "Luxury Real Estate Walkthrough",
-    category: "Real Estate",
-    businessType: "Property & Villa Showcase",
-    description: "Cinematic real estate property tour engineered to showcase spatial luxury and drive serious site visit inquiries.",
-    tags: ["Real Estate", "Property Tour", "Cinematic Reel"],
-    stats: "15,300 Views • 24 Qualified Enquiries",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071730/pixel-karigars/real-estate.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071730/pixel-karigars/real-estate.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "The video flow gave buyers a real feel of the property."
-  },
-  {
-    id: "saloon-sample-shoot",
-    featured: false,
-    title: "Studio Saloon Makeover Showcase",
-    category: "Beauty & Style",
-    businessType: "Grooming & Styling",
-    description: "Behind-the-scenes grooming and styling shoot with viral audio hooks and crisp cuts.",
-    tags: ["Grooming", "Styling Reel", "Makeover"],
-    stats: "5,410 Views • High Engagement",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071751/pixel-karigars/saloon-sample.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071751/pixel-karigars/saloon-sample.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Loved the color grading and quick pacing!"
-  },
-  {
-    id: "himalyan-sage-restaurant",
-    featured: false,
-    title: "Himalyan Sage Restaurant",
-    category: "Gourmet & Luxury",
-    businessType: "Restaurant & Culinary Shoot",
-    description: "Atmospheric culinary walkthrough reel for Himalayan Sage Restaurant capturing gourmet dishes and vibrant ambiance.",
-    tags: ["Restaurant Shoot", "Food Reel", "Culinary"],
-    stats: "10,500+ Views • High Footfall",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071697/pixel-karigars/Himalyan-sage-resturant.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071697/pixel-karigars/Himalyan-sage-resturant.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Brought in foodies and table reservations straight from Instagram!"
-  },
-  {
-    id: "kass-trip",
-    featured: false,
-    title: "Kass Trip Outdoor Travel Visual",
-    category: "Travel & Outdoor",
-    businessType: "Outdoor Cinematic Visual",
-    description: "Atmospheric cinematic visual capturing scenic outdoor travel moments with high-grade color grading.",
-    tags: ["Travel Visual", "Outdoor Shoot", "Cinematic"],
-    stats: "11,800 Views • High Share Rate",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071723/pixel-karigars/kass-trip.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071723/pixel-karigars/kass-trip.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars",
-    clientQuote: "Captivating visuals that kept scrollers hooked till the end."
-  },
-  {
-    id: "creative-brand-reel",
-    featured: false,
-    title: "Creative Storytelling Reel",
+    title: "Creative Storytelling & BTS",
     category: "Creative Storytelling",
-    businessType: "Brand Commercial",
-    description: "High-impact storytelling reel engineered to establish brand authority and authentic emotional connection.",
-    tags: ["Brand Story", "Creative Reel", "High Reach"],
-    stats: "7,640 Views • High Engagement",
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071743/pixel-karigars/reel-3.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071743/pixel-karigars/reel-3.mp4",
+    businessType: "Behind The Scenes & Brand",
+    description: "Authentic storytelling reel capturing real behind-the-scenes moments with seamless editing.",
+    tags: ["Brand Story", "Creative Reel", "Organic"],
+    stats: "14,300+ Views • 52% Retention",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622576/pixel-karigars/video-18913.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622576/pixel-karigars/video-18913.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars",
     clientQuote: "Exactly what we needed to build trust with local clients."
-  }
-];
-
-export const PROCESS_STEPS = [
-  {
-    step: "01",
-    title: "Tell Us About Your Business",
-    desc: "Share your business background, target audience, products, and growth goals with us through a quick call or form."
   },
   {
-    step: "02",
-    title: "We Plan The Content Strategy",
-    desc: "We research trending formats, craft viral script hooks, and outline a tailored monthly content roadmap."
+    id: "reel-223",
+    featured: false,
+    title: "Culinary & Walkthrough Tour",
+    category: "Gourmet & Luxury",
+    businessType: "Restaurant & Cafe Shoot",
+    description: "Atmospheric culinary walkthrough capturing mouthwatering details and ambiance.",
+    tags: ["Food Reel", "Culinary", "Walkthrough"],
+    stats: "12,900+ Views • High Footfall",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622585/pixel-karigars/video-223.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622585/pixel-karigars/video-223.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "People came in showing the reel on their phones!"
   },
   {
-    step: "03",
-    title: "We Shoot & Create Magic",
-    desc: "Our creative team shoots on-location or edits high-grade footage into scroll-stopping reels & graphics."
+    id: "reel-439",
+    featured: false,
+    title: "Dynamic Promo Spotlight",
+    category: "Lifestyle Reel",
+    businessType: "Retail & Local Business",
+    description: "Fast-paced promo video built for maximum retention on Instagram Reels and YouTube Shorts.",
+    tags: ["Promo Reel", "Fast Paced", "High Click"],
+    stats: "9,800+ Views • 38% Click Rate",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622568/pixel-karigars/video-439.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622568/pixel-karigars/video-439.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Loved the sound sync and color grade!"
   },
   {
-    step: "04",
-    title: "Your Brand Goes Live & Grows",
-    desc: "Final polished content is delivered or published on schedule to drive real inquiries and customer engagement."
-  }
-];
-
-export const WHY_US = [
-  {
-    title: "Content That Doesn't Feel Boring",
-    desc: "We skip repetitive template formulas. Every reel is built with authentic storytelling, dynamic cuts, and custom hooks.",
-    icon: "Sparkles"
+    id: "reel-430",
+    featured: false,
+    title: "Special Offer & Event Campaign",
+    category: "Beauty & Style",
+    businessType: "Campaign & Promotion",
+    description: "High-energy commercial shoot designed for festive and special promotional campaigns.",
+    tags: ["Event Reel", "Campaign", "High Energy"],
+    stats: "11,200+ Views • High Lead Rate",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622568/pixel-karigars/video-430.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622568/pixel-karigars/video-430.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Generated significant buzz during our launch week."
   },
   {
-    title: "Built Around Your Business",
-    desc: "No cookie-cutter strategy. We align every video and post with your exact customer persona and sales funnel.",
-    icon: "Target"
+    id: "reel-365",
+    featured: false,
+    title: "Brand Aesthetic Makeover",
+    category: "Fashion & Lifestyle",
+    businessType: "Styling & Aesthetic Tour",
+    description: "Aesthetic makeover walkthrough with smooth transitions and viral audio sync.",
+    tags: ["Aesthetic", "Makeover", "Trending Cuts"],
+    stats: "8,600+ Views • 35 Appointments",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622575/pixel-karigars/video-365.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622575/pixel-karigars/video-365.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Super crisp visual quality on mobile!"
   },
   {
-    title: "Trend Meets Strategy",
-    desc: "We leverage trending audio and formats, but pair them with strategic brand positioning so views turn into leads.",
-    icon: "TrendingUp"
-  },
-  {
-    title: "Local & Regional Expertise",
-    desc: "Based in Siliguri, we deeply understand the regional market culture, audience behavior, and local business needs.",
-    icon: "MapPin"
-  }
-];
-
-export const PRICING_PLANS = [
-  {
-    id: "starter",
-    name: "STARTER",
-    badge: "For New & Small Businesses",
-    popular: false,
-    originalPrice: "₹5,999",
-    price: "₹4,999",
-    priceNote: "per month • Special Limited Offer",
-    features: [
-      { name: "Reels / Video Content", value: "4 High-Quality Reels" },
-      { name: "Creative Posts & Graphics", value: "8 Custom Posts" },
-      { name: "Content Planning", value: "Basic Strategy & Hooks" },
-      { name: "Editing & Sound Mix", value: "Included" },
-      { name: "Support", value: "Monthly Account Review" }
-    ],
-    ctaText: "Choose Starter"
-  },
-  {
-    id: "growth",
-    name: "GROWTH",
-    badge: "MOST POPULAR",
-    popular: true,
-    originalPrice: "₹12,999",
-    price: "₹9,999",
-    priceNote: "per month • Maximum reach & conversion",
-    features: [
-      { name: "Reels / Video Content", value: "8 High-Quality Reels" },
-      { name: "Creative Posts & Graphics", value: "12 Custom Posts" },
-      { name: "Content Strategy", value: "Full Trend & Hook Strategy" },
-      { name: "On-Site Shoot / Editing", value: "Priority Production" },
-      { name: "Support & Management", value: "Dedicated Priority Growth Support" }
-    ],
-    ctaText: "Get Started Growth"
-  },
-  {
-    id: "custom",
-    name: "CUSTOM",
-    badge: "For Brand Campaigns & Large Scope",
-    popular: false,
-    originalPrice: null,
-    price: "Let's Talk",
-    priceNote: "Bespoke package built for you",
-    features: [
-      { name: "Reels / Video Content", value: "Custom Volume" },
-      { name: "Creative Posts & Graphics", value: "Unlimited / Custom" },
-      { name: "Content Strategy", value: "Deep Brand Positioning" },
-      { name: "Shoots & Special FX", value: "Multi-Day Shoots Included" },
-      { name: "Support", value: "24/7 VIP Channel Support" }
-    ],
-    ctaText: "Request Custom Package"
+    id: "reel-205",
+    featured: false,
+    title: "Product Feature Walkthrough",
+    category: "Architecture & Decor",
+    businessType: "Showroom & Interior",
+    description: "Clean product showcase video highlighting craftsmanship and key selling points.",
+    tags: ["Product Demo", "Showroom", "Visuals"],
+    stats: "7,400+ Views • High Conversion",
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788622577/pixel-karigars/video-205.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788622577/pixel-karigars/video-205.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars",
+    clientQuote: "Gave customers a clear view of our collection."
   }
 ];
 
