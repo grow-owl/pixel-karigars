@@ -114,7 +114,7 @@ export default function Footer() {
               © 2026 Pixel Karigars. All rights reserved.
             </p>
             <p className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
-              <span>Strategic Digital Growth Partner:</span>
+              <span>Created and Designed by</span>
               <a
                 href="https://www.growowl.online"
                 target="_blank"

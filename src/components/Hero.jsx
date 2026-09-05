@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
 import Logo from './Logo';
-import growOwlLogoImg from '../assets/growowl-logo.png';
 
 export default function Hero({ onOpenContact }) {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -239,48 +238,6 @@ export default function Hero({ onOpenContact }) {
               >
                 <MessageSquare className="w-4 h-4 text-[#C7F36B] group-hover:scale-110 transition-transform duration-300" />
                 <span>Chat on WhatsApp</span>
-              </motion.a>
-            </div>
-
-            {/* In Collaboration With: GrowOwl */}
-            <div className="pt-2 pb-1 flex flex-col items-center lg:items-start">
-              {/* Header Divider */}
-              <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-2">
-                <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-white/20"></div>
-                <span className="text-xs italic font-serif text-[#A6A39D] tracking-wider select-none">
-                  In Collaboration With
-                </span>
-                <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-white/20"></div>
-              </div>
-
-              {/* GrowOwl Partner Card */}
-              <motion.a
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                href="https://www.growowl.online"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3.5 px-4 sm:px-5 py-2.5 rounded-2xl bg-[#161616]/95 border border-white/12 hover:border-purple-500/40 hover:bg-[#1a1a1a] transition-all shadow-lg shadow-black/40 group cursor-pointer"
-                title="Visit GrowOwl - Strategic Digital Growth Partner (www.growowl.online)"
-              >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden shrink-0 border border-purple-500/30 bg-black/60 flex items-center justify-center p-1.5 group-hover:border-purple-500/60 transition-colors">
-                  <img 
-                    src={growOwlLogoImg} 
-                    alt="GrowOwl Logo" 
-                    className="w-full h-full object-contain brightness-100 group-hover:brightness-110 transition-all"
-                  />
-                </div>
-                <div className="min-w-0 text-left">
-                  <span className="inline-block text-[9px] font-black uppercase tracking-wider text-purple-300 bg-purple-500/15 border border-purple-500/25 px-2 py-0.5 rounded mb-0.5">
-                    PARTNER AGENCY
-                  </span>
-                  <h4 className="text-sm sm:text-base font-extrabold text-[#F5F3EE] group-hover:text-purple-300 transition-colors truncate leading-tight font-display">
-                    GrowOwl
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-[#A6A39D] truncate leading-tight font-medium mt-0.5">
-                    Strategic Digital Growth Partner
-                  </p>
-                </div>
               </motion.a>
             </div>
 

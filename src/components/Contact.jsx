@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Sparkles, MessageSquare, ExternalLink, ArrowUpRight } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
+import growOwlLogoImg from '../assets/growowl-logo.png';
 
 export default function Contact() {
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars!%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business.`;
@@ -141,6 +142,54 @@ export default function Contact() {
             );
           })}
         </div>
+
+        {/* In Collaboration With: GrowOwl Partner Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16 pt-8 border-t border-white/10 flex flex-col items-center justify-center text-center"
+        >
+          {/* Header Divider */}
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-10 sm:w-16 bg-gradient-to-r from-transparent to-white/20"></div>
+            <span className="text-xs sm:text-sm italic font-serif text-[#A6A39D] tracking-wider select-none">
+              In Collaboration With
+            </span>
+            <div className="h-[1px] w-10 sm:w-16 bg-gradient-to-l from-transparent to-white/20"></div>
+          </div>
+
+          {/* GrowOwl Partner Card */}
+          <motion.a
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            href="https://www.growowl.online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-4 px-5 sm:px-6 py-3.5 rounded-2xl sm:rounded-3xl bg-[#161616]/95 border border-white/12 hover:border-[#FF6B4A]/50 hover:shadow-2xl hover:shadow-[#FF6B4A]/15 hover:bg-[#1a1a1a] transition-all duration-300 shadow-xl shadow-black/50 group cursor-pointer"
+            title="Visit GrowOwl - Strategic Digital Growth Partner (www.growowl.online)"
+          >
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border border-white/15 bg-black/60 flex items-center justify-center p-2 group-hover:border-[#FF6B4A]/50 transition-colors duration-300">
+              <img 
+                src={growOwlLogoImg} 
+                alt="GrowOwl Logo" 
+                className="w-full h-full object-contain brightness-100 group-hover:brightness-110 transition-all"
+              />
+            </div>
+            <div className="min-w-0 text-left">
+              <span className="inline-block text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#FF6B4A] bg-[#FF6B4A]/15 border border-[#FF6B4A]/30 px-2.5 py-0.5 rounded mb-1">
+                PARTNER AGENCY
+              </span>
+              <h4 className="text-base sm:text-lg font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors duration-300 truncate leading-tight font-display">
+                GrowOwl
+              </h4>
+              <p className="text-xs sm:text-[13px] text-[#A6A39D] group-hover:text-[#F5F3EE]/90 transition-colors duration-300 truncate leading-tight font-medium mt-0.5">
+                Strategic Digital Growth Partner
+              </p>
+            </div>
+          </motion.a>
+        </motion.div>
 
       </div>
     </section>
