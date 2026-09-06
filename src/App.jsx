@@ -1,82 +1,29 @@
-import React, { useState, lazy, Suspense } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TickerBar from './components/TickerBar';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import FAQ from './components/FAQ';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import SectionDivider from './components/SectionDivider';
-
-const ReelModal = lazy(() => import('./components/ReelModal'));
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import FaqPage from './pages/FaqPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const scrollToContact = () => {
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      const offsetTop = contactSection.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#111111] text-[#F5F3EE] font-sans selection:bg-[#FF6B4A] selection:text-white">
-      {/* Sticky Header */}
-      <Navbar onOpenContact={scrollToContact} />
+    <BrowserRouter>
+      {/* Handles window top scrolling and hash smooth scroll across routes */}
+      <ScrollToTop />
 
-      {/* Hero Section */}
-      <Hero
-        onOpenContact={scrollToContact}
-      />
+      <Routes>
+        {/* Main Landing Page */}
+        <Route path="/" element={<HomePage />} />
 
-      {/* Marquee Banner */}
-      <TickerBar />
+        {/* Dedicated Standalone FAQ Page */}
+        <Route path="/faq" element={<FaqPage />} />
 
-      {/* Glowing Neon Divider */}
-      <SectionDivider accent="lime" />
+        {/* Alternate FAQs URL alias redirect */}
+        <Route path="/faqs" element={<Navigate to="/faq" replace />} />
 
-      {/* Services Section */}
-      <Services onOpenContact={scrollToContact} />
-
-      {/* Glowing Neon Divider 1 */}
-      <SectionDivider accent="coral" />
-
-      {/* Featured Client Reels Section */}
-      <Portfolio onOpenModal={(project) => setSelectedProject(project)} />
-
-      {/* Glowing Neon Divider 2 */}
-      <SectionDivider accent="violet" />
-
-      {/* FAQ Section */}
-      <FAQ />
-
-      {/* Glowing Neon Divider 3 */}
-      <SectionDivider accent="coral" />
-
-      {/* Lead Generation Contact Form */}
-      <Contact />
-
-      {/* Glowing Neon Divider 4 */}
-      <SectionDivider accent="violet" />
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Video Modal Player (Lazy Loaded) */}
-      {selectedProject && (
-        <Suspense fallback={null}>
-          <ReelModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        </Suspense>
-      )}
-    </div>
+        {/* Catch-all fallback redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+

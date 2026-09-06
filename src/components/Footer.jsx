@@ -1,17 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, ArrowUp, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { MapPin, Mail, ArrowUp, MessageSquare } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
 import growOwlLogoImg from '../assets/growowl-logo.png';
 import { BRAND_INFO } from '../data/content';
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLinkClick = (e, link) => {
+    if (e && e.preventDefault) e.preventDefault();
+
+    if (link.isRoute) {
+      navigate(link.href);
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate(`/${link.href}`);
+      return;
+    }
+
+    if (typeof window !== 'undefined' && window.history && window.history.pushState) {
+      window.history.pushState(null, '', link.href);
+    }
+
+    if (link.href === '#' || link.href === '#hero' || link.href === '#about') {
+      scrollToTop();
+      return;
+    }
+
+    const target = document.querySelector(link.href);
+    if (target) {
+      const navOffset = 80;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars!`;
+
+  const footerLinks = [
+    { name: 'About Us', href: '#about', isRoute: false },
+    { name: 'Services', href: '#services', isRoute: false },
+    { name: 'Client Reels', href: '#work', isRoute: false },
+    { name: 'FAQ', href: '/faq', isRoute: true },
+    { name: 'Contact', href: '#contact', isRoute: false },
+  ];
 
   return (
     <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
@@ -29,9 +72,17 @@ export default function Footer() {
             
             {/* LEFT: Logo & Social Icons (Instagram, WhatsApp, Email) */}
             <div className="md:col-span-4 flex items-center gap-3.5 justify-between md:justify-start">
-              <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
+              <Link
+                to="/"
+                onClick={(e) => {
+                  if (location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToTop();
+                  }
+                }}
+              >
                 <Logo size="small" animated={true} />
-              </a>
+              </Link>
 
               <div className="flex items-center gap-2">
                 {/* Instagram Icon */}
@@ -69,17 +120,14 @@ export default function Footer() {
 
             {/* CENTER: Compact Nav Links */}
             <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-[#A6A39D]">
-              {[
-                { name: 'About Us', href: '#' },
-                { name: 'Services', href: '#services' },
-                { name: 'Client Reels', href: '#work' },
-                { name: 'FAQ', href: '#faq' },
-                { name: 'Contact', href: '#contact' },
-              ].map((link, i) => (
+              {footerLinks.map((link, i) => (
                 <a 
                   key={i}
-                  href={link.href} 
-                  className="hover:text-[#FF6B4A] transition-colors"
+                  href={link.isRoute ? link.href : (location.pathname === '/' ? link.href : `/${link.href}`)}
+                  onClick={(e) => handleLinkClick(e, link)}
+                  className={`hover:text-[#FF6B4A] transition-colors cursor-pointer ${
+                    link.isRoute && location.pathname === '/faq' ? 'text-[#FF6B4A] font-bold' : ''
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -136,6 +184,7 @@ export default function Footer() {
     </footer>
   );
 }
+
 
 
 

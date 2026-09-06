@@ -10,13 +10,10 @@ export default function Portfolio({ onOpenModal }) {
 
   const categories = [
     'All',
-    'Gourmet & Luxury',
-    'Lifestyle Reel',
-    'Architecture & Decor',
-    'Real Estate',
-    'Beauty & Style',
-    'Fashion & Lifestyle',
-    'Travel & Outdoor'
+    'Hotels & Resorts',
+    'Cafes, Restros & Food',
+    'Retail & Tech',
+    'Travel & Tourism'
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -73,18 +70,16 @@ export default function Portfolio({ onOpenModal }) {
           ref={sliderRef}
           className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto scrollbar-none snap-x snap-mandatory py-2 px-1 sm:px-0"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="wait">
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                viewport={{ once: true, margin: "-50px" }}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.4 }}
-                className="w-[210px] sm:w-[230px] shrink-0 snap-start glass-panel rounded-2xl sm:rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer"
+                exit={{ opacity: 0, scale: 0.95 }}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="w-[210px] sm:w-[230px] shrink-0 snap-start glass-panel rounded-2xl sm:rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer transform-gpu"
               >
                 {/* Real 9:16 Video Reel Card Preview (Plays on Tap/Click) */}
                 <div

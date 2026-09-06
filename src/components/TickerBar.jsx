@@ -7,7 +7,7 @@ export default function TickerBar() {
     { text: BRAND_INFO.tagline, icon: Flame, color: "text-[#FF6B4A]" },
     { text: "SILIGURI'S PREMIER CONTENT STUDIO", icon: Sparkles, color: "text-[#C7F36B]" },
     { text: "HIGH CONVERSION REELS & SHORTS", icon: Video, color: "text-[#FF6B4A]" },
-    { text: "500K+ ORGANIC VIEWS GENERATED", icon: Star, color: "text-[#C7F36B]" },
+    { text: "ORGANIC REACH & ENGAGEMENT GENERATED", icon: Star, color: "text-[#C7F36B]" },
     { text: "GOOD BUSINESSES DESERVE GREAT CONTENT", icon: Zap, color: "text-[#FF6B4A]" },
   ];
 

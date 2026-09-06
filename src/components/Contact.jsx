@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Sparkles, MessageSquare, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, MessageSquare, ExternalLink, ArrowUpRight } from 'lucide-react';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
 import growOwlLogoImg from '../assets/growowl-logo.png';

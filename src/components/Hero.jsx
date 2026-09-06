@@ -11,9 +11,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  Video,
-  Clock,
-  Flame,
   MessageSquare
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
@@ -21,15 +18,14 @@ import Logo from './Logo';
 
 export default function Hero({ onOpenContact }) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [liked, setLiked] = useState(true);
-  const [likeCount, setLikeCount] = useState(4476);
 
   const videoRef = useRef(null);
   const heroRef = useRef(null);
   const userMutedManualRef = useRef(false);
 
-  // iOS Safari compliant autoplay handler: Start MUTED initially to satisfy iOS autoplay policy
+  // Autoplay WITH AUDIO by default on load
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -37,41 +33,46 @@ export default function Hero({ onOpenContact }) {
     video.playsInline = true;
     video.setAttribute('playsinline', 'true');
     video.setAttribute('webkit-playsinline', 'true');
-    video.muted = true;
-    setIsMuted(true);
+    video.muted = false;
 
-    const startAutoplay = async () => {
+    const startAutoplayWithSound = async () => {
       try {
+        video.muted = false;
+        setIsMuted(false);
         await video.play();
         setIsPlaying(true);
-      } catch (err) {
-        console.log("Autoplay initial start:", err);
-      }
-    };
-
-    startAutoplay();
-
-    // Enable unmuted audio on first explicit touch/click if user hasn't manually muted
-    const enableAudioOnGesture = () => {
-      if (videoRef.current && !userMutedManualRef.current) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-        if (videoRef.current.paused) {
-          videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+      } catch {
+        // Fallback for browsers that require initial user gesture before playing unmuted
+        video.muted = true;
+        setIsMuted(true);
+        try {
+          await video.play();
+          setIsPlaying(true);
+        } catch {
+          // ignore
         }
+
+        const autoUnmuteOnGesture = () => {
+          if (!userMutedManualRef.current && videoRef.current) {
+            videoRef.current.muted = false;
+            setIsMuted(false);
+          }
+          window.removeEventListener('pointerdown', autoUnmuteOnGesture, true);
+          window.removeEventListener('touchstart', autoUnmuteOnGesture, true);
+          window.removeEventListener('click', autoUnmuteOnGesture, true);
+          window.removeEventListener('scroll', autoUnmuteOnGesture, true);
+          window.removeEventListener('keydown', autoUnmuteOnGesture, true);
+        };
+
+        window.addEventListener('pointerdown', autoUnmuteOnGesture, { capture: true, once: true });
+        window.addEventListener('touchstart', autoUnmuteOnGesture, { capture: true, once: true });
+        window.addEventListener('click', autoUnmuteOnGesture, { capture: true, once: true });
+        window.addEventListener('scroll', autoUnmuteOnGesture, { capture: true, once: true });
+        window.addEventListener('keydown', autoUnmuteOnGesture, { capture: true, once: true });
       }
-      removeGestureListeners();
     };
 
-    const removeGestureListeners = () => {
-      window.removeEventListener('pointerdown', enableAudioOnGesture, true);
-      window.removeEventListener('touchstart', enableAudioOnGesture, true);
-      window.removeEventListener('click', enableAudioOnGesture, true);
-    };
-
-    window.addEventListener('pointerdown', enableAudioOnGesture, { capture: true, once: true });
-    window.addEventListener('touchstart', enableAudioOnGesture, { capture: true, once: true });
-    window.addEventListener('click', enableAudioOnGesture, { capture: true, once: true });
+    startAutoplayWithSound();
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible' && videoRef.current) {
@@ -84,7 +85,6 @@ export default function Hero({ onOpenContact }) {
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      removeGestureListeners();
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
@@ -155,13 +155,7 @@ export default function Hero({ onOpenContact }) {
 
   const toggleLike = (e) => {
     e.stopPropagation();
-    if (liked) {
-      setLiked(false);
-      setLikeCount(prev => prev - 1);
-    } else {
-      setLiked(true);
-      setLikeCount(prev => prev + 1);
-    }
+    setLiked(prev => !prev);
   };
 
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars,%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business!`;
@@ -249,7 +243,7 @@ export default function Hero({ onOpenContact }) {
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <CheckCircle2 className="w-4.5 h-4.5 text-[#C7F36B] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">500K+ Organic Reach</span>
+                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">Organic Growth</span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
@@ -268,7 +262,7 @@ export default function Hero({ onOpenContact }) {
             {/* Optimized Ambient Background Halo */}
             <div className="absolute inset-0 bg-radial from-[#FF6B4A]/10 via-[#C7F36B]/5 to-transparent rounded-[50px] -z-10 transform scale-105 pointer-events-none"></div>
 
-            {/* Sleek iPhone Frame - Taller vertical aspect ratio covering mobile screen, 9:16 aspect-reel on desktop */}
+            {/* Sleek iPhone Frame */}
             <div className="relative w-full max-w-[390px] xs:max-w-[430px] sm:max-w-[440px] lg:w-[380px] aspect-[4/6] lg:aspect-reel rounded-[32px] sm:rounded-[44px] lg:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300 ios-video-container">
 
               {/* Dynamic Island Notch */}
@@ -282,8 +276,8 @@ export default function Hero({ onOpenContact }) {
 
                 <video
                   ref={videoRef}
-                  src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto/v1788071681/pixel-karigars/hero-reel.mp4"
-                  poster="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,f_auto,so_1/v1788071681/pixel-karigars/hero-reel.jpg"
+                  src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.mp4"
+                  poster="https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.jpg"
                   autoPlay
                   loop
                   muted={isMuted}
@@ -292,14 +286,16 @@ export default function Hero({ onOpenContact }) {
                   preload="auto"
                   onCanPlay={() => {
                     if (videoRef.current && videoRef.current.paused) {
-                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
                     }
                   }}
                   onLoadedData={() => {
                     if (videoRef.current && videoRef.current.paused) {
-                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
                     }
                   }}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
                   className="w-full h-full object-cover cursor-pointer rounded-[28px] sm:rounded-[40px] lg:rounded-[46px]"
                   onClick={togglePlay}
                 />
@@ -309,7 +305,7 @@ export default function Hero({ onOpenContact }) {
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-black tracking-wider text-white bg-black/85 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
                       <span className="w-2 h-2 rounded-full bg-[#FF6B4A] animate-ping"></span>
-                      REEL SHOWCASE
+                      REEL
                     </span>
                   </div>
 
@@ -352,32 +348,40 @@ export default function Hero({ onOpenContact }) {
                   <button
                     onClick={toggleLike}
                     className="flex flex-col items-center gap-1 group/btn cursor-pointer"
+                    title="Like"
                   >
                     <div className={`p-1.5 sm:p-2 rounded-full bg-black/80 transition-all ${liked ? 'text-[#FF6B4A] scale-110' : 'text-white hover:text-[#FF6B4A]'}`}>
                       <Heart className={`w-4 sm:w-5 h-4 sm:h-5 ${liked ? 'fill-[#FF6B4A]' : ''}`} />
                     </div>
-                    <span className="text-[9px] sm:text-[10px] font-bold text-white shadow-sm">
-                      {(likeCount / 1000).toFixed(1)}k
-                    </span>
                   </button>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
+                  <a
+                    href={BRAND_INFO.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer"
+                    title="Comment on Instagram"
+                  >
                     <div className="p-1.5 sm:p-2 rounded-full bg-black/80">
                       <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
                     </div>
-                    <span className="text-[9px] sm:text-[10px] font-bold text-white">482</span>
-                  </button>
+                  </a>
 
-                  <button className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer">
+                  <a
+                    href={BRAND_INFO.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer"
+                    title="Share on Instagram"
+                  >
                     <div className="p-1.5 sm:p-2 rounded-full bg-black/80">
                       <Share2 className="w-4 sm:w-5 h-4 sm:h-5" />
                     </div>
-                    <span className="text-[9px] sm:text-[10px] font-bold text-white">Share</span>
-                  </button>
+                  </a>
                 </div>
 
                 {/* Instagram Profile Overlay Footer */}
-                <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-11 sm:right-12 z-40 text-left text-white space-y-1 sm:space-y-1.5 bg-gradient-to-t from-black/95 via-black/65 to-transparent p-2.5 sm:p-3 rounded-2xl">
+                <div className="absolute bottom-4 sm:bottom-4.5 left-2.5 sm:left-3 right-11 sm:right-12 z-40 text-left text-white space-y-1 sm:space-y-1.5 bg-gradient-to-t from-black/95 via-black/65 to-transparent p-2.5 sm:p-3 rounded-2xl">
                   <div className="flex items-center gap-2">
                     <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-full bg-[#FF6B4A] flex items-center justify-center p-0.5 border border-white shrink-0">
                       <Logo size="small" showText={false} />

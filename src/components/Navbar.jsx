@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 import InstagramIcon from './InstagramIcon';
 import { BRAND_INFO } from '../data/content';
 
-export default function Navbar({ onOpenContact }) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,43 +21,78 @@ export default function Navbar({ onOpenContact }) {
   }, []);
 
   const navLinks = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Our Works', href: '#work' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'About Us', href: '#about', isRoute: false },
+    { name: 'Services', href: '#services', isRoute: false },
+    { name: 'Our Works', href: '#work', isRoute: false },
+    { name: 'FAQ', href: '/faq', isRoute: true },
+    { name: 'Contact Us', href: '#contact', isRoute: false },
   ];
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, link) => {
     if (e && e.preventDefault) e.preventDefault();
     setMobileMenuOpen(false);
-    
-    setTimeout(() => {
-      if (href === '#' || href === '#hero' || href === '#about') {
-        const aboutEl = document.querySelector('#about');
-        if (aboutEl) {
-          const navOffset = 80;
-          const elementPosition = aboutEl.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        return;
-      }
 
-      const targetElement = document.querySelector(href);
-      if (targetElement) {
+    // If it is the FAQ route
+    if (link.isRoute) {
+      navigate(link.href);
+      return;
+    }
+
+    // If we are NOT on the home page ('/'), navigate to home with hash
+    if (location.pathname !== '/') {
+      navigate(`/${link.href}`);
+      return;
+    }
+
+    // Update URL hash dynamically so address bar reflects exact clicked section
+    if (typeof window !== 'undefined' && window.history && window.history.pushState) {
+      window.history.pushState(null, '', link.href);
+    }
+
+    // Perform smooth scroll to target
+    if (link.href === '#' || link.href === '#hero' || link.href === '#about') {
+      const aboutEl = document.querySelector('#about');
+      if (aboutEl) {
         const navOffset = 80;
-        const elementPosition = targetElement.getBoundingClientRect().top;
+        const elementPosition = aboutEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }, 50);
+      return;
+    }
+
+    const targetElement = document.querySelector(link.href);
+    if (targetElement) {
+      const navOffset = 80;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleContactClick = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/#contact');
+    } else {
+      if (window.history.pushState) {
+        window.history.pushState(null, '', '#contact');
+      }
+      const contactEl = document.querySelector('#contact');
+      if (contactEl) {
+        const navOffset = 80;
+        const elementPosition = contactEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -69,22 +107,38 @@ export default function Navbar({ onOpenContact }) {
         <div className="flex items-center justify-between">
 
           {/* Brand Logo */}
-          <a href="#" onClick={(e) => handleNavClick(e, '#about')} className="flex items-center">
+          <Link 
+            to="/" 
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }} 
+            className="flex items-center"
+          >
             <Logo animated={true} />
-          </a>
+          </Link>
 
           {/* Desktop Nav Links in Floating Glass Pill */}
           <nav className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#181818]/80 border border-white/10 backdrop-blur-md shadow-lg">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-xs font-bold text-[#A6A39D] hover:text-[#FF6B4A] px-3.5 py-1.5 rounded-full transition-all hover:bg-white/10"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isFaqActive = link.isRoute && location.pathname === '/faq';
+              return (
+                <a
+                  key={link.name}
+                  href={link.isRoute ? link.href : (location.pathname === '/' ? link.href : `/${link.href}`)}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`text-xs font-bold px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                    isFaqActive
+                      ? 'bg-[#FF6B4A] text-white shadow-md shadow-[#FF6B4A]/20'
+                      : 'text-[#A6A39D] hover:text-[#FF6B4A] hover:bg-white/10'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right Action CTA & Instagram Handle */}
@@ -102,7 +156,7 @@ export default function Navbar({ onOpenContact }) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={onOpenContact}
+              onClick={handleContactClick}
               className="px-5.5 py-2.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs shadow-md shadow-[#E85536]/20 hover:shadow-xl hover:shadow-[#FF6B4A]/30 transition-all duration-300 flex items-center gap-1.5 group cursor-pointer btn-shimmer"
             >
               <span>Get Started</span>
@@ -135,26 +189,30 @@ export default function Navbar({ onOpenContact }) {
             className="md:hidden bg-[#181818] border-b border-white/10 px-4 pt-2 pb-6 space-y-4 shadow-2xl overflow-hidden"
           >
             <div className="flex flex-col space-y-2 pt-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-semibold text-[#F5F3EE] hover:text-[#FF6B4A] py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isFaqActive = link.isRoute && location.pathname === '/faq';
+                return (
+                  <a
+                    key={link.name}
+                    href={link.isRoute ? link.href : (location.pathname === '/' ? link.href : `/${link.href}`)}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className={`text-sm font-semibold py-2.5 px-3 rounded-lg transition-colors cursor-pointer ${
+                      isFaqActive
+                        ? 'bg-[#FF6B4A]/15 text-[#FF6B4A] font-bold'
+                        : 'text-[#F5F3EE] hover:text-[#FF6B4A] hover:bg-white/5'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
             </div>
 
             <div className="pt-4 border-t border-white/15 flex flex-col gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                }}
+                onClick={handleContactClick}
                 className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-sm text-center flex items-center justify-center gap-2 shadow-lg shadow-[#E85536]/25 hover:shadow-[#FF6B4A]/40 transition-all duration-300 cursor-pointer active:scale-98 btn-shimmer"
               >
                 <span>Book Strategy Call</span>
@@ -167,6 +225,7 @@ export default function Navbar({ onOpenContact }) {
     </header>
   );
 }
+
 
 
 

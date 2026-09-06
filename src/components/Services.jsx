@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SERVICES } from '../data/content';
 import { Video, Share2, Camera, Compass, Palette, CheckCircle2, ChevronDown } from 'lucide-react';
 
-export default function Services({ onOpenContact }) {
+export default function Services() {
   const [expandedId, setExpandedId] = useState(null);
 
   const iconMap = {
