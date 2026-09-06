@@ -25,8 +25,8 @@ export default function Services() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+        {/* Section Header (No unnecessary description text) */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,12 +36,9 @@ export default function Services() {
           >
             OUR <span className="text-[#FF6B4A]">SERVICES</span>
           </motion.h2>
-          <p className="text-xs sm:text-sm text-[#A6A39D] font-medium">
-            Tap any service card to view full scope of work & details.
-          </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid (Compact Expandable Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {SERVICES.map((service, idx) => {
             const IconComponent = iconMap[service.num] || Video;
@@ -80,17 +77,12 @@ export default function Services() {
                     </div>
                   </div>
 
-                  {/* Title Heading & Expand Prompt */}
-                  <div className="space-y-1">
-                    <h3 className="text-lg sm:text-xl font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors font-display">
-                      {service.title}
-                    </h3>
-                    <span className="text-[10px] font-semibold text-[#FF6B4A] tracking-wide block">
-                      {isExpanded ? '▲ Tap to collapse' : '▼ Tap to view scope & details'}
-                    </span>
-                  </div>
+                  {/* Title Heading */}
+                  <h3 className="text-lg sm:text-xl font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors font-display">
+                    {service.title}
+                  </h3>
 
-                  {/* Expandable Content (Description & Points) */}
+                  {/* Expandable Content on Click */}
                   <AnimatePresence initial={false}>
                     {isExpanded && (
                       <motion.div

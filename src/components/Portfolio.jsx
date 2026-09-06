@@ -40,14 +40,14 @@ export default function Portfolio({ onOpenModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
 
         {/* Section Header */}
-        <div className="text-center md:text-left space-y-3">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F5F3EE]">
+        <div className="text-center space-y-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F5F3EE] font-display">
             FEATURED <span className="text-[#FF6B4A]">CLIENT REELS</span>
           </h2>
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center gap-2.5 overflow-x-auto scrollbar-none pb-2 px-1">
+        <div className="flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto scrollbar-none pb-2 px-1">
           {categories.map((cat) => {
             const isActive = activeFilter === cat;
             return (
