@@ -263,7 +263,7 @@ export default function Hero({ onOpenContact }) {
             <div className="absolute inset-0 bg-radial from-[#FF6B4A]/10 via-[#C7F36B]/5 to-transparent rounded-[50px] -z-10 transform scale-105 pointer-events-none"></div>
 
             {/* Sleek iPhone Frame */}
-            <div className="relative w-full max-w-[390px] xs:max-w-[430px] sm:max-w-[440px] lg:w-[380px] aspect-[4/6] lg:aspect-reel rounded-[32px] sm:rounded-[44px] lg:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300 ios-video-container">
+            <div className="relative w-full max-w-[310px] xs:max-w-[340px] sm:max-w-[360px] lg:max-w-[380px] aspect-[9/16] rounded-[32px] sm:rounded-[44px] lg:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300 ios-video-container">
 
               {/* Dynamic Island Notch */}
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-22 h-3.5 sm:h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">

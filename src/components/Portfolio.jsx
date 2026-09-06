@@ -84,7 +84,7 @@ export default function Portfolio({ onOpenModal }) {
                 {/* Real 9:16 Video Reel Card Preview (Plays on Tap/Click) */}
                 <div
                   onClick={() => onOpenModal(project)}
-                  className="relative w-full aspect-[2/3] overflow-hidden cursor-pointer group/img bg-black"
+                  className="relative w-full aspect-[9/16] overflow-hidden cursor-pointer group/img bg-black"
                 >
                   <img
                     src={project.videoPoster}
