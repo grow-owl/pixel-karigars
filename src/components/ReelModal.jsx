@@ -113,31 +113,21 @@ export default function ReelModal({ project, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/95 backdrop-blur-md animate-in fade-in duration-200 select-none touch-none overscroll-contain"
+      className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 md:p-6 bg-black/95 sm:backdrop-blur-md animate-in fade-in duration-200 select-none touch-none overscroll-contain"
       onClick={onClose}
     >
-      {/* Modal Container */}
+      {/* Modal Container: 100% Full-Screen on Mobile, Centered Dialog on Desktop */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 15 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 15 }}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.96 }}
         transition={{ duration: 0.25 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative z-10 w-full max-w-sm sm:max-w-md md:max-w-4xl bg-[#181818] border border-white/15 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/80 flex flex-col md:grid md:grid-cols-12 max-h-[90vh] sm:max-h-[88vh]"
+        className="relative z-10 w-full h-[100dvh] h-screen sm:h-auto sm:max-h-[88vh] sm:max-w-md md:max-w-4xl bg-black sm:bg-[#181818] sm:border sm:border-white/15 rounded-none sm:rounded-3xl overflow-hidden shadow-2xl shadow-black/95 flex flex-col md:grid md:grid-cols-12"
       >
-        {/* Top-Right Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 z-50 p-2 sm:p-2.5 rounded-full bg-black/80 hover:bg-[#FF6B4A] text-[#F5F3EE] transition-all border border-white/20 cursor-pointer shadow-lg group active:scale-90"
-          title="Close modal (Esc)"
-          aria-label="Close modal"
-        >
-          <X className="w-4 sm:w-5 h-4 sm:h-5 group-hover:rotate-90 transition-transform duration-200" />
-        </button>
-
-        {/* Left / Top Side: Reel Video Player */}
+        {/* Video Player Container */}
         <div 
-          className="w-full md:col-span-6 bg-black flex items-center justify-center relative h-[46vh] xs:h-[50vh] sm:h-[54vh] md:h-[540px] lg:h-[580px] ios-video-container group/video select-none overflow-hidden shrink-0"
+          className="relative w-full flex-1 md:flex-initial md:col-span-6 bg-black flex items-center justify-center h-full sm:h-[500px] md:h-[560px] lg:h-[600px] ios-video-container select-none overflow-hidden"
         >
           <video
             ref={videoRef}
@@ -148,32 +138,45 @@ export default function ReelModal({ project, onClose }) {
             muted={isMuted}
             playsInline
             webkit-playsinline="true"
+            preload="auto"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
-            className="w-full h-full object-contain cursor-pointer"
+            className="w-full h-full object-cover sm:object-contain cursor-pointer"
             onClick={togglePlay}
           />
 
           {/* Top Audio Toggle Button */}
-          <div className="absolute top-3 left-3 z-30">
+          <div className="absolute top-4 left-4 z-40">
             <button
               onClick={toggleMute}
-              className={`px-2.5 py-1.5 rounded-full backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-lg ${
-                isMuted ? 'bg-black/85 text-[#FF6B4A] border border-[#FF6B4A]/40' : 'bg-black/85 text-[#C7F36B] border border-[#C7F36B]/40'
+              className={`px-3 py-1.5 rounded-full backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-lg ${
+                isMuted ? 'bg-black/80 text-[#FF6B4A] border border-[#FF6B4A]/40' : 'bg-black/80 text-[#C7F36B] border border-[#C7F36B]/40'
               }`}
               title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
             >
               {isMuted ? (
                 <>
                   <VolumeX className="w-3.5 h-3.5" />
-                  <span className="text-[9px] font-black uppercase tracking-wider pr-0.5">Muted</span>
+                  <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Muted</span>
                 </>
               ) : (
                 <>
                   <Volume2 className="w-3.5 h-3.5 animate-pulse" />
-                  <span className="text-[9px] font-black uppercase tracking-wider pr-0.5">Sound On</span>
+                  <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Sound On</span>
                 </>
               )}
+            </button>
+          </div>
+
+          {/* Mobile-Only Top-Right Close Button */}
+          <div className="md:hidden absolute top-4 right-4 z-40">
+            <button
+              onClick={onClose}
+              className="p-2.5 rounded-full bg-black/80 hover:bg-[#FF6B4A] text-[#F5F3EE] transition-all border border-white/20 cursor-pointer shadow-lg group active:scale-90"
+              title="Close (Esc)"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-200" />
             </button>
           </div>
 
@@ -184,58 +187,69 @@ export default function ReelModal({ project, onClose }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={togglePlay}
-              className="absolute inset-0 bg-black/45 flex items-center justify-center z-25 cursor-pointer backdrop-blur-[2px]"
+              className="absolute inset-0 bg-black/45 flex items-center justify-center z-30 cursor-pointer backdrop-blur-[2px]"
             >
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-[#FF6B4A] to-[#E85536] text-white flex items-center justify-center shadow-2xl pl-1 hover:scale-110 transition-transform">
-                <Play className="w-7 h-7 fill-white" />
+              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#FF6B4A] to-[#E85536] text-white flex items-center justify-center shadow-2xl pl-1 hover:scale-110 transition-transform">
+                <Play className="w-8 h-8 fill-white" />
               </div>
             </motion.div>
           )}
-        </div>
 
-        {/* Right Side: Project Details & Instagram Action */}
-        <div className="modal-scrollable-content w-full md:col-span-6 p-4 sm:p-6 md:p-7 flex flex-col justify-between space-y-4 sm:space-y-6 overflow-y-auto overscroll-contain bg-[#181818] text-[#F5F3EE] border-t md:border-t-0 md:border-l border-white/10 flex-grow touch-pan-y">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="flex items-center justify-between gap-2">
-              <div className="inline-block px-3 py-1 rounded-full bg-[#FF6B4A]/15 border border-[#FF6B4A]/30 text-[#FF6B4A] text-xs font-bold uppercase tracking-wider">
-                {project.businessType}
-              </div>
-              <span className="text-[11px] font-semibold text-[#A6A39D] bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
+          {/* Mobile Bottom Floating Overlay (Instagram Reel Style) */}
+          <div className="md:hidden absolute bottom-0 left-0 right-0 p-4 pb-8 bg-gradient-to-t from-black via-black/80 to-transparent z-40 space-y-3">
+            <div className="space-y-1.5">
+              <span className="inline-block text-[10px] font-black uppercase tracking-wider text-[#FF6B4A] bg-[#FF6B4A]/20 border border-[#FF6B4A]/40 px-2.5 py-0.5 rounded-full">
                 {project.category}
               </span>
+              <h3 className="text-lg font-black text-white font-display leading-tight drop-shadow-md">
+                {project.title}
+              </h3>
             </div>
 
-            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#F5F3EE] font-display leading-tight">
+            <motion.a
+              whileTap={{ scale: 0.97 }}
+              href={project.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs flex items-center justify-center gap-2 shadow-xl shadow-[#E85536]/30 active:scale-98 cursor-pointer btn-shimmer"
+            >
+              <InstagramIcon className="w-4 h-4 text-white" />
+              <span>Watch Reel on Instagram</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </motion.a>
+          </div>
+        </div>
+
+        {/* Desktop-Only Top-Right Close Button */}
+        <button
+          onClick={onClose}
+          className="hidden md:flex absolute top-4 right-4 z-50 p-2.5 rounded-full bg-black/80 hover:bg-[#FF6B4A] text-[#F5F3EE] transition-all border border-white/20 cursor-pointer shadow-lg group active:scale-90 items-center justify-center"
+          title="Close modal (Esc)"
+          aria-label="Close modal"
+        >
+          <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-200" />
+        </button>
+
+        {/* Desktop Right Side Panel */}
+        <div className="hidden md:flex md:col-span-6 p-7 pr-16 flex-col justify-between space-y-5 bg-[#181818] text-[#F5F3EE] border-l border-white/10">
+          <div className="space-y-3.5">
+            <div className="inline-block px-3 py-1 rounded-full bg-[#FF6B4A]/15 border border-[#FF6B4A]/30 text-[#FF6B4A] text-xs font-bold uppercase tracking-wider">
+              {project.category}
+            </div>
+
+            <h3 className="text-2xl lg:text-3xl font-extrabold text-[#F5F3EE] font-display leading-snug">
               {project.title}
             </h3>
-
-            <p className="text-xs sm:text-sm text-[#A6A39D] leading-relaxed font-medium">
-              {project.description}
-            </p>
-
-            {project.clientQuote && (
-              <blockquote className="italic text-xs text-[#A6A39D] border-l-2 border-[#FF6B4A] pl-3 py-1 bg-white/[0.02] rounded-r-lg">
-                "{project.clientQuote}"
-              </blockquote>
-            )}
-
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {project.tags.map((tag, i) => (
-                <span key={i} className="text-[10px] sm:text-[11px] px-2.5 py-0.5 sm:py-1 rounded-full bg-white/10 text-[#F5F3EE] font-semibold border border-white/15">
-                  #{tag}
-                </span>
-              ))}
-            </div>
           </div>
 
-          <div className="pt-3 sm:pt-4 border-t border-white/10 flex flex-col gap-3">
+          <div className="pt-4 border-t border-white/10">
             <motion.a
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               href={project.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#E85536]/25 hover:shadow-2xl hover:shadow-[#FF6B4A]/45 transition-all duration-300 group cursor-pointer btn-shimmer"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E85536] to-[#D84526] hover:from-[#FF6B4A] hover:to-[#E85536] text-white font-bold tracking-wide text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#E85536]/25 hover:shadow-2xl hover:shadow-[#FF6B4A]/45 transition-all duration-300 group cursor-pointer btn-shimmer"
             >
               <InstagramIcon className="w-4 h-4 text-white group-hover:scale-110 transition-transform duration-300" />
               <span>Watch Reel on Instagram</span>
@@ -245,7 +259,6 @@ export default function ReelModal({ project, onClose }) {
         </div>
 
       </motion.div>
-
     </div>
   );
 }
