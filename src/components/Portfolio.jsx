@@ -33,7 +33,7 @@ export default function Portfolio({ onOpenModal }) {
   };
 
   return (
-    <section id="work" className="py-16 md:py-20 bg-[#111111] relative overflow-hidden bg-mesh-grid">
+    <section id="work" className="py-16 md:py-20 bg-[#111111] relative overflow-hidden">
       {/* Soft Ambient Background Glow */}
       <div className="hidden md:block absolute bottom-0 left-1/3 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
 

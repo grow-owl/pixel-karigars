@@ -60,7 +60,7 @@ export default function Footer() {
     <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
       
       {/* Compressed Compact Glass Card Container */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/12 shadow-xl bg-mesh-grid">
+      <div className="glass-panel rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/12 shadow-xl">
         
         {/* Soft Ambient Background Glow Orbs */}
         <div className="hidden md:block absolute top-0 right-10 w-[300px] h-[300px] bg-[#FF6B4A]/[0.02] rounded-full blur-[150px] pointer-events-none"></div>

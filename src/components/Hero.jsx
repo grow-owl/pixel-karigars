@@ -161,7 +161,7 @@ export default function Hero({ onOpenContact }) {
   const whatsappUrl = `https://wa.me/${BRAND_INFO.whatsapp}?text=Hi%20Pixel%20Karigars,%20I%20want%20to%20know%20more%20about%20video%20shoots%20for%20my%20business!`;
 
   return (
-    <section ref={heroRef} id="about" className="relative pt-24 pb-16 md:pt-36 md:pb-28 overflow-hidden bg-[#111111] bg-mesh-grid">
+    <section ref={heroRef} id="about" className="relative pt-24 pb-16 md:pt-36 md:pb-28 overflow-hidden bg-[#111111]">
       {/* Background Soft Mesh Glow - Hidden on Mobile for GPU Performance */}
       <div className="hidden md:block absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
       <div className="hidden md:block absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>

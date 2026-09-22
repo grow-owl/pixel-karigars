@@ -62,7 +62,7 @@ export default function FaqPage() {
       {/* Navbar */}
       <Navbar />
 
-      <main className="pt-28 pb-20 relative overflow-hidden bg-mesh-grid flex-grow">
+      <main className="pt-28 pb-20 relative overflow-hidden flex-grow">
         {/* Soft Ambient Background Glow Orbs */}
         <div className="hidden md:block absolute top-20 left-1/4 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[190px] pointer-events-none animate-soft-pulse"></div>
         <div className="hidden md:block absolute top-1/2 right-1/4 w-[450px] h-[450px] bg-[#C7F36B]/[0.03] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
