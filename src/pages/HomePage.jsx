@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import ClientCarousel from '../components/ClientCarousel';
 import TickerBar from '../components/TickerBar';
 import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
@@ -58,6 +59,9 @@ export default function HomePage() {
 
       {/* Glowing Neon Divider 3 */}
       <SectionDivider accent="coral" />
+
+      {/* Trusted Client Logos Carousel */}
+      <ClientCarousel />
 
       {/* Footer */}
       <Footer />

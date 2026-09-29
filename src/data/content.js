@@ -1,3 +1,50 @@
+export const CLIENT_LOGOS = [
+  {
+    id: "chai-adda",
+    name: "Chai Addaa",
+    subtext: "Siliguri's Rooftop Cafeteria",
+    category: "Rooftop Cafe & Lounge",
+    logo: "/clients/chai-adda.webp",
+    logoPng: "/clients/chai-adda.png",
+    accentColor: "#D4A373",
+    badgeBg: "#FFF8F0",
+    glowColor: "rgba(212, 163, 115, 0.25)"
+  },
+  {
+    id: "musicvillia",
+    name: "Musicvillia",
+    subtext: "Studios & Audio Production",
+    category: "Music & Production Studio",
+    logo: "/clients/music-villa.webp",
+    logoPng: "/clients/music-villa.png",
+    accentColor: "#D4AF37",
+    badgeBg: "#12110F",
+    glowColor: "rgba(212, 175, 55, 0.25)"
+  },
+  {
+    id: "himalayan-sage",
+    name: "Himalayan Sage Kitchen",
+    subtext: "Fine Dining Restaurant",
+    category: "Culinary & Dining",
+    logo: "/clients/himalayan-sage-kitchen.webp",
+    logoPng: "/clients/himalayan-sage-kitchen.png",
+    accentColor: "#FF6B4A",
+    badgeBg: "#FFFFFF",
+    glowColor: "rgba(255, 107, 74, 0.25)"
+  },
+  {
+    id: "avianna",
+    name: "Avianna",
+    subtext: "Group of Hotels & Resorts",
+    category: "Hotels & Luxury Resorts",
+    logo: "/clients/avianna.webp",
+    logoPng: "/clients/avianna.png",
+    accentColor: "#2A6568",
+    badgeBg: "#132A2B",
+    glowColor: "rgba(42, 101, 104, 0.35)"
+  }
+];
+
 export const BRAND_INFO = {
   name: "Pixel Karigars",
   tagline: "HIGH-CONVERTING REELS & VISUAL STRATEGY",
