@@ -176,28 +176,26 @@ export default function Hero({ onOpenContact }) {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
-            {/* High-Converting Clickable Promo Offer Badge Redirecting to Instagram */}
-            <motion.a
+            {/* Book a Shoot Badge */}
+            <motion.button
               whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
-              href={BRAND_INFO.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={onOpenContact}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818] border border-[#C7F36B]/20 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/10 hover:border-[#C7F36B]/40 transition-all select-none group cursor-pointer btn-shimmer"
-              title="Claim 15% OFF on Instagram"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181818]/95 border border-[#C7F36B]/25 hover:border-[#C7F36B]/50 shadow-sm hover:shadow-md hover:shadow-[#C7F36B]/15 transition-all select-none group cursor-pointer backdrop-blur-md"
+              title="Book Your Video Shoot"
             >
               <div className="relative flex items-center justify-center">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#C7F36B]"></span>
                 <span className="absolute w-2.5 h-2.5 rounded-full bg-[#C7F36B] animate-ping opacity-75"></span>
               </div>
-              <span className="text-xs sm:text-sm font-extrabold text-[#F5F3EE] tracking-wide flex items-center gap-1.5">
-                <span>LIMITED OFFER: <span className="text-[#C7F36B]">Get Extra 15% OFF!</span></span>
+              <span className="text-xs sm:text-sm font-bold text-[#F5F3EE] tracking-wide flex items-center gap-1.5">
+                <span>Book a Shoot</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#C7F36B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </span>
-            </motion.a>
+            </motion.button>
 
             {/* Clean, Minimal Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F5F3EE] leading-[1.15] font-display">
