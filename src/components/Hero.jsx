@@ -162,10 +162,6 @@ export default function Hero({ onOpenContact }) {
 
   return (
     <section ref={heroRef} id="about" className="relative pt-24 pb-16 md:pt-36 md:pb-28 overflow-hidden bg-[#111111]">
-      {/* Background Soft Mesh Glow - Hidden on Mobile for GPU Performance */}
-      <div className="hidden md:block absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#FF6B4A]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
-      <div className="hidden md:block absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
@@ -245,170 +241,171 @@ export default function Hero({ onOpenContact }) {
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">Siliguri Studio</span>
+                <span className="text-xs sm:text-sm text-[#F5F3EE] font-semibold whitespace-nowrap">Cinema Quality</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side: Clean iPhone 16 Pro Reel Showcase */}
+          {/* Right Side: Ultra-Realistic iPhone 16 Pro Reel Showcase */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative mt-2 lg:mt-0 w-full"
           >
-            {/* Optimized Ambient Background Halo */}
-            <div className="absolute inset-0 bg-radial from-[#FF6B4A]/10 via-[#C7F36B]/5 to-transparent rounded-[50px] -z-10 transform scale-105 pointer-events-none"></div>
+            {/* Ultra-Slim Razor Bezel iPhone 16 Pro Chassis */}
+            <div className="relative w-full max-w-[300px] xs:max-w-[325px] sm:max-w-[350px] lg:max-w-[365px] p-[2.5px] sm:p-[3.5px] rounded-[40px] sm:rounded-[48px] bg-gradient-to-b from-[#2e2e34] via-[#1a1a1e] to-[#26262c] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)] border border-[#40404a] group hover:border-[#FF6B4A]/40 transition-all duration-300">
+              
+              {/* Inner Edge-to-Edge Screen */}
+              <div className="relative w-full aspect-[9/16] rounded-[37px] sm:rounded-[44px] overflow-hidden bg-black ios-video-container">
 
-            {/* Sleek iPhone Frame */}
-            <div className="relative w-full max-w-[310px] xs:max-w-[340px] sm:max-w-[360px] lg:max-w-[380px] aspect-[9/16] rounded-[32px] sm:rounded-[44px] lg:rounded-[52px] overflow-hidden bg-black shadow-2xl border border-white/15 group hover:border-[#FF6B4A]/30 transition-all duration-300 ios-video-container">
-
-              {/* Dynamic Island Notch */}
-              <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-22 h-3.5 sm:h-4 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-inner border border-white/10 pointer-events-none">
-                <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#0a0a0d]"></div>
-                <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#101018]"></div>
-              </div>
-
-              {/* Reel Video Player */}
-              <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
-
-                <video
-                  ref={videoRef}
-                  src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.mp4"
-                  poster="https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.jpg"
-                  autoPlay
-                  loop
-                  muted={isMuted}
-                  playsInline
-                  webkit-playsinline="true"
-                  preload="auto"
-                  onCanPlay={() => {
-                    if (videoRef.current && videoRef.current.paused) {
-                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-                    }
-                  }}
-                  onLoadedData={() => {
-                    if (videoRef.current && videoRef.current.paused) {
-                      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-                    }
-                  }}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  className="w-full h-full object-cover cursor-pointer rounded-[28px] sm:rounded-[40px] lg:rounded-[46px]"
-                  onClick={togglePlay}
-                />
-
-                {/* Header Overlay */}
-                <div className="absolute top-6 sm:top-8 left-0 right-0 px-3.5 sm:px-4 flex items-center justify-between z-40 pointer-events-none">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-black tracking-wider text-white bg-black/85 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 shadow-md">
-                      <span className="w-2 h-2 rounded-full bg-[#FF6B4A] animate-ping"></span>
-                      REEL
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2 pointer-events-auto">
-                    <button
-                      data-mute-btn="true"
-                      onClick={toggleMute}
-                      className="px-2.5 py-1 rounded-full bg-black/85 text-white hover:bg-black transition-all border border-white/25 shadow-md cursor-pointer flex items-center gap-1.5"
-                      title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
-                    >
-                      {isMuted ? (
-                        <>
-                          <VolumeX className="w-3.5 h-3.5 text-[#FF6B4A]" />
-                          <span className="text-[9px] font-extrabold text-[#FF6B4A]">TAP AUDIO</span>
-                        </>
-                      ) : (
-                        <>
-                          <Volume2 className="w-3.5 h-3.5 text-[#C7F36B] animate-pulse" />
-                          <span className="text-[9px] font-extrabold text-[#C7F36B]">AUDIO ON</span>
-                        </>
-                      )}
-                    </button>
+                {/* Sleek Dynamic Island Notch with Camera Lens */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-4.5 sm:h-5 bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-md border border-white/5 pointer-events-none">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0a0a0d]"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#0b1220] border border-[#1c2842] relative flex items-center justify-center">
+                    <div className="w-0.5 h-0.5 rounded-full bg-[#2a3d68]"></div>
                   </div>
                 </div>
 
-                {/* Play/Pause Overlay Indicator */}
-                {!isPlaying && (
-                  <div
-                    onClick={togglePlay}
-                    className="absolute inset-0 bg-black/40 flex items-center justify-center z-30 cursor-pointer"
-                  >
-                    <div className="w-14 h-14 rounded-full bg-[#FF6B4A] text-white flex items-center justify-center shadow-2xl pl-1 animate-bounce">
-                      <Play className="w-7 h-7 fill-white" />
-                    </div>
-                  </div>
-                )}
-
-                {/* Right Side Social Actions */}
-                <div className="absolute bottom-10 sm:bottom-12 right-2.5 sm:right-3 flex flex-col items-center gap-2.5 sm:gap-3.5 z-40">
+                {/* Top-Right Circular Audio Control Button */}
+                <div className="absolute top-2.5 right-2.5 z-50 pointer-events-auto">
                   <button
-                    onClick={toggleLike}
-                    className="flex flex-col items-center gap-1 group/btn cursor-pointer"
-                    title="Like"
+                    data-mute-btn="true"
+                    onClick={toggleMute}
+                    className="w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-full bg-[#181820]/80 hover:bg-black/90 backdrop-blur-md text-white transition-all border border-white/20 shadow-lg cursor-pointer flex items-center justify-center group/audio"
+                    title={isMuted ? "Unmute Audio" : "Mute Audio"}
                   >
-                    <div className={`p-1.5 sm:p-2 rounded-full bg-black/80 transition-all ${liked ? 'text-[#FF6B4A] scale-110' : 'text-white hover:text-[#FF6B4A]'}`}>
-                      <Heart className={`w-4 sm:w-5 h-4 sm:h-5 ${liked ? 'fill-[#FF6B4A]' : ''}`} />
-                    </div>
+                    {isMuted ? (
+                      <VolumeX className="w-3.5 h-3.5 text-[#FF6B4A] group-hover/audio:scale-110 transition-transform" />
+                    ) : (
+                      <Volume2 className="w-3.5 h-3.5 text-[#C7F36B] group-hover/audio:scale-110 transition-transform" />
+                    )}
                   </button>
-
-                  <a
-                    href={BRAND_INFO.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer"
-                    title="Comment on Instagram"
-                  >
-                    <div className="p-1.5 sm:p-2 rounded-full bg-black/80">
-                      <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
-                    </div>
-                  </a>
-
-                  <a
-                    href={BRAND_INFO.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-1 text-white hover:text-[#FF6B4A] cursor-pointer"
-                    title="Share on Instagram"
-                  >
-                    <div className="p-1.5 sm:p-2 rounded-full bg-black/80">
-                      <Share2 className="w-4 sm:w-5 h-4 sm:h-5" />
-                    </div>
-                  </a>
                 </div>
 
-                {/* Instagram Profile Overlay Footer */}
-                <div className="absolute bottom-4 sm:bottom-4.5 left-2.5 sm:left-3 right-11 sm:right-12 z-40 text-left text-white space-y-1 sm:space-y-1.5 bg-gradient-to-t from-black/95 via-black/65 to-transparent p-2.5 sm:p-3 rounded-2xl">
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-full bg-[#FF6B4A] flex items-center justify-center p-0.5 border border-white shrink-0">
-                      <Logo size="small" showText={false} />
+                {/* Reel Video Player */}
+                <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
+                  <video
+                    ref={videoRef}
+                    src="https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.mp4"
+                    poster="https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/pixel-karigars/Helping_local_brands_stand_out_That_s_the_goal_____ContentCreation__BrandContent__SocialMediaAge.jpg"
+                    autoPlay
+                    loop
+                    muted={isMuted}
+                    playsInline
+                    webkit-playsinline="true"
+                    preload="auto"
+                    onCanPlay={() => {
+                      if (videoRef.current && videoRef.current.paused) {
+                        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                      }
+                    }}
+                    onLoadedData={() => {
+                      if (videoRef.current && videoRef.current.paused) {
+                        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                      }
+                    }}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    className="w-full h-full object-cover cursor-pointer rounded-[36px] sm:rounded-[43px]"
+                    onClick={togglePlay}
+                  />
+
+                  {/* Large Centered Orange Circular Play Button (Reference Style) */}
+                  {!isPlaying && (
+                    <div
+                      onClick={togglePlay}
+                      className="absolute inset-0 bg-black/35 backdrop-blur-[2px] flex items-center justify-center z-40 cursor-pointer"
+                    >
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="w-14 sm:w-16 h-14 sm:h-16 rounded-full bg-gradient-to-tr from-[#FF5522] to-[#FF7733] flex items-center justify-center text-white shadow-[0_10px_30px_rgba(255,85,34,0.6)] pl-1 hover:scale-105 transition-transform"
+                      >
+                        <Play className="w-7 sm:w-8 h-7 sm:h-8 fill-white text-white" />
+                      </motion.div>
                     </div>
-                    <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-wide truncate">
-                      pixelkarigars
-                    </span>
+                  )}
+
+                  {/* Full-width Smooth Bottom Fade */}
+                  <div className="absolute bottom-0 inset-x-0 h-44 sm:h-48 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none z-30"></div>
+
+                  {/* Right Side Social Actions */}
+                  <div className="absolute bottom-7 sm:bottom-8 right-2 sm:right-3 flex flex-col items-center gap-2.5 sm:gap-3.5 z-40">
+                    <button
+                      onClick={toggleLike}
+                      className="flex flex-col items-center gap-0.5 group/btn cursor-pointer"
+                      title="Like"
+                    >
+                      <div className={`p-2 rounded-full backdrop-blur-md transition-all ${liked ? 'bg-[#FF6B4A]/25 text-[#FF6B4A] scale-105 border-[#FF6B4A]/40' : 'bg-black/35 text-white hover:text-[#FF6B4A] hover:bg-black/55 border-white/15'} border shadow-lg`}>
+                        <Heart className={`w-4 sm:w-5 h-4 sm:h-5 ${liked ? 'fill-[#FF6B4A]' : ''}`} />
+                      </div>
+                      <span className="text-[9px] font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">2.4k</span>
+                    </button>
+
                     <a
                       href={BRAND_INFO.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[8px] sm:text-[9px] px-2 py-0.5 rounded-full bg-[#FF6B4A] hover:bg-[#E85536] text-white font-black shrink-0 transition-colors shadow-sm"
+                      className="flex flex-col items-center gap-0.5 text-white hover:text-[#FF6B4A] cursor-pointer group"
+                      title="Comment on Instagram"
                     >
-                      Follow
+                      <div className="p-2 rounded-full bg-black/35 backdrop-blur-md border border-white/15 shadow-lg group-hover:bg-black/55 group-hover:border-[#FF6B4A]/40 transition-all">
+                        <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
+                      </div>
+                      <span className="text-[9px] font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">184</span>
+                    </a>
+
+                    <a
+                      href={BRAND_INFO.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center gap-0.5 text-white hover:text-[#FF6B4A] cursor-pointer group"
+                      title="Share on Instagram"
+                    >
+                      <div className="p-2 rounded-full bg-black/35 backdrop-blur-md border border-white/15 shadow-lg group-hover:bg-black/55 group-hover:border-[#FF6B4A]/40 transition-all">
+                        <Share2 className="w-4 sm:w-5 h-4 sm:h-5" />
+                      </div>
+                      <span className="text-[9px] font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">Share</span>
                     </a>
                   </div>
 
-                  <p className="text-[9px] sm:text-[10px] text-[#F5F3EE] line-clamp-2 font-medium leading-snug">
-                    Turning views into real customers for Siliguri brands. 🚀 #PixelKarigars #ReelsProduction #BrandGrowth
-                  </p>
+                  {/* Seamless Instagram Profile Overlay */}
+                  <div className="absolute bottom-6 sm:bottom-7 left-3 sm:left-4 right-14 sm:right-16 z-40 text-left text-white space-y-1.5 pointer-events-auto">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#FF6B4A] to-[#C7F36B] p-0.5 shrink-0 shadow-md">
+                        <div className="w-full h-full rounded-full bg-black flex items-center justify-center p-0.5">
+                          <Logo size="small" showText={false} />
+                        </div>
+                      </div>
+                      <span className="text-xs font-bold text-white tracking-wide drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                        pixelkarigars
+                      </span>
+                      <a
+                        href={BRAND_INFO.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[9px] px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-[#FF6B4A] text-white font-bold backdrop-blur-md border border-white/25 shrink-0 transition-all shadow-sm"
+                      >
+                        Follow
+                      </a>
+                    </div>
 
-                  <div className="flex items-center gap-1.5 text-[8px] sm:text-[9px] text-[#A6A39D]">
-                    <Sparkles className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-[#FF6B4A] animate-spin shrink-0" />
-                    <span className="truncate">Original Production • Pixel Karigars Studio</span>
+                    <p className="text-[10px] sm:text-[11px] text-white/95 font-medium leading-snug drop-shadow-[0_1px_3px_rgba(0,0,0,0.95)] line-clamp-2">
+                      Turning views into real customers with high-converting video shoots 🚀
+                    </p>
+
+                    <div className="flex items-center gap-1.5 text-[9px] text-white/80 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+                      <Sparkles className="w-3 h-3 text-[#C7F36B] animate-pulse shrink-0" />
+                      <span className="truncate font-medium">Original Audio • Pixel Karigars Studio</span>
+                    </div>
                   </div>
+
+                  {/* iOS Bottom Home Indicator Bar (Reference Detail) */}
+                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-1 bg-white/60 rounded-full pointer-events-none z-50"></div>
                 </div>
 
               </div>
-
             </div>
           </motion.div>
 
