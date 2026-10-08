@@ -99,7 +99,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#111111]/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 py-3 shadow-sm'
           : 'bg-transparent py-5'
       }`}
     >
@@ -121,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links in Floating Glass Pill */}
-          <nav className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#181818]/80 border border-white/10 backdrop-blur-md shadow-lg">
+          <nav className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200/90 backdrop-blur-md shadow-sm">
             {navLinks.map((link) => {
               const isFaqActive = link.isRoute && location.pathname === '/faq';
               return (
@@ -132,7 +132,7 @@ export default function Navbar() {
                   className={`text-xs font-bold px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                     isFaqActive
                       ? 'bg-[#FF6B4A] text-white shadow-md shadow-[#FF6B4A]/20'
-                      : 'text-[#A6A39D] hover:text-[#FF6B4A] hover:bg-white/10'
+                      : 'text-slate-600 hover:text-[#FF6B4A] hover:bg-slate-100'
                   }`}
                 >
                   {link.name}
@@ -147,7 +147,7 @@ export default function Navbar() {
               href={BRAND_INFO.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-md group cursor-pointer"
+              className="p-2.5 rounded-full bg-slate-100 border border-slate-200/80 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-sm group cursor-pointer"
               title="Visit Instagram"
             >
               <InstagramIcon className="w-4 h-4 text-[#FF6B4A] group-hover:text-white transition-colors" />
@@ -168,10 +168,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center gap-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-white focus:outline-none cursor-pointer active:scale-95 transition-transform"
+              className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 focus:outline-none cursor-pointer active:scale-95 transition-transform shadow-sm"
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF6B4A]" /> : <Menu className="w-5 h-5 text-white" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF6B4A]" /> : <Menu className="w-5 h-5 text-slate-800" />}
             </button>
           </div>
 
@@ -186,7 +186,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#181818] border-b border-white/10 px-4 pt-2 pb-6 space-y-4 shadow-2xl overflow-hidden"
+            className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-4 shadow-xl overflow-hidden"
           >
             <div className="flex flex-col space-y-2 pt-2">
               {navLinks.map((link) => {
@@ -199,7 +199,7 @@ export default function Navbar() {
                     className={`text-sm font-semibold py-2.5 px-3 rounded-lg transition-colors cursor-pointer ${
                       isFaqActive
                         ? 'bg-[#FF6B4A]/15 text-[#FF6B4A] font-bold'
-                        : 'text-[#F5F3EE] hover:text-[#FF6B4A] hover:bg-white/5'
+                        : 'text-slate-700 hover:text-[#FF6B4A] hover:bg-slate-50'
                     }`}
                   >
                     {link.name}
@@ -208,7 +208,7 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="pt-4 border-t border-white/15 flex flex-col gap-3">
+            <div className="pt-4 border-t border-slate-200 flex flex-col gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

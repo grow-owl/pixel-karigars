@@ -1,47 +1,57 @@
 export const CLIENT_LOGOS = [
   {
+    id: "inox",
+    name: "PVR INOX",
+    subtext: "Megaplex & Cinemas",
+    category: "Entertainment & Cinema",
+    logo: "/clients/inox.png",
+    logoPng: "/clients/inox.png",
+    badgeBg: "#FFFFFF"
+  },
+  {
     id: "chai-adda",
     name: "Chai Addaa",
     subtext: "Siliguri's Rooftop Cafeteria",
     category: "Rooftop Cafe & Lounge",
-    logo: "/clients/chai-adda.webp",
+    logo: "/clients/chai-adda.png",
     logoPng: "/clients/chai-adda.png",
-    accentColor: "#D4A373",
-    badgeBg: "#FFF8F0",
-    glowColor: "rgba(212, 163, 115, 0.25)"
+    badgeBg: "#FFF8F0"
   },
   {
-    id: "musicvillia",
-    name: "Musicvillia",
-    subtext: "Studios & Audio Production",
-    category: "Music & Production Studio",
-    logo: "/clients/music-villa.webp",
-    logoPng: "/clients/music-villa.png",
-    accentColor: "#D4AF37",
-    badgeBg: "#12110F",
-    glowColor: "rgba(212, 175, 55, 0.25)"
-  },
-  {
-    id: "himalayan-sage",
-    name: "Himalayan Sage Kitchen",
-    subtext: "Fine Dining Restaurant",
-    category: "Culinary & Dining",
-    logo: "/clients/himalayan-sage-kitchen.webp",
-    logoPng: "/clients/himalayan-sage-kitchen.png",
-    accentColor: "#FF6B4A",
-    badgeBg: "#FFFFFF",
-    glowColor: "rgba(255, 107, 74, 0.25)"
+    id: "burl-india",
+    name: "Burl India",
+    subtext: "Luxury Decor & Architecture",
+    category: "Architecture & Decor",
+    logo: "/clients/burl-india.png",
+    logoPng: "/clients/burl-india.png",
+    badgeBg: "#111111"
   },
   {
     id: "avianna",
     name: "Avianna",
     subtext: "Group of Hotels & Resorts",
     category: "Hotels & Luxury Resorts",
-    logo: "/clients/avianna.webp",
+    logo: "/clients/avianna.png",
     logoPng: "/clients/avianna.png",
-    accentColor: "#2A6568",
-    badgeBg: "#132A2B",
-    glowColor: "rgba(42, 101, 104, 0.35)"
+    badgeBg: "#132A2B"
+  },
+  {
+    id: "himalayan-sage",
+    name: "Himalayan Sage Kitchen",
+    subtext: "Fine Dining Restaurant",
+    category: "Culinary & Dining",
+    logo: "/clients/himalayan-sage-kitchen.png",
+    logoPng: "/clients/himalayan-sage-kitchen.png",
+    badgeBg: "#FFFFFF"
+  },
+  {
+    id: "musicvillia",
+    name: "Musicvillia",
+    subtext: "Studios & Audio Production",
+    category: "Music & Production Studio",
+    logo: "/clients/music-villa.png",
+    logoPng: "/clients/music-villa.png",
+    badgeBg: "#12110F"
   }
 ];
 
@@ -137,6 +147,45 @@ export const SERVICES = [
 
 export const PORTFOLIO = [
   {
+    id: "reel-inox",
+    featured: true,
+    title: "INOX",
+    category: "Entertainment & Cinema",
+    businessType: "Luxury Multiplex & Cinema Experience",
+    description: "Cinematic commercial reel capturing blockbuster entertainment and luxury multiplex experience for INOX.",
+    tags: ["INOX", "Cinemas", "Entertainment Reel"],
+    videoPoster: "/images/reels/reel-inox.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622439/pixel-karigars/video-57.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DeExBwcR77V/?stkn=MWoydDUybzR0YmkwcQ==",
+    clientQuote: "Electrifying visual showcase that boosted premiere engagement!"
+  },
+  {
+    id: "reel-chai-adda",
+    featured: true,
+    title: "Siliguri’s Chai Addaa",
+    category: "Cafes, Restros & Food",
+    businessType: "Rooftop Cafe & Tea Lounge",
+    description: "High-energy aesthetic rooftop reel showcasing steaming kulhad chai, night ambiance, and youth vibes for Chai Addaa.",
+    tags: ["Chai Addaa", "Siliguri", "Rooftop Cafe"],
+    videoPoster: "/images/reels/reel-chai-adda.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788669490/pixel-karigars/video-dynamic-spotlight.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DeMiDn0ThiV/?stkn=aHMybGltMnQwZ2I1",
+    clientQuote: "Captured our rooftop vibe and drove massive evening walk-ins!"
+  },
+  {
+    id: "reel-daekchi",
+    featured: true,
+    title: "Daekchi cafe and Snooker House",
+    category: "Cafes, Restros & Food",
+    businessType: "Snooker Lounge & Gaming Cafe",
+    description: "Moody, stylish promotional reel highlighting precision snooker shots and cafe lounge aesthetic for Daekchi Cafe.",
+    tags: ["Daekchi Cafe", "Snooker Lounge", "Gaming Cafe"],
+    videoPoster: "/images/reels/reel-daekchi.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622480/pixel-karigars/video-785.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DeHh-YSIy7x/?stkn=MXhzMXZseXFzcTc0aQ==",
+    clientQuote: "The gaming shots and cinematic lighting brought great crowd engagement."
+  },
+  {
     id: "reel-57",
     featured: true,
     title: "Mad Monkey Restro & Bar",
@@ -150,9 +199,22 @@ export const PORTFOLIO = [
     clientQuote: "The video pacing and sound mix gave our event an instant electric vibe!"
   },
   {
+    id: "reel-439",
+    featured: true,
+    title: "Himalayan Sage Restaurant",
+    category: "Cafes, Restros & Food",
+    businessType: "Kitchen & Street Food Production",
+    description: "Dynamic food cinematography capturing culinary artistry, sizzling momos, and street food cravings for Himalayan Sage Restaurant.",
+    tags: ["Himalayan Sage Restaurant", "Momos", "Food Production"],
+    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_2,q_auto,w_600/v1788669490/pixel-karigars/video-dynamic-spotlight.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788669490/pixel-karigars/video-dynamic-spotlight.mp4",
+    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
+    clientQuote: "Loved the mouthwatering framing and color grading!"
+  },
+  {
     id: "reel-734",
     featured: true,
-    title: "Avianna Group: Darjeeling Diaries",
+    title: "Avianna Group: Darjeeling diaries",
     category: "Hotels & Resorts",
     businessType: "Hotels & Resorts Showcase",
     description: "Cinematic mountain hospitality walkthrough for Avianna Group Hotels & Resorts in Darjeeling.",
@@ -163,95 +225,30 @@ export const PORTFOLIO = [
     clientQuote: "Brought direct tourist bookings and inquiries straight from Instagram."
   },
   {
-    id: "reel-785",
+    id: "reel-burl-india",
     featured: true,
-    title: "Avianna Groups: Hostels & Resorts",
-    category: "Hotels & Resorts",
-    businessType: "Hostels & Resorts Showcase",
-    description: "High-impact room walkthrough and hospitality showcase engineered for Avianna Groups: Hostels & Resorts.",
-    tags: ["Avianna Groups", "Hostels & Resorts", "Staycation"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622480/pixel-karigars/video-785.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622480/pixel-karigars/video-785.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "The reel quality and lighting completely exceeded our expectations!"
+    title: "Burl India",
+    category: "Retail & Fashion",
+    businessType: "Urban Fashion & Luxury Streetwear",
+    description: "High-fashion aesthetic commercial reel capturing urban streetwear culture and luxury apparel for Burl India.",
+    tags: ["Burl India", "Streetwear", "Fashion Commercial"],
+    videoPoster: "/images/reels/reel-burl-india.jpg",
+    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622576/pixel-karigars/video-18913.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DeMiGCKS2yY/?stkn=MXYyZWN3bWp3Z2J0cA==",
+    clientQuote: "Stunning visual flow that elevated our clothing brand look."
   },
   {
     id: "reel-18913",
-    featured: false,
-    title: "M.K. Traders",
+    featured: true,
+    title: "M.K Traders",
     category: "Retail & Tech",
     businessType: "Electronics & Smartphone Retail",
-    description: "Sleek product launch commercial highlighting Zeiss camera smartphone aesthetics for M.K. Traders.",
-    tags: ["M.K. Traders", "Smartphone", "Tech Reel"],
+    description: "Sleek product launch commercial highlighting Zeiss camera smartphone aesthetics for M.K Traders.",
+    tags: ["M.K Traders", "Smartphone", "Tech Reel"],
     videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622576/pixel-karigars/video-18913.jpg",
     videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622576/pixel-karigars/video-18913.mp4",
     instagramUrl: "https://www.instagram.com/pixelkarigars.in",
     clientQuote: "Clean product showcase that drove customer walk-ins."
-  },
-  {
-    id: "reel-223",
-    featured: false,
-    title: "Avianna Group: Mountain Resorts",
-    category: "Travel & Tourism",
-    businessType: "Mountain Resort & Tea Gardens",
-    description: "Scenic misty mountain and tea garden resort experience captured for Avianna Group of Hotels & Resorts.",
-    tags: ["Avianna Group", "Tea Gardens", "Mountain Resort"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622585/pixel-karigars/video-223.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622585/pixel-karigars/video-223.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "Captured the serene hill station vibes beautifully."
-  },
-  {
-    id: "reel-439",
-    featured: false,
-    title: "Himalayan Sage Kitchen",
-    category: "Cafes, Restros & Food",
-    businessType: "Kitchen & Street Food Production",
-    description: "Dynamic food cinematography capturing culinary artistry, sizzling momos, and street food cravings for Himalayan Sage Kitchen.",
-    tags: ["Himalayan Sage Kitchen", "Momos", "Food Production"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_2,q_auto,w_600/v1788669490/pixel-karigars/video-dynamic-spotlight.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788669490/pixel-karigars/video-dynamic-spotlight.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "Loved the mouthwatering framing and color grading!"
-  },
-  {
-    id: "reel-430",
-    featured: false,
-    title: "Avianna Group: Darjeeling & Gangtok",
-    category: "Hotels & Resorts",
-    businessType: "Hotels & Resorts Booking Promo",
-    description: "Visual staycation promo highlighting mountain luxury across Gangtok, Darjeeling, Pelling, and Kurseong.",
-    tags: ["Avianna Group", "Hotels & Resorts", "Travel Promo"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622568/pixel-karigars/video-430.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622568/pixel-karigars/video-430.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "Generated huge buzz for our seasonal holiday packages."
-  },
-  {
-    id: "reel-365",
-    featured: false,
-    title: "Avianna Group: Luxury Hospitality",
-    category: "Hotels & Resorts",
-    businessType: "Luxury Hospitality & Room Tour",
-    description: "Night ambiance and luxury room walkthrough engineered for Avianna Group Hotels & Resorts.",
-    tags: ["Avianna Group", "Hotels & Resorts", "Luxury Stay"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622575/pixel-karigars/video-365.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622575/pixel-karigars/video-365.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "Super crisp visual quality on mobile devices."
-  },
-  {
-    id: "reel-205",
-    featured: false,
-    title: "Avianna: Escape The Heat",
-    category: "Travel & Tourism",
-    businessType: "Summer Hill Vacation Promo",
-    description: "'Escape the Heat - Stay with Avianna' travel story shot across Darjeeling mountain resorts.",
-    tags: ["Avianna Group", "Darjeeling", "Escape The Heat"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622577/pixel-karigars/video-205.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622577/pixel-karigars/video-205.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
-    clientQuote: "Gave travelers a true feeling of the cool misty hills."
   }
 ];
 

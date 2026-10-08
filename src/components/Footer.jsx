@@ -60,7 +60,7 @@ export default function Footer() {
     <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
       
       {/* Compressed Compact Glass Card Container */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/12 shadow-xl">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-slate-200/90 shadow-md">
         
         {/* Soft Ambient Background Glow Orbs */}
         <div className="hidden md:block absolute top-0 right-10 w-[300px] h-[300px] bg-[#FF6B4A]/[0.02] rounded-full blur-[150px] pointer-events-none"></div>
@@ -90,7 +90,7 @@ export default function Footer() {
                   href={BRAND_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-slate-100 border border-slate-200 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] hover:scale-110 transition-all shadow-xs cursor-pointer"
                   title="Follow on Instagram"
                 >
                   <InstagramIcon className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function Footer() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#C7F36B] hover:bg-[#C7F36B] hover:text-[#111111] hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-slate-100 border border-slate-200 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:scale-110 transition-all shadow-xs cursor-pointer"
                   title="Chat on WhatsApp"
                 >
                   <MessageSquare className="w-4 h-4" />
@@ -110,7 +110,7 @@ export default function Footer() {
                 {/* Email Icon */}
                 <a
                   href={`mailto:${BRAND_INFO.email}`}
-                  className="p-2 rounded-full bg-white/10 border border-white/15 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:scale-110 transition-all shadow-md cursor-pointer"
+                  className="p-2 rounded-full bg-slate-100 border border-slate-200 text-[#FF6B4A] hover:bg-[#FF6B4A] hover:text-white hover:scale-110 transition-all shadow-xs cursor-pointer"
                   title="Send Email"
                 >
                   <Mail className="w-4 h-4" />
@@ -119,7 +119,7 @@ export default function Footer() {
             </div>
 
             {/* CENTER: Compact Nav Links */}
-            <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-[#A6A39D]">
+            <div className="md:col-span-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-600">
               {footerLinks.map((link, i) => (
                 <a 
                   key={i}
@@ -136,7 +136,7 @@ export default function Footer() {
 
             {/* RIGHT: Location & Back to Top */}
             <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-3">
-              <div className="text-[11px] text-[#A6A39D] font-medium">
+              <div className="text-[11px] text-slate-500 font-medium">
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-[#FF6B4A] shrink-0" />
                   <span className="truncate">{BRAND_INFO.location}</span>
@@ -147,7 +147,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollToTop}
-                className="p-2.5 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B4A] hover:border-[#FF6B4A] transition-all cursor-pointer shadow-md hover:shadow-xl hover:shadow-[#FF6B4A]/40 flex items-center justify-center shrink-0 group btn-glow-coral"
+                className="p-2.5 rounded-full bg-[#0F172A] border border-slate-800 text-white hover:bg-[#FF6B4A] hover:border-[#FF6B4A] transition-all cursor-pointer shadow-md hover:shadow-xl hover:shadow-[#FF6B4A]/40 flex items-center justify-center shrink-0 group"
                 title="Back to top"
               >
                 <ArrowUp className="w-4 h-4 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
@@ -157,7 +157,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom Copyright & Credit Bar */}
-          <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#A6A39D] font-medium text-center sm:text-left">
+          <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 font-medium text-center sm:text-left">
             <p>
               © 2026 Pixel Karigars. All rights reserved.
             </p>

@@ -2,7 +2,6 @@ import React, { useState, lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import ClientCarousel from '../components/ClientCarousel';
-import TickerBar from '../components/TickerBar';
 import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
@@ -29,36 +28,29 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-[#F5F3EE] font-sans selection:bg-[#FF6B4A] selection:text-white">
+    <div className="min-h-screen bg-[#F8F9FC] text-[#0F172A] font-sans selection:bg-[#FF6B4A] selection:text-white">
       {/* Sticky Header */}
       <Navbar />
 
       {/* Hero Section */}
       <Hero onOpenContact={scrollToContact} />
 
-      {/* Marquee Banner */}
-      <TickerBar />
-
-      {/* Glowing Neon Divider */}
-      <SectionDivider accent="lime" />
+      <SectionDivider />
 
       {/* Services Section */}
       <Services />
 
-      {/* Glowing Neon Divider 1 */}
-      <SectionDivider accent="coral" />
+      <SectionDivider />
 
       {/* Featured Client Reels Section */}
       <Portfolio onOpenModal={(project) => setSelectedProject(project)} />
 
-      {/* Glowing Neon Divider 2 */}
-      <SectionDivider accent="violet" />
+      <SectionDivider />
 
       {/* Lead Generation Contact Form */}
       <Contact />
 
-      {/* Glowing Neon Divider 3 */}
-      <SectionDivider accent="coral" />
+      <SectionDivider />
 
       {/* Trusted Client Logos Carousel */}
       <ClientCarousel />

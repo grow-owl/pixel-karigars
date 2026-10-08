@@ -10,10 +10,7 @@ export default function Portfolio({ onOpenModal }) {
 
   const categories = [
     'All',
-    'Hotels & Resorts',
-    'Cafes, Restros & Food',
-    'Retail & Tech',
-    'Travel & Tourism'
+    ...Array.from(new Set(PORTFOLIO.map(p => p.category)))
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -33,30 +30,39 @@ export default function Portfolio({ onOpenModal }) {
   };
 
   return (
-    <section id="work" className="py-16 md:py-20 bg-[#111111] relative overflow-hidden">
+    <section id="work" className="py-16 md:py-24 bg-[#F8F9FC] relative overflow-hidden">
       {/* Soft Ambient Background Glow */}
-      <div className="hidden md:block absolute bottom-0 left-1/3 w-[450px] h-[450px] bg-[#C7F36B]/[0.04] rounded-full blur-[180px] pointer-events-none animate-soft-pulse"></div>
+      <div className="hidden md:block absolute bottom-0 left-1/3 w-[450px] h-[450px] bg-[#FF6B4A]/[0.03] rounded-full blur-[180px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-7">
 
         {/* Section Header */}
-        <div className="text-center space-y-3">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F5F3EE] font-display">
-            FEATURED <span className="text-[#FF6B4A]">CLIENT REELS</span>
-          </h2>
+        <div className="text-left space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-3.5 sm:gap-5"
+          >
+            <span className="w-10 sm:w-14 h-[4px] sm:h-[5px] bg-[#FF6B4A] rounded-full shrink-0"></span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F172A] font-display uppercase">
+              FEATURED <span className="text-[#FF6B4A]">CLIENT REELS</span>
+            </h2>
+          </motion.div>
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto scrollbar-none pb-2 px-1">
+        <div className="flex items-center justify-start gap-2.5 overflow-x-auto scrollbar-none pb-2 px-1">
           {categories.map((cat) => {
             const isActive = activeFilter === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition-all cursor-pointer shrink-0 ${isActive
+                className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wide whitespace-nowrap transition-all cursor-pointer shrink-0 ${isActive
                   ? 'bg-gradient-to-r from-[#FF6B4A] to-[#E85536] text-white shadow-lg shadow-[#FF6B4A]/25 border border-[#FF6B4A]'
-                  : 'bg-white/10 text-[#A6A39D] hover:text-[#F5F3EE] hover:bg-white/15 border border-white/15'
+                  : 'bg-white text-slate-600 hover:text-[#0F172A] hover:bg-slate-100 border border-slate-200/90 shadow-xs'
                   }`}
               >
                 {cat}
@@ -77,9 +83,9 @@ export default function Portfolio({ onOpenModal }) {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -5 }}
                 transition={{ duration: 0.25 }}
-                className="w-[210px] sm:w-[230px] shrink-0 snap-start glass-panel rounded-2xl sm:rounded-3xl border border-white/12 glass-panel-hover overflow-hidden flex flex-col justify-between group shadow-xl cursor-pointer transform-gpu"
+                className="w-[210px] sm:w-[230px] shrink-0 snap-start bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 overflow-hidden flex flex-col justify-between group shadow-md hover:shadow-xl hover:border-[#FF6B4A]/40 cursor-pointer transform-gpu transition-all duration-300"
               >
                 {/* Real 9:16 Video Reel Card Preview (Plays on Tap/Click) */}
                 <div
@@ -106,7 +112,7 @@ export default function Portfolio({ onOpenModal }) {
                   </div>
 
                   {/* Dark Overlay Gradient on Hover with Play Icon */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-black/20 to-transparent flex items-center justify-center opacity-75 group-hover/img:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center opacity-70 group-hover/img:opacity-100 transition-opacity">
                     <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FF6B4A] text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform backdrop-blur-sm">
                       <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
                     </div>
@@ -114,15 +120,15 @@ export default function Portfolio({ onOpenModal }) {
                 </div>
 
                 {/* Card Details Below Video */}
-                <div className="p-3 sm:p-3.5 space-y-1.5 bg-[#181818]">
-                  <h3 className="text-sm sm:text-base font-extrabold text-[#F5F3EE] group-hover:text-[#FF6B4A] transition-colors truncate font-display">
+                <div className="p-3 sm:p-3.5 space-y-1.5 bg-white">
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#0F172A] group-hover:text-[#FF6B4A] transition-colors truncate font-display">
                     {project.title}
                   </h3>
 
-                  <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                     <button
                       onClick={() => onOpenModal(project)}
-                      className="text-[11px] sm:text-xs font-bold text-[#FF6B4A] hover:text-white flex items-center gap-1 cursor-pointer"
+                      className="text-[11px] sm:text-xs font-bold text-[#FF6B4A] hover:text-[#E85536] flex items-center gap-1 cursor-pointer"
                     >
                       <span>Watch Reel</span>
                       <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
@@ -132,9 +138,9 @@ export default function Portfolio({ onOpenModal }) {
                       href={project.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] sm:text-xs font-bold text-[#A6A39D] hover:text-[#C7F36B] flex items-center gap-1"
+                      className="text-[11px] sm:text-xs font-bold text-slate-500 hover:text-[#FF6B4A] flex items-center gap-1"
                     >
-                      <InstagramIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C7F36B]" />
+                      <InstagramIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FF6B4A]" />
                       <span>Instagram</span>
                     </a>
                   </div>
@@ -146,17 +152,17 @@ export default function Portfolio({ onOpenModal }) {
         </div>
 
         {/* Carousel Arrow Controls placed BELOW the reels for both Mobile & Desktop */}
-        <div className="flex items-center justify-center gap-3 pt-1">
+        <div className="flex items-center justify-center gap-3 pt-2">
           <button
             onClick={scrollLeft}
-            className="p-3 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B4A] hover:border-[#FF6B4A] transition-all shadow-lg active:scale-95 cursor-pointer flex items-center justify-center group"
+            className="p-3 rounded-full bg-white border border-slate-200 text-slate-800 hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] transition-all shadow-sm active:scale-95 cursor-pointer flex items-center justify-center group"
             title="Scroll Left"
           >
             <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
           </button>
           <button
             onClick={scrollRight}
-            className="p-3 rounded-full bg-white/10 border border-white/15 text-white hover:bg-[#FF6B4A] hover:border-[#FF6B4A] transition-all shadow-lg active:scale-95 cursor-pointer flex items-center justify-center group"
+            className="p-3 rounded-full bg-white border border-slate-200 text-slate-800 hover:bg-[#FF6B4A] hover:text-white hover:border-[#FF6B4A] transition-all shadow-sm active:scale-95 cursor-pointer flex items-center justify-center group"
             title="Scroll Right"
           >
             <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />

@@ -28,7 +28,7 @@ export default function Logo({ size = 'medium', animated = false, showText = tru
       />
       {showText && (
         <div className="flex flex-col justify-center leading-none font-display tracking-tight shrink-0">
-          <span className={`${textSizeClass} font-bold text-[#F5F3EE] lowercase leading-none`}>
+          <span className={`${textSizeClass} font-bold text-[#0F172A] lowercase leading-none`}>
             pixel
           </span>
           <span className={`${subTextSizeClass} font-extrabold text-[#FF6B4A] lowercase leading-none mt-0.5 tracking-wider`}>
