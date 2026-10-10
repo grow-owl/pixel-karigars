@@ -12,7 +12,7 @@ Pixel Karigars is a premier content creation studio based in Siliguri, West Beng
 
 - **Instagram**: [@pixelkarigars](https://www.instagram.com/pixelkarigars.in)
 - **Location**: Siliguri, West Bengal, India
-- **Email**: pixelkarigars@gmail.com
+- **Email**: hello@pixelkarigars.in
 - **Org Repo**: [GrowOwl GitHub](https://github.com/grow-owl)
 
 ---

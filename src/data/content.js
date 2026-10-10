@@ -58,7 +58,7 @@ export const CLIENT_LOGOS = [
 export const BRAND_INFO = {
   name: "Pixel Karigars",
   tagline: "HIGH-CONVERTING REELS & VISUAL STRATEGY",
-  email: "pixelkarigars@gmail.com",
+  email: "hello@pixelkarigars.in",
   phone: "+91 95472 34476",
   whatsapp: "919547234476",
   location: "Siliguri, West Bengal",
@@ -320,6 +320,6 @@ export const FAQS = [
     id: "get-started",
     category: "General Inquiries",
     q: "How can I get started with Pixel Karigars?",
-    a: "You can reach out immediately via our direct WhatsApp at +91 95472 34476, send an email to pixelkarigars@gmail.com, or fill out the contact form on our website to book a free strategy call."
+    a: "You can reach out immediately via our direct WhatsApp at +91 95472 34476, send an email to hello@pixelkarigars.in, or fill out the contact form on our website to book a free strategy call."
   }
 ];
