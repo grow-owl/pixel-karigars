@@ -177,22 +177,33 @@ export default function Hero({ onOpenContact }) {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-extrabold tracking-[0.2em] text-[#FF6B4A] uppercase font-display"
+              className="inline-flex items-center gap-3 sm:gap-3.5 text-sm sm:text-base font-black tracking-[0.22em] text-[#FF6B4A] uppercase font-display"
             >
-              <span className="w-8 h-[2px] bg-[#FF6B4A] rounded-full"></span>
+              <span className="w-9 sm:w-11 h-[3px] bg-[#FF6B4A] rounded-full"></span>
               <span>WHO WE ARE</span>
             </motion.div>
 
             {/* Clean, High-Impact Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-[#0F172A] leading-[1.12] font-display">
-              A Narrative Led <br className="hidden sm:inline" />
-              Creative <span className="text-[#FF6B4A]">Studio.</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-[#0F172A] leading-[1.15] font-display">
+              Every brand has a story <br className="hidden sm:inline" />
+              <span className="text-[#FF6B4A]">beyond what it sells.</span>
             </h1>
 
-            {/* Subheadline (Reference Narrative Style) */}
-            <p className="text-base sm:text-lg text-[#475569] max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-              We turn ideas and visions into scroll-stopping stories people can understand, feel and remember.
-            </p>
+            {/* Narrative Storytelling Copy */}
+            <div className="space-y-3 text-sm sm:text-[15px] text-[#475569] leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+              <p>
+                Some stories begin in a little café that opens before the city wakes up. Some live in the hands of someone making something from scratch. Others are waiting to be told about a place people haven't discovered yet.
+              </p>
+              <p className="font-bold text-[#0F172A]">
+                At Pixel Karigars, we bring these stories to the screen.
+              </p>
+              <p>
+                We're a creative content studio in Siliguri, making videos and visual content that help businesses show people what makes them worth knowing. We look for the little details: the people behind the counter, the care behind a product, the feeling of being somewhere for the first time.
+              </p>
+              <p className="text-xs sm:text-sm text-[#64748B] italic">
+                Because sometimes, a good video doesn't need to say much. It only needs to make someone want to know more.
+              </p>
+            </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
@@ -202,7 +213,7 @@ export default function Hero({ onOpenContact }) {
                 onClick={onOpenContact}
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold tracking-wide text-xs sm:text-sm shadow-xl shadow-slate-900/15 hover:shadow-2xl hover:shadow-slate-900/25 transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer btn-shimmer"
               >
-                <span>Connect with us</span>
+                <span>Let's Tell Your Story</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform duration-300" />
               </motion.button>
 
@@ -220,18 +231,18 @@ export default function Hero({ onOpenContact }) {
             </div>
 
             {/* Trust Highlights */}
-            <div className="pt-6 border-t border-slate-200/90 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 max-w-xl mx-auto lg:mx-0">
+            <div className="pt-6 border-t border-slate-200/90 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 sm:gap-x-6 lg:gap-x-7 gap-y-3 max-w-2xl lg:max-w-none mx-auto lg:mx-0">
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#0F172A] font-semibold whitespace-nowrap">50+ Viral Shoots</span>
+                <CheckCircle2 className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FF6B4A] shrink-0" />
+                <span className="text-sm sm:text-[15px] text-[#0F172A] font-bold whitespace-nowrap">50+ Video Shoots</span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#0F172A] font-semibold whitespace-nowrap">Organic Reach</span>
+                <CheckCircle2 className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FF6B4A] shrink-0" />
+                <span className="text-sm sm:text-[15px] text-[#0F172A] font-bold whitespace-nowrap">Organic Social Media Reach</span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <CheckCircle2 className="w-4.5 h-4.5 text-[#FF6B4A] shrink-0" />
-                <span className="text-xs sm:text-sm text-[#0F172A] font-semibold whitespace-nowrap">Cinema Quality</span>
+                <CheckCircle2 className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FF6B4A] shrink-0" />
+                <span className="text-sm sm:text-[15px] text-[#0F172A] font-bold whitespace-nowrap">Professional Video Production</span>
               </div>
             </div>
           </motion.div>

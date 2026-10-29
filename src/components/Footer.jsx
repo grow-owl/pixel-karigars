@@ -162,7 +162,7 @@ export default function Footer() {
               © 2026 Pixel Karigars. All rights reserved.
             </p>
             <p className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
-              <span>Created and Designed by</span>
+              <span>Created and designed by</span>
               <a
                 href="https://www.growowl.online"
                 target="_blank"
@@ -173,7 +173,7 @@ export default function Footer() {
                 <img 
                   src={growOwlLogoImg} 
                   alt="GrowOwl" 
-                  className="h-4 sm:h-4.5 w-auto object-contain inline-block" 
+                  className="h-3 sm:h-3.5 w-auto object-contain inline-block -mt-0.5" 
                 />
               </a>
             </p>

@@ -14,6 +14,12 @@ export default function ReelModal({ project, onClose }) {
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef(null);
 
+  const getShortcode = (url) => {
+    if (!url) return null;
+    const match = url.match(/\/reel\/([A-Za-z0-9_-]+)/);
+    return match ? match[1] : null;
+  };
+
   const togglePlay = useCallback((e) => {
     if (e && e.stopPropagation) e.stopPropagation();
     const video = videoRef.current;
@@ -128,44 +134,66 @@ export default function ReelModal({ project, onClose }) {
         <div 
           className="relative w-full flex-1 md:flex-initial md:col-span-6 bg-black flex items-center justify-center h-full sm:h-[480px] md:h-[560px] lg:h-[600px] ios-video-container select-none overflow-hidden"
         >
-          <video
-            ref={videoRef}
-            src={project.videoUrl}
-            poster={project.videoPoster}
-            autoPlay
-            loop
-            muted={isMuted}
-            playsInline
-            webkit-playsinline="true"
-            preload="auto"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            className="w-full h-full object-cover sm:object-contain cursor-pointer"
-            onClick={togglePlay}
-          />
-
-          {/* Top Audio Toggle Button */}
-          <div className="absolute top-4 left-4 z-40">
-            <button
-              onClick={toggleMute}
-              className={`px-3 py-1.5 rounded-full backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-lg ${
-                isMuted ? 'bg-black/80 text-[#FF6B4A] border border-[#FF6B4A]/40' : 'bg-black/80 text-[#C7F36B] border border-[#C7F36B]/40'
-              }`}
-              title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
-            >
-              {isMuted ? (
-                <>
-                  <VolumeX className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Muted</span>
-                </>
+          {project.videoUrl ? (
+            <video
+              ref={videoRef}
+              src={project.videoUrl}
+              poster={project.videoPoster}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              webkit-playsinline="true"
+              preload="auto"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              className="w-full h-full object-cover sm:object-contain cursor-pointer"
+              onClick={togglePlay}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-black overflow-hidden relative">
+              {getShortcode(project.instagramUrl) ? (
+                <iframe
+                  src={`https://www.instagram.com/reel/${getShortcode(project.instagramUrl)}/embed/`}
+                  className="w-full h-[calc(100%+60px)] -mt-[60px] border-0"
+                  allowFullScreen
+                  scrolling="no"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                />
               ) : (
-                <>
-                  <Volume2 className="w-3.5 h-3.5 animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Sound On</span>
-                </>
+                <img
+                  src={project.videoPoster}
+                  alt={project.title}
+                  className="w-full h-full object-contain"
+                />
               )}
-            </button>
-          </div>
+            </div>
+          )}
+
+          {/* Top Audio Toggle Button (Only for native video) */}
+          {project.videoUrl && (
+            <div className="absolute top-4 left-4 z-40">
+              <button
+                onClick={toggleMute}
+                className={`px-3 py-1.5 rounded-full backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-lg ${
+                  isMuted ? 'bg-black/80 text-[#FF6B4A] border border-[#FF6B4A]/40' : 'bg-black/80 text-[#C7F36B] border border-[#C7F36B]/40'
+                }`}
+                title={isMuted ? "Tap to Unmute Audio" : "Tap to Mute Audio"}
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-3.5 h-3.5" />
+                    <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Muted</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5 animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-wider pr-0.5">Sound On</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
 
           {/* Mobile-Only Top-Right Close Button */}
           <div className="md:hidden absolute top-4 right-4 z-40">
@@ -180,7 +208,7 @@ export default function ReelModal({ project, onClose }) {
           </div>
 
           {/* Big Center Play Indicator when Paused */}
-          {!isPlaying && (
+          {project.videoUrl && !isPlaying && (
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

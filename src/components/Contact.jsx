@@ -14,7 +14,7 @@ export default function Contact() {
       id: 'instagram',
       name: 'Instagram',
       handle: BRAND_INFO.handle,
-      subtext: 'Follow our daily shoots, behind-the-scenes & latest reels showcase.',
+      subtext: 'New reels, recent projects, and little glimpses of what happens behind the camera.',
       href: BRAND_INFO.instagramUrl,
       badgeText: 'Follow Us',
       icon: ({ className }) => <InstagramIcon className={className} />,
@@ -28,9 +28,9 @@ export default function Contact() {
       id: 'whatsapp',
       name: 'WhatsApp',
       handle: BRAND_INFO.phone,
-      subtext: 'Instant strategy chats & quick project inquiries directly with our team.',
+      subtext: 'Have a quick question or a project to discuss? Start a conversation.',
       href: whatsappUrl,
-      badgeText: 'Chat Now',
+      badgeText: 'Chat With Us',
       icon: ({ className }) => <MessageSquare className={className} />,
       accentColor: 'from-[#FF6B4A] to-[#FF5533]',
       borderColor: 'group-hover:border-[#FF6B4A]/50',
@@ -40,11 +40,11 @@ export default function Contact() {
     },
     {
       id: 'email',
-      name: 'Email Direct',
+      name: 'Email',
       handle: BRAND_INFO.email,
-      subtext: 'Send us your campaign briefs or request custom package proposals.',
+      subtext: 'Send us your ideas, campaign briefs, or project enquiries.',
       href: `mailto:${BRAND_INFO.email}`,
-      badgeText: 'Send Email',
+      badgeText: 'Send an Enquiry',
       icon: ({ className }) => <Mail className={className} />,
       accentColor: 'from-[#FF6B4A] to-[#FF5533]',
       borderColor: 'group-hover:border-[#FF6B4A]/50',
@@ -56,7 +56,7 @@ export default function Contact() {
       id: 'address',
       name: 'Studio Location',
       handle: BRAND_INFO.location,
-      subtext: 'Visit our dedicated creative content & video studio in Siliguri.',
+      subtext: 'A creative studio working with businesses to tell their stories through video and visual content.',
       href: mapsUrl,
       badgeText: 'Get Directions',
       icon: ({ className }) => <MapPin className={className} />,
@@ -76,7 +76,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-left max-w-4xl mb-12">
+        <div className="text-left max-w-4xl mb-12 space-y-3">
           <motion.div
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -89,6 +89,22 @@ export default function Contact() {
               GET IN <span className="text-[#FF6B4A]">TOUCH</span>
             </h2>
           </motion.div>
+
+          <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] font-display pl-0 sm:pl-[54px]">
+            Have something in mind?
+          </h3>
+
+          <div className="text-sm sm:text-base text-[#64748B] space-y-1.5 pl-0 sm:pl-[54px] font-normal leading-relaxed">
+            <p>
+              A new place to introduce. A product you've spent months perfecting. An idea you've been meaning to bring to life.
+            </p>
+            <p className="font-semibold text-[#0F172A] pt-1">
+              Tell us about it.
+            </p>
+            <p className="md:whitespace-nowrap">
+              We can talk through what you have in mind and explore the kind of video or creative content that would suit your brand.
+            </p>
+          </div>
         </div>
 
         {/* 4 Direct Contact Cards Grid in Exact Order: Instagram -> WhatsApp -> Email -> Address */}

@@ -37,7 +37,7 @@ export default function Portfolio({ onOpenModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-7">
 
         {/* Section Header */}
-        <div className="text-left space-y-4">
+        <div className="text-left space-y-3 w-full">
           <motion.div
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -50,6 +50,22 @@ export default function Portfolio({ onOpenModal }) {
               FEATURED <span className="text-[#FF6B4A]">CLIENT REELS</span>
             </h2>
           </motion.div>
+
+          <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] font-display pl-0 sm:pl-[54px]">
+            Different places. Different people. Stories worth sharing.
+          </h3>
+
+          <div className="text-sm sm:text-base text-[#64748B] space-y-1.5 pl-0 sm:pl-[54px] font-normal leading-relaxed">
+            <p className="xl:whitespace-nowrap">
+              A restaurant isn't only about what's on the plate. A hotel isn't only about where you sleep. A store isn't only about what's on its shelves.
+            </p>
+            <p>
+              There's an atmosphere, a feeling, a reason someone chooses to walk in and come back.
+            </p>
+            <p className="font-semibold text-[#0F172A] pt-1">
+              Here's how we've helped bring different businesses to the screen.
+            </p>
+          </div>
         </div>
 
         {/* Category Filter Pills */}
@@ -100,17 +116,6 @@ export default function Portfolio({ onOpenModal }) {
                     className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 pointer-events-none"
                   />
 
-                  {/* Top Reel Badges */}
-                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-20 pointer-events-none">
-                    <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-white bg-black/80 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-white/15 flex items-center gap-1 shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B4A] animate-ping"></span>
-                      REEL
-                    </span>
-                    <span className="text-[8px] sm:text-[9px] font-bold text-white/90 bg-black/70 backdrop-blur-md px-1.5 sm:px-2 py-0.5 rounded-full border border-white/10">
-                      {project.category}
-                    </span>
-                  </div>
-
                   {/* Dark Overlay Gradient on Hover with Play Icon */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center opacity-70 group-hover/img:opacity-100 transition-opacity">
                     <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FF6B4A] text-white flex items-center justify-center shadow-xl pl-0.5 group-hover/img:scale-110 transition-transform backdrop-blur-sm">
@@ -130,7 +135,7 @@ export default function Portfolio({ onOpenModal }) {
                       onClick={() => onOpenModal(project)}
                       className="text-[11px] sm:text-xs font-bold text-[#FF6B4A] hover:text-[#E85536] flex items-center gap-1 cursor-pointer"
                     >
-                      <span>Watch Reel</span>
+                      <span>Watch the Reel</span>
                       <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                     </button>
 

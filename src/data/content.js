@@ -57,18 +57,22 @@ export const CLIENT_LOGOS = [
 
 export const BRAND_INFO = {
   name: "Pixel Karigars",
-  tagline: "HIGH-CONVERTING REELS & VISUAL STRATEGY",
+  tagline: "Every brand has a story beyond what it sells.",
   email: "hello@pixelkarigars.in",
   phone: "+91 95472 34476",
   whatsapp: "919547234476",
   location: "Siliguri, West Bengal",
   handle: "@pixelkarigars",
   instagramUrl: "https://www.instagram.com/pixelkarigars.in",
+  highlights: [
+    "50+ Video Shoots",
+    "Organic Social Media Reach",
+    "Professional Video Production"
+  ],
   stats: [
-    { label: "Viral Shoots Delivered", value: "50+" },
-    { label: "Organic Reach Generated", value: "500K+" },
-    { label: "Active Business Partners", value: "25+" },
-    { label: "Client Satisfaction Rate", value: "99%" },
+    { label: "Video Shoots", value: "50+" },
+    { label: "Social Media Reach", value: "Organic" },
+    { label: "Video Production", value: "Professional" }
   ]
 };
 
@@ -76,72 +80,32 @@ export const SERVICES = [
   {
     id: "reels",
     num: "01",
-    title: "Reels & Short Video Shoots",
-    shortDesc: "Scroll-stopping vertical reels with viral hooks & crisp motion cuts.",
-    items: [
-      "Instagram Reels & YouTube Shorts",
-      "On-Location & Studio Shoots",
-      "Viral Hook Scriptwriting",
-      "Trending Audio & Color Grading",
-      "Fast 48-Hour Video Delivery"
-    ],
-    highlight: "Attention Grabber"
+    title: "Reels & Short-Form Video Production",
+    desc: "A cup of coffee being poured. The first look inside a new store. The little details that make a product special. We turn everyday moments and brand ideas into short videos made for social media."
   },
   {
     id: "social",
     num: "02",
     title: "Social Media Management",
-    shortDesc: "Complete monthly management of your Instagram & Facebook.",
-    items: [
-      "Monthly Content Calendar & Planning",
-      "High-Converting Graphic Posts",
-      "Strategic Captions & Target Hashtags",
-      "Optimal Posting Schedules",
-      "Profile Grid Aesthetic Design"
-    ],
-    highlight: "Full Management"
+    desc: "Your brand shouldn't have to start from scratch every morning wondering what to post. We help bring structure to your social media through planned content and a consistent brand voice."
   },
   {
     id: "product",
     num: "03",
     title: "Store & Product Walkthroughs",
-    shortDesc: "High-end visual shoots showcasing your store, restaurant, or products.",
-    items: [
-      "Store & Restaurant Walkthroughs",
-      "Food & Culinary Reel Production",
-      "Product Demonstration Videos",
-      "Customer Testimonial Shoots",
-      "Local Brand Promotions"
-    ],
-    highlight: "High Conversion"
+    desc: "Some places are best understood when you see them. We create video walkthroughs that take people inside your store, introduce your products, and help them picture the experience before they arrive."
   },
   {
     id: "strategy",
     num: "04",
     title: "Content Strategy & Hook Bank",
-    shortDesc: "Data-driven roadmap to position your brand as a market leader.",
-    items: [
-      "Viral Idea & Hook Repository",
-      "Competitor Market Analysis",
-      "Monthly Growth Roadmap",
-      "Target Audience Positioning",
-      "Offer & CTA Optimizations"
-    ],
-    highlight: "Growth Engine"
+    desc: "Before the camera rolls, there's an idea. We work on the opening line, the angle, and the little detail that makes someone pause instead of scrolling past."
   },
   {
     id: "design",
     num: "05",
     title: "Creative Graphic Design",
-    shortDesc: "Modern social graphics, promotional posters, and story templates.",
-    items: [
-      "Custom Social Media Creatives",
-      "Event & Campaign Banners",
-      "Interactive Instagram Story Sets",
-      "High-Click Ad Graphics",
-      "Visual Brand Assets"
-    ],
-    highlight: "Visual Impact"
+    desc: "Colours, shapes, words, and the smallest visual details all say something about a brand. We bring them together to create graphics that feel connected to your identity, not like they belong to just any business."
   }
 ];
 
@@ -155,7 +119,7 @@ export const PORTFOLIO = [
     description: "Cinematic commercial reel capturing blockbuster entertainment and luxury multiplex experience for INOX.",
     tags: ["INOX", "Cinemas", "Entertainment Reel"],
     videoPoster: "/images/reels/reel-inox.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622439/pixel-karigars/video-57.mp4",
+    videoUrl: "/videos/inox.mp4",
     instagramUrl: "https://www.instagram.com/reel/DeExBwcR77V/?stkn=MWoydDUybzR0YmkwcQ==",
     clientQuote: "Electrifying visual showcase that boosted premiere engagement!"
   },
@@ -163,12 +127,12 @@ export const PORTFOLIO = [
     id: "reel-chai-adda",
     featured: true,
     title: "Siliguri’s Chai Addaa",
-    category: "Cafes, Restros & Food",
+    category: "Cafes, Restaurants & Food",
     businessType: "Rooftop Cafe & Tea Lounge",
     description: "High-energy aesthetic rooftop reel showcasing steaming kulhad chai, night ambiance, and youth vibes for Chai Addaa.",
     tags: ["Chai Addaa", "Siliguri", "Rooftop Cafe"],
     videoPoster: "/images/reels/reel-chai-adda.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788669490/pixel-karigars/video-dynamic-spotlight.mp4",
+    videoUrl: "/videos/chai-adda.mp4",
     instagramUrl: "https://www.instagram.com/reel/DeMiDn0ThiV/?stkn=aHMybGltMnQwZ2I1",
     clientQuote: "Captured our rooftop vibe and drove massive evening walk-ins!"
   },
@@ -176,12 +140,12 @@ export const PORTFOLIO = [
     id: "reel-daekchi",
     featured: true,
     title: "Daekchi cafe and Snooker House",
-    category: "Cafes, Restros & Food",
+    category: "Cafes, Restaurants & Food",
     businessType: "Snooker Lounge & Gaming Cafe",
     description: "Moody, stylish promotional reel highlighting precision snooker shots and cafe lounge aesthetic for Daekchi Cafe.",
     tags: ["Daekchi Cafe", "Snooker Lounge", "Gaming Cafe"],
     videoPoster: "/images/reels/reel-daekchi.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622480/pixel-karigars/video-785.mp4",
+    videoUrl: "/videos/daekchi.mp4",
     instagramUrl: "https://www.instagram.com/reel/DeHh-YSIy7x/?stkn=MXhzMXZseXFzcTc0aQ==",
     clientQuote: "The gaming shots and cinematic lighting brought great crowd engagement."
   },
@@ -189,7 +153,7 @@ export const PORTFOLIO = [
     id: "reel-57",
     featured: true,
     title: "Mad Monkey Restro & Bar",
-    category: "Cafes, Restros & Food",
+    category: "Cafes, Restaurants & Food",
     businessType: "Restro, Bar & Live Concert",
     description: "High-energy live music concert and nightlife promo shot for Mad Monkey Restro & Bar.",
     tags: ["Mad Monkey", "Restro & Bar", "Live Concert"],
@@ -202,7 +166,7 @@ export const PORTFOLIO = [
     id: "reel-439",
     featured: true,
     title: "Himalayan Sage Restaurant",
-    category: "Cafes, Restros & Food",
+    category: "Cafes, Restaurants & Food",
     businessType: "Kitchen & Street Food Production",
     description: "Dynamic food cinematography capturing culinary artistry, sizzling momos, and street food cravings for Himalayan Sage Restaurant.",
     tags: ["Himalayan Sage Restaurant", "Momos", "Food Production"],
@@ -219,9 +183,9 @@ export const PORTFOLIO = [
     businessType: "Hotels & Resorts Showcase",
     description: "Cinematic mountain hospitality walkthrough for Avianna Group Hotels & Resorts in Darjeeling.",
     tags: ["Avianna Group", "Hotels & Resorts", "Darjeeling Diaries"],
-    videoPoster: "https://res.cloudinary.com/xa8njngd/video/upload/so_1,q_auto,w_600/v1788622459/pixel-karigars/video-734.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622459/pixel-karigars/video-734.mp4",
-    instagramUrl: "https://www.instagram.com/pixelkarigars.in",
+    videoPoster: "/images/reels/reel-avianna.jpg",
+    videoUrl: "/videos/avianna.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DeJr-D9vbTw/?stkn=a2IzZXlibnN0amo3",
     clientQuote: "Brought direct tourist bookings and inquiries straight from Instagram."
   },
   {
@@ -233,7 +197,7 @@ export const PORTFOLIO = [
     description: "High-fashion aesthetic commercial reel capturing urban streetwear culture and luxury apparel for Burl India.",
     tags: ["Burl India", "Streetwear", "Fashion Commercial"],
     videoPoster: "/images/reels/reel-burl-india.jpg",
-    videoUrl: "https://res.cloudinary.com/xa8njngd/video/upload/q_auto,w_720/v1788622576/pixel-karigars/video-18913.mp4",
+    videoUrl: "/videos/burl-india.mp4",
     instagramUrl: "https://www.instagram.com/reel/DeMiGCKS2yY/?stkn=MXYyZWN3bWp3Z2J0cA==",
     clientQuote: "Stunning visual flow that elevated our clothing brand look."
   },
@@ -241,7 +205,7 @@ export const PORTFOLIO = [
     id: "reel-18913",
     featured: true,
     title: "M.K Traders",
-    category: "Retail & Tech",
+    category: "Retail & Technology",
     businessType: "Electronics & Smartphone Retail",
     description: "Sleek product launch commercial highlighting Zeiss camera smartphone aesthetics for M.K Traders.",
     tags: ["M.K Traders", "Smartphone", "Tech Reel"],

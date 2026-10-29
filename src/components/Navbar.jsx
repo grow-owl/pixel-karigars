@@ -23,9 +23,9 @@ export default function Navbar() {
   const navLinks = [
     { name: 'About Us', href: '#about', isRoute: false },
     { name: 'Services', href: '#services', isRoute: false },
-    { name: 'Our Works', href: '#work', isRoute: false },
+    { name: 'Client Reels', href: '#work', isRoute: false },
     { name: 'FAQ', href: '/faq', isRoute: true },
-    { name: 'Contact Us', href: '#contact', isRoute: false },
+    { name: 'Contact', href: '#contact', isRoute: false },
   ];
 
   const handleNavClick = (e, link) => {
